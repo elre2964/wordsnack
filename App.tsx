@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import type { Word, TargetDefinition, GameState, FeedbackType, FlashcardData, VocabSetInfo, LoadedVocabSet, Match } from './types';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import type { Word, TargetDefinition, GameState, FeedbackType, VocabSetInfo, LoadedVocabSet, Match } from './types';
 import WordPill from './components/WordPill';
 import DefinitionBox from './components/DefinitionBox';
 import Flashcard from './components/Flashcard';
@@ -9,15 +9,6 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 };
 
 type AppScreen = 'HOME' | 'GAME';
-
-const COLOR_PALETTE = [
-  { bg: 'bg-sky-800', border: 'border-sky-600', selectedRing: 'ring-sky-400' },
-  { bg: 'bg-indigo-800', border: 'border-indigo-600', selectedRing: 'ring-indigo-400' },
-  { bg: 'bg-pink-800', border: 'border-pink-600', selectedRing: 'ring-pink-400' },
-  { bg: 'bg-amber-800', border: 'border-amber-600', selectedRing: 'ring-amber-400' },
-  { bg: 'bg-teal-800', border: 'border-teal-600', selectedRing: 'ring-teal-400' },
-  { bg: 'bg-purple-800', border: 'border-purple-600', selectedRing: 'ring-purple-400' },
-];
 
 const App: React.FC = () => {
   // Global App State
@@ -33,9 +24,7 @@ const App: React.FC = () => {
   const [shuffledDefinitions, setShuffledDefinitions] = useState<TargetDefinition[]>([]);
   const [gameState, setGameState] = useState<GameState>('PRACTICING');
   const [selectedWordId, setSelectedWordId] = useState<string | null>(null);
-  const [selectedDefinition, setSelectedDefinition] = useState<string | null>(null);
   const [userMatches, setUserMatches] = useState<Map<string, string>>(new Map()); // Maps Definition -> WordID
-  const [wordColors, setWordColors] = useState<Map<string, typeof COLOR_PALETTE[0]>>(new Map());
   
   // Data Loading
   useEffect(() => {
@@ -70,7 +59,6 @@ const App: React.FC = () => {
   const setupNewGame = useCallback((words: Word[]) => {
     setUserMatches(new Map());
     setSelectedWordId(null);
-    setSelectedDefinition(null);
 
     const availableWords = shuffleArray(words);
     const newPracticeWords: Word[] = [];
@@ -86,13 +74,6 @@ const App: React.FC = () => {
       }
     }
     
-    // Assign colors to the practice words
-    const newWordColors = new Map<string, typeof COLOR_PALETTE[0]>();
-    newPracticeWords.forEach((word, index) => {
-      newWordColors.set(word.id, COLOR_PALETTE[index % COLOR_PALETTE.length]);
-    });
-    setWordColors(newWordColors);
-
     const targetWords = shuffleArray(newPracticeWords).slice(0, 3);
     
     const newTargetDefinitions = targetWords.map(word => ({
@@ -108,95 +89,64 @@ const App: React.FC = () => {
 
   const handleWordClick = (wordId: string) => {
     if (gameState !== 'PRACTICING') return;
+    // Deselect if the same word is clicked again, otherwise select the new word.
+    setSelectedWordId(prev => (prev === wordId ? null : wordId));
+  };
 
-    const newMatches = new Map(userMatches);
-    const defForThisWord = Array.from(newMatches.entries()).find(([, wId]) => wId === wordId)?.[0];
-
-    if (selectedDefinition) {
-        // A definition is selected, intending a match.
-        // If the target word is already matched, remove its old match.
-        if (defForThisWord) {
-            newMatches.delete(defForThisWord);
-        }
-        // Create the new match (this also overwrites any existing match for the selected definition).
-        newMatches.set(selectedDefinition, wordId);
-        setUserMatches(newMatches);
-        setSelectedDefinition(null);
-        setSelectedWordId(null);
-    } else {
-        // No definition selected. User is selecting a word or un-matching.
-        if (defForThisWord) {
-            // It's already matched, so un-match it.
-            newMatches.delete(defForThisWord);
-            setUserMatches(newMatches);
-        } else {
-            // Not matched, so toggle selection.
-            setSelectedDefinition(null);
-            setSelectedWordId(prev => (prev === wordId ? null : wordId));
-        }
-    }
-};
-
-const handleDefinitionClick = (definition: string) => {
+  const handleDefinitionClick = (definition: string) => {
     if (gameState !== 'PRACTICING') return;
 
     const newMatches = new Map(userMatches);
-    
+    const wordIdInBox = newMatches.get(definition);
+
+    // Case 1: A word is selected from the bank.
     if (selectedWordId) {
-        // A word is selected, intending a match.
-        // If the selected word is already matched, remove its old match.
-        const defForThisWord = Array.from(newMatches.entries()).find(([, wId]) => wId === selectedWordId)?.[0];
-        if (defForThisWord) {
-            newMatches.delete(defForThisWord);
+        // If the selected word is already in this box, clicking it again just cancels the selection.
+        if (wordIdInBox === selectedWordId) {
+            setSelectedWordId(null);
+            return;
         }
-        // Create new match (overwrites any existing match for this definition).
+
+        // Remove the selected word from any other definition box it might be in.
+        for (const [def, wId] of newMatches.entries()) {
+            if (wId === selectedWordId) {
+                newMatches.delete(def);
+                break;
+            }
+        }
+        
+        // Place the selected word in this box, replacing any word that was already there.
         newMatches.set(definition, selectedWordId);
         setUserMatches(newMatches);
         setSelectedWordId(null);
-        setSelectedDefinition(null);
-    } else {
-        // No word is selected. User is either selecting a definition or un-matching one.
-        if (newMatches.has(definition)) {
-            // It's already matched, so un-match it.
-            newMatches.delete(definition);
-            setUserMatches(newMatches);
-        } else {
-            // Not matched, so toggle its selection.
-            setSelectedWordId(null);
-            setSelectedDefinition(prev => (prev === definition ? null : definition));
-        }
+
+    } else if (wordIdInBox) {
+        // If no word is selected, clicking a filled box "picks up" the word.
+        newMatches.delete(definition);
+        setUserMatches(newMatches);
+        setSelectedWordId(wordIdInBox);
     }
-};
+  };
   
   const correctMatches = useMemo(() => targetDefinitions, [targetDefinitions]);
+  
+  const availablePracticeWords = useMemo(() => {
+    if (gameState === 'FEEDBACK') return [];
+    const matchedWordIds = new Set(userMatches.values());
+    return practiceWords.filter(word => !matchedWordIds.has(word.id));
+  }, [practiceWords, userMatches, gameState]);
 
   const handleCheck = () => {
     if (userMatches.size === 3) {
       setGameState('FEEDBACK');
       setSelectedWordId(null);
-      setSelectedDefinition(null);
     }
   };
 
   const handleNext = () => {
     setupNewGame(allWords);
   };
-
-  const getFeedbackForWord = (wordId: string): FeedbackType => {
-      if (gameState !== 'FEEDBACK') return 'none';
-      
-      const userMatchDef = Array.from(userMatches.entries()).find(([, wId]) => wId === wordId)?.[0];
-      if (!userMatchDef) return 'none'; 
-
-      const correctWordForDef = correctMatches.find(cm => cm.definition === userMatchDef)?.wordId;
-      
-      if (targetDefinitions.some(td => td.wordId === wordId)) { // Is it a target word?
-         return wordId === correctWordForDef ? 'correct' : 'incorrect';
-      }
-      
-      return 'incorrect'; // User matched a non-target word.
-  };
-
+  
   const getFeedbackForDefinition = (definition: string): FeedbackType => {
       if (gameState !== 'FEEDBACK' || !userMatches.has(definition)) return 'none';
       const userWordId = userMatches.get(definition);
@@ -292,8 +242,8 @@ const handleDefinitionClick = (definition: string) => {
   }
 
   return (
-    <div className="container mx-auto p-4 md:p-8 min-h-screen flex flex-col relative">
-      <button 
+    <div className="container mx-auto p-4 md:p-8 min-h-screen flex flex-col">
+       <button 
         onClick={() => setAppScreen('HOME')}
         className="absolute top-4 left-4 md:top-8 md:left-8 text-slate-300 bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-700 hover:bg-slate-700 hover:border-sky-500 transition-colors z-20"
       >
@@ -301,50 +251,65 @@ const handleDefinitionClick = (definition: string) => {
       </button>
       <header className="text-center mb-8 pt-12 md:pt-0">
         <h1 className="text-4xl md:text-5xl font-bold text-sky-400">Vocabulary Matcher</h1>
-        <p className="text-slate-400 mt-2">Connect 3 words to their definitions.</p>
+        <p className="text-slate-400 mt-2">Match the 3 definitions below by selecting a word from the bank first.</p>
       </header>
 
-      <main className="flex-grow w-full max-w-5xl mx-auto relative mb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-16 gap-y-4">
-          {/* Left Column for Words */}
-          <div className="space-y-4 flex flex-col justify-around">
-              <h2 className="text-2xl font-bold text-center text-slate-300">Words</h2>
-              {practiceWords.map(word => (
-                  <div key={word.id}>
-                      <WordPill 
-                        word={word.word}
-                        onClick={() => handleWordClick(word.id)}
-                        isSelected={selectedWordId === word.id}
-                        feedback={getFeedbackForWord(word.id)}
-                        colorSet={wordColors.get(word.id)!}
-                      />
-                  </div>
-              ))}
+      <main className="flex-grow w-full max-w-4xl mx-auto flex flex-col">
+        {/* Word Bank */}
+        <div className="w-full bg-slate-800 border-2 border-slate-700 rounded-xl p-4 mb-8">
+          <h2 className="text-2xl font-bold text-center text-slate-300 mb-4">Word Bank</h2>
+          <div 
+            className="flex flex-wrap justify-center items-center gap-4 min-h-[6rem] transition-all duration-300"
+            role="toolbar"
+            aria-label="Word bank"
+          >
+            {availablePracticeWords.map(word => (
+              <WordPill 
+                key={word.id}
+                word={word.word}
+                onClick={() => handleWordClick(word.id)}
+                isSelected={selectedWordId === word.id}
+              />
+            ))}
+            {gameState === 'PRACTICING' && availablePracticeWords.length === 0 && (
+              <p className="text-slate-400">All words matched! Check your answers below.</p>
+            )}
+            {gameState === 'FEEDBACK' && (
+              <p className="text-slate-400">Review your answers and flashcards.</p>
+            )}
           </div>
-          {/* Right Column for Definitions */}
-          <div className="space-y-4 flex flex-col justify-around">
-              <h2 className="text-2xl font-bold text-center text-slate-300">Definitions</h2>
-              {shuffledDefinitions.map(({ definition }) => {
-                const userWordId = userMatches.get(definition);
-                const matchedWord = userWordId ? (practiceWords.find(w => w.id === userWordId)?.word || null) : null;
-                
-                return (
-                  <div key={definition}>
-                      <DefinitionBox 
-                        definition={definition}
-                        onClick={() => handleDefinitionClick(definition)}
-                        isSelected={selectedDefinition === definition}
-                        feedback={getFeedbackForDefinition(definition)}
-                        matchedWord={matchedWord}
-                      />
-                  </div>
-                );
-              })}
-          </div>
+        </div>
+
+        {/* Definitions */}
+        <div className="w-full space-y-4">
+           <h2 className="text-2xl font-bold text-center text-slate-300">Definitions</h2>
+            {shuffledDefinitions.map(({ definition }) => {
+              const userWordId = userMatches.get(definition);
+              const matchedWordObject = userWordId ? practiceWords.find(w => w.id === userWordId) : null;
+              const matchedWord = matchedWordObject ? matchedWordObject.word : null;
+              
+              const correctWordId = correctMatches.find(cm => cm.definition === definition)?.wordId;
+              const isCorrect = userWordId === correctWordId;
+
+              const correctWordObject = (gameState === 'FEEDBACK' && !isCorrect && correctWordId) ? practiceWords.find(w => w.id === correctWordId) : null;
+              const correctWord = correctWordObject ? correctWordObject.word : null;
+
+              return (
+                <DefinitionBox 
+                  key={definition}
+                  definition={definition}
+                  onClick={() => handleDefinitionClick(definition)}
+                  feedback={getFeedbackForDefinition(definition)}
+                  matchedWord={matchedWord}
+                  correctWord={correctWord}
+                  isTargetedForSelection={!!selectedWordId}
+                />
+              );
+            })}
         </div>
       </main>
 
-      <footer className="w-full flex flex-col items-center">
+      <footer className="w-full flex flex-col items-center mt-8">
         <div className="mb-8">
           {gameState === 'PRACTICING' ? (
             <button
@@ -368,8 +333,8 @@ const handleDefinitionClick = (definition: string) => {
           <div className="w-full max-w-5xl mt-8">
             <h2 className="text-3xl font-bold text-center mb-6 text-amber-400">Flashcards Review</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {practiceWords.map(word => (
-                <Flashcard key={word.id} wordData={word} />
+              {targetDefinitions.map(td => practiceWords.find(pw => pw.id === td.wordId)).filter(Boolean).map(word => (
+                 <Flashcard key={word!.id} wordData={word!} />
               ))}
             </div>
           </div>

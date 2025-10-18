@@ -1,6 +1,5 @@
-
 import React from 'react';
-import type { Match } from '../types';
+import type { Match, GameState } from '../types';
 
 interface ConnectingLinesProps {
     matches: Match[];
@@ -8,6 +7,7 @@ interface ConnectingLinesProps {
     wordPositions: Map<string, DOMRect>;
     definitionPositions: Map<string, DOMRect>;
     containerRect: DOMRect | null;
+    gameState: GameState;
 }
 
 const ConnectingLines: React.FC<ConnectingLinesProps> = ({
@@ -16,6 +16,7 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({
     wordPositions,
     definitionPositions,
     containerRect,
+    gameState,
 }) => {
     if (!containerRect) return null;
 
@@ -32,57 +33,82 @@ const ConnectingLines: React.FC<ConnectingLinesProps> = ({
         return { startX, startY, endX, endY };
     };
 
-    return (
-        <svg
-            className="absolute top-0 left-0 w-full h-full pointer-events-none"
-            style={{ zIndex: 10 }}
-        >
-            {/* Render correct answers (dashed green) */}
-            {correctMatches?.map((match, index) => {
-                const points = getLinePoints(match.wordId, match.definition);
-                if (!points) return null;
-                return (
+    const linesToDraw: React.ReactNode[] = [];
+
+    if (gameState === 'PRACTICING') {
+        matches.forEach((match, index) => {
+            const points = getLinePoints(match.wordId, match.definition);
+            if (points) {
+                linesToDraw.push(
                     <line
-                        key={`correct-${index}`}
+                        key={`practicing-${index}`}
                         x1={points.startX}
                         y1={points.startY}
                         x2={points.endX}
                         y2={points.endY}
-                        className="stroke-green-500"
-                        strokeWidth="3"
-                        strokeDasharray="8 8"
-                    />
-                );
-            })}
-
-            {/* Render user's matches (solid, color-coded) */}
-            {matches.map((match, index) => {
-                const points = getLinePoints(match.wordId, match.definition);
-                if (!points) return null;
-
-                const isCorrect = correctMatches
-                    ? correctMatches.some(
-                        (cm) => cm.wordId === match.wordId && cm.definition === match.definition
-                    )
-                    : undefined;
-
-                let strokeClass = 'stroke-sky-400';
-                if (isCorrect === true) strokeClass = 'stroke-green-500';
-                if (isCorrect === false) strokeClass = 'stroke-red-500';
-
-                return (
-                    <line
-                        key={`user-${index}`}
-                        x1={points.startX}
-                        y1={points.startY}
-                        x2={points.endX}
-                        y2={points.endY}
-                        className={strokeClass}
+                        className="stroke-sky-400"
                         strokeWidth="4"
                         strokeLinecap="round"
                     />
                 );
-            })}
+            }
+        });
+    } else if (gameState === 'FEEDBACK' && correctMatches) {
+        const correctMatchesMap = new Map(correctMatches.map(cm => [cm.definition, cm.wordId]));
+
+        // Render user's matches, colored by correctness
+        matches.forEach((match, index) => {
+            const points = getLinePoints(match.wordId, match.definition);
+            if (!points) return;
+
+            const isCorrect = correctMatchesMap.get(match.definition) === match.wordId;
+            const strokeClass = isCorrect ? 'stroke-green-500' : 'stroke-red-500';
+
+            linesToDraw.push(
+                <line
+                    key={`user-${index}`}
+                    x1={points.startX}
+                    y1={points.startY}
+                    x2={points.endX}
+                    y2={points.endY}
+                    className={strokeClass}
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                />
+            );
+        });
+
+        // Render correct answers (dashed green) for incorrect matches
+        correctMatches.forEach((correctMatch, index) => {
+            const userWordForDef = matches.find(m => m.definition === correctMatch.definition)?.wordId;
+            const wasUserWrong = userWordForDef && userWordForDef !== correctMatch.wordId;
+            
+            if (wasUserWrong) {
+                const points = getLinePoints(correctMatch.wordId, correctMatch.definition);
+                if (points) {
+                    linesToDraw.push(
+                        <line
+                            key={`correct-${index}`}
+                            x1={points.startX}
+                            y1={points.startY}
+                            x2={points.endX}
+                            y2={points.endY}
+                            className="stroke-green-500"
+                            strokeWidth="3"
+                            strokeDasharray="8 8"
+                        />
+                    );
+                }
+            }
+        });
+    }
+
+    return (
+        <svg
+            className="absolute top-0 left-0 w-full h-full pointer-events-none"
+            style={{ zIndex: 1 }}
+        >
+            {linesToDraw}
         </svg>
     );
 };
