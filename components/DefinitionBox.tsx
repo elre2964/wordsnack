@@ -11,11 +11,11 @@ interface DefinitionBoxProps {
 }
 
 const DefinitionBox: React.FC<DefinitionBoxProps> = ({ definition, onClick, feedback, matchedWord, correctWord, isTargetedForSelection }) => {
-  const baseClasses = "w-full py-4 px-4 rounded-lg border-2 transition-all duration-300 shadow-md flex flex-col items-center justify-center text-center";
+  const baseClasses = "w-full py-4 px-4 rounded-xl border-2 transition-all duration-300 shadow-lg flex flex-col items-center justify-center text-center bg-slate-800/50 backdrop-blur-sm";
 
   const feedbackClasses = {
-    correct: 'bg-green-800/50 border-green-500',
-    incorrect: 'bg-red-800/50 border-red-500',
+    correct: 'bg-green-500/30 border-green-400',
+    incorrect: 'bg-red-500/30 border-red-400',
     none: ''
   };
 
@@ -24,14 +24,11 @@ const DefinitionBox: React.FC<DefinitionBoxProps> = ({ definition, onClick, feed
   if (feedback !== 'none') {
     appliedClasses = feedbackClasses[feedback];
   } else if (isTargetedForSelection) {
-    // Any box is a target when a word is selected. This indicates "place here" or "replace here".
-    appliedClasses = 'bg-slate-600 scale-105 ring-4 ring-sky-400 shadow-xl border-sky-500 cursor-pointer';
+    appliedClasses = 'scale-105 ring-4 ring-sky-400/50 shadow-xl border-sky-500 border-dashed cursor-pointer';
   } else if (matchedWord) {
-    // A word is placed, but no word is currently selected in the bank. Indicates "pick up".
-    appliedClasses = 'bg-slate-800 border-sky-700 cursor-pointer hover:bg-slate-700'; // Simple blue border
+    appliedClasses = 'border-sky-700 cursor-pointer hover:bg-slate-700/50';
   } else {
-    // Default, empty, not a target.
-    appliedClasses = 'bg-slate-700 border-slate-600 cursor-default';
+    appliedClasses = 'border-slate-700 cursor-default';
   }
 
 
@@ -40,18 +37,18 @@ const DefinitionBox: React.FC<DefinitionBoxProps> = ({ definition, onClick, feed
       <div className="min-h-[2.5rem] mb-2 flex items-center justify-center">
         {feedback === 'incorrect' ? (
           <div className="text-center">
-            {matchedWord && <p className="font-bold text-red-400 text-lg line-through">{matchedWord}</p>}
-            <p className="font-bold text-green-400 text-lg">{correctWord}</p>
+            {matchedWord && <p className="font-bold text-red-300 text-lg line-through">{matchedWord}</p>}
+            <p className="font-bold text-green-300 text-lg">{correctWord}</p>
           </div>
         ) : feedback === 'correct' ? (
            <p className="font-bold text-green-300 text-lg">{matchedWord}</p>
         ) : matchedWord ? (
-           <p className="font-bold text-sky-400 text-lg">{matchedWord}</p>
+           <p className="font-bold text-sky-300 text-lg">{matchedWord}</p>
         ) : (
-          isTargetedForSelection && <span className="text-slate-400">Click to place word...</span>
+          isTargetedForSelection && <span className="text-slate-400">Place word here</span>
         )}
       </div>
-      <p className="text-slate-200 text-sm md:text-base">{definition}</p>
+      <p className="text-slate-300 text-sm md:text-base">{definition}</p>
     </div>
   );
 };
