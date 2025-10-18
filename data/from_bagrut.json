@@ -1,0 +1,5238 @@
+[
+  {
+    "word": "a good deal",
+    "collision_group_id": "a_good_great_deal_split",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "הרבה",
+    "definitions": [
+      "A large amount of something.",
+      "A significant quantity or extent.",
+      "Considerably; much.",
+      "A substantial amount."
+    ],
+    "examples": [
+      "He spent a good deal of time on that project.",
+      "It cost a good deal of money to repair the car."
+    ]
+  },
+  {
+    "word": "a great deal",
+    "collision_group_id": "a_good_great_deal_split",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "הרבה מאוד",
+    "definitions": [
+      "A very large amount or extent.",
+      "To a very significant degree.",
+      "A lot; very much.",
+      "A substantial and notable quantity."
+    ],
+    "examples": [
+      "She has a great deal of experience in marketing.",
+      "The situation has improved a great deal since last year."
+    ]
+  },
+  {
+    "word": "a sense of humor",
+    "collision_group_id": "a_sense_of_humor",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חוש הומור",
+    "definitions": [
+      "The ability to appreciate or express what is amusing.",
+      "The quality of finding things funny and being able to make others laugh.",
+      "A capacity to perceive and enjoy what is comical.",
+      "The trait of being amusing or seeing amusement in situations."
+    ],
+    "examples": [
+      "He has a great sense of humor and always makes me laugh.",
+      "A good sense of humor can help you cope with stress."
+    ]
+  },
+  {
+    "word": "ability",
+    "collision_group_id": "ability",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "יכולת",
+    "definitions": [
+      "The power or skill to do something.",
+      "A talent or natural aptitude for an activity.",
+      "The means or skill to accomplish a task.",
+      "A person's capacity to perform an action."
+    ],
+    "examples": [
+      "She has the ability to solve complex problems easily.",
+      "His athletic ability is very impressive for his age."
+    ]
+  },
+  {
+    "word": "absent",
+    "collision_group_id": "absent",
+    "pos": "adj",
+    "family": "absence,n",
+    "translation_meaning": "נעדר",
+    "definitions": [
+      "Not present in a place or at an occasion.",
+      "Missing from where one is expected to be.",
+      "Not in attendance.",
+      "Showing a lack of attention; distracted."
+    ],
+    "examples": [
+      "He was absent from school yesterday due to illness.",
+      "Several key players were absent from the game."
+    ]
+  },
+  {
+    "word": "absolutely",
+    "collision_group_id": "absolutely",
+    "pos": "adv",
+    "family": "absolute,adj",
+    "translation_meaning": "בהחלט, לחלוטין",
+    "definitions": [
+      "Completely and without qualification; totally.",
+      "With no restriction or limitation.",
+      "Used to express strong agreement or confirmation.",
+      "Entirely; without a doubt."
+    ],
+    "examples": [
+      "The movie was absolutely fantastic.",
+      "Are you sure you want to do this? Absolutely."
+    ]
+  },
+  {
+    "word": "abstract",
+    "collision_group_id": "abstract",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מופשט",
+    "definitions": [
+      "Existing in thought or as an idea but not having a physical existence.",
+      "Relating to art that does not try to represent external reality.",
+      "Not concrete or tangible.",
+      "Theoretical rather than practical."
+    ],
+    "examples": [
+      "Love and freedom are abstract concepts.",
+      "She is a famous painter of abstract art."
+    ]
+  },
+  {
+    "word": "academic",
+    "collision_group_id": "academic",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "אקדמי",
+    "definitions": [
+      "Relating to education and scholarship.",
+      "Connected with a school, college, or university.",
+      "Not of practical relevance; only theoretical.",
+      "Scholarly and intellectual in nature."
+    ],
+    "examples": [
+      "She has an excellent academic record.",
+      "The book is very academic and can be difficult to read."
+    ]
+  },
+  {
+    "word": "accept",
+    "collision_group_id": "accept",
+    "pos": "v",
+    "family": "acceptable ,adj",
+    "translation_meaning": "להסכים, לקבל",
+    "definitions": [
+      "To consent to receive or undertake something offered.",
+      "To say 'yes' to an offer or invitation.",
+      "To willingly take something that is given to you.",
+      "To agree to a proposal or suggestion."
+    ],
+    "examples": [
+      "He accepted the job offer immediately.",
+      "Please accept this gift as a token of my gratitude."
+    ]
+  },
+  {
+    "word": "accept",
+    "collision_group_id": "accept",
+    "pos": "v",
+    "family": "acceptable ,adj",
+    "translation_meaning": "להודות, לקבל (כאמת)",
+    "definitions": [
+      "To admit that something is true, valid, or correct.",
+      "To acknowledge responsibility or blame for something.",
+      "To come to terms with a difficult or unpleasant situation.",
+      "To recognize the reality of something."
+    ],
+    "examples": [
+      "You must accept the consequences of your actions.",
+      "He refused to accept that he had made a mistake."
+    ]
+  },
+  {
+    "word": "accommodation",
+    "collision_group_id": "accommodation",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מגורים, דיור",
+    "definitions": [
+      "A place to live, work, or stay in.",
+      "Lodging, especially for a temporary period.",
+      "A room or building for someone to live in.",
+      "A place providing shelter for travelers."
+    ],
+    "examples": [
+      "The price of the holiday includes flights and accommodation.",
+      "Student accommodation is hard to find in this city."
+    ]
+  },
+  {
+    "word": "act",
+    "collision_group_id": "act_perform",
+    "pos": "n, v",
+    "family": "actor,n actress,n",
+    "translation_meaning": "לשחק (בתיאטרון/קולנוע)",
+    "definitions": [
+      "To perform a part in a play or film.",
+      "To behave in a particular way.",
+      "Something that is done; a deed.",
+      "A main division of a play or opera."
+    ],
+    "examples": [
+      "She has acted in several successful movies.",
+      "It's important to act responsibly."
+    ]
+  },
+  {
+    "word": "active",
+    "collision_group_id": "active",
+    "pos": "adj",
+    "family": "actively,adv",
+    "translation_meaning": "פעיל",
+    "definitions": [
+      "Engaging in energetic or busy pursuits.",
+      "Involving movement and physical effort.",
+      "Working or in operation.",
+      "Taking part in something; participating."
+    ],
+    "examples": [
+      "It's important to stay active as you get older.",
+      "She is an active member of the local community."
+    ]
+  },
+  {
+    "word": "actual",
+    "collision_group_id": "actual",
+    "pos": "adj",
+    "family": "actually ,adv",
+    "translation_meaning": "ממשי, אמיתי",
+    "definitions": [
+      "Existing in fact; real.",
+      "True and not imagined or supposed.",
+      "Used to emphasize that a situation exists.",
+      "Being in existence as a fact, not just an idea."
+    ],
+    "examples": [
+      "The actual cost of the project was much higher than we expected.",
+      "What were his actual words?"
+    ]
+  },
+  {
+    "word": "adapt",
+    "collision_group_id": "adapt",
+    "pos": "v",
+    "family": "adaptation,n",
+    "translation_meaning": "להסתגל, להתאים",
+    "definitions": [
+      "To become adjusted to new conditions.",
+      "To modify something for a new use or purpose.",
+      "To change your behavior to suit a new situation.",
+      "To alter something to make it suitable for new circumstances."
+    ],
+    "examples": [
+      "It took him a while to adapt to his new life in the city.",
+      "The movie is adapted from a famous novel."
+    ]
+  },
+  {
+    "word": "adopt",
+    "collision_group_id": "adopt",
+    "pos": "v",
+    "family": "adoption,n",
+    "translation_meaning": "לאמץ",
+    "definitions": [
+      "To legally take another's child and bring it up as one's own.",
+      "To choose to take up or follow an idea, method, or course of action.",
+      "To begin to use a new approach or style.",
+      "To formally approve or accept a proposal."
+    ],
+    "examples": [
+      "They are unable to have children of their own, so they decided to adopt.",
+      "The company adopted a new policy on remote work."
+    ]
+  },
+  {
+    "word": "agency",
+    "collision_group_id": "agency",
+    "pos": "n",
+    "family": "agent,",
+    "translation_meaning": "סוכנות",
+    "definitions": [
+      "A business or organization providing a particular service.",
+      "A government department or administrative unit.",
+      "A company that acts on behalf of other people or companies.",
+      "An establishment that provides a professional service."
+    ],
+    "examples": [
+      "She found her new job through an employment agency.",
+      "The travel agency helped us plan our vacation."
+    ]
+  },
+  {
+    "word": "ahead",
+    "collision_group_id": "ahead",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "קדימה, לפני",
+    "definitions": [
+      "Further forward in space or time.",
+      "In front.",
+      "In advance; before an event happens.",
+      "Making more progress than others."
+    ],
+    "examples": [
+      "The road ahead was blocked by a fallen tree.",
+      "She is far ahead of the other students in her class."
+    ]
+  },
+  {
+    "word": "aid",
+    "collision_group_id": "aid",
+    "pos": "n",
+    "family": "help, assistance",
+    "translation_meaning": "סיוע, עזרה",
+    "definitions": [
+      "Help or support given to someone in need.",
+      "Assistance, especially in the form of money or resources.",
+      "Something that helps you to do a task.",
+      "To provide support or help to someone."
+    ],
+    "examples": [
+      "The country received a lot of foreign aid after the earthquake.",
+      "A hearing aid can help people with hearing loss."
+    ]
+  },
+  {
+    "word": "aircraft",
+    "collision_group_id": "aircraft",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "כלי טיס",
+    "definitions": [
+      "Any vehicle that can fly, such as an airplane or helicopter.",
+      "A machine capable of flight through the air.",
+      "An airplane or any other machine that can fly.",
+      "A flying vehicle."
+    ],
+    "examples": [
+      "The airport handles hundreds of aircraft every day.",
+      "He is learning to fly a small aircraft."
+    ]
+  },
+  {
+    "word": "alike",
+    "collision_group_id": "alike",
+    "pos": "adv, adj",
+    "family": "",
+    "translation_meaning": "דומה, באופן דומה",
+    "definitions": [
+      "In a similar way.",
+      "Similar to each other.",
+      "Resembling one another.",
+      "In the same or a comparable manner."
+    ],
+    "examples": [
+      "The two brothers look very much alike.",
+      "Great minds think alike."
+    ]
+  },
+  {
+    "word": "all day long",
+    "collision_group_id": "all_day_long",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "כל היום",
+    "definitions": [
+      "Throughout the entire day.",
+      "From morning until night.",
+      "Continuously during the day.",
+      "For the whole day without stopping."
+    ],
+    "examples": [
+      "He was working in the garden all day long.",
+      "The baby cried all day long."
+    ]
+  },
+  {
+    "word": "alphabetical",
+    "collision_group_id": "alphabetical",
+    "pos": "adj",
+    "family": "alphabetically ,adv",
+    "translation_meaning": "אלפביתי",
+    "definitions": [
+      "Arranged in the order of the letters of the alphabet.",
+      "In the sequence of A, B, C, and so on.",
+      "Organized by letter.",
+      "In alphabetic order."
+    ],
+    "examples": [
+      "The names on the list are in alphabetical order.",
+      "Please arrange these files in alphabetical order."
+    ]
+  },
+  {
+    "word": "alternative",
+    "collision_group_id": "alternative",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חלופה",
+    "definitions": [
+      "One of two or more available possibilities.",
+      "A different option or choice.",
+      "Another possibility that you can choose.",
+      "A choice between two or more things."
+    ],
+    "examples": [
+      "Is there a cheaper alternative to this medicine?",
+      "We have no alternative but to cancel the event."
+    ]
+  },
+  {
+    "word": "angel",
+    "collision_group_id": "angel",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מלאך",
+    "definitions": [
+      "A spiritual being believed to be a messenger of God.",
+      "A very kind and good person.",
+      "A celestial being, often depicted with wings.",
+      "A being with supernatural powers."
+    ],
+    "examples": [
+      "The story was about an angel who came down to Earth.",
+      "You are an angel for helping me so much with this."
+    ]
+  },
+  {
+    "word": "anniversary",
+    "collision_group_id": "anniversary",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "יום השנה",
+    "definitions": [
+      "The date on which an event took place in a previous year.",
+      "The yearly recurrence of a specific date.",
+      "A celebration of a past event on the same day each year.",
+      "A yearly commemoration of an event."
+    ],
+    "examples": [
+      "They are celebrating their 25th wedding anniversary.",
+      "Tomorrow is the anniversary of his passing."
+    ]
+  },
+  {
+    "word": "annual",
+    "collision_group_id": "annual",
+    "pos": "adj",
+    "family": "annually ,adv",
+    "translation_meaning": "שנתי",
+    "definitions": [
+      "Occurring once every year.",
+      "Relating to a year or happening on a yearly basis.",
+      "Calculated over a period of a year.",
+      "Happening once a year."
+    ],
+    "examples": [
+      "The company holds an annual conference for its employees.",
+      "What is your annual salary?"
+    ]
+  },
+  {
+    "word": "any",
+    "collision_group_id": "any",
+    "pos": "adj, adv",
+    "family": "",
+    "translation_meaning": "בכלל",
+    "definitions": [
+      "Used to emphasize a negative statement; at all.",
+      "Used to refer to one or some of a thing, no matter how much.",
+      "In the slightest degree.",
+      "Even a little."
+    ],
+    "examples": [
+      "I don't feel any better today.",
+      "He won't eat any of his vegetables."
+    ]
+  },
+  {
+    "word": "anyhow",
+    "collision_group_id": "anyhow",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בכל אופן",
+    "definitions": [
+      "In any case; regardless of other considerations.",
+      "Used to change the subject or end a conversation.",
+      "Despite the situation; nevertheless.",
+      "In a careless or untidy way."
+    ],
+    "examples": [
+      "It's too late to go out now, anyhow.",
+      "Anyhow, let's talk about something more pleasant."
+    ]
+  },
+  {
+    "word": "apart",
+    "collision_group_id": "apart",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בנפרד",
+    "definitions": [
+      "Separated by a distance.",
+      "Into pieces or parts.",
+      "Not together; separately.",
+      "Aside from."
+    ],
+    "examples": [
+      "The two houses are about a mile apart.",
+      "He took the engine apart to fix it."
+    ]
+  },
+  {
+    "word": "appear",
+    "collision_group_id": "appear_be_seen",
+    "pos": "v",
+    "family": "appearance,n",
+    "translation_meaning": "להופיע",
+    "definitions": [
+      "To come into sight; to become visible.",
+      "To seem to be a certain way.",
+      "To present oneself in public, especially as a performer.",
+      "To become noticeable."
+    ],
+    "examples": [
+      "A man suddenly appeared from behind the corner.",
+      "She will be appearing in a new movie next year."
+    ]
+  },
+  {
+    "word": "application",
+    "collision_group_id": "application_software",
+    "pos": "n",
+    "family": "computer software",
+    "translation_meaning": "יישום, אפליקציה",
+    "definitions": [
+      "A program or piece of software designed for a particular purpose.",
+      "A computer program for a specific task.",
+      "A formal request for something, like a job.",
+      "Commonly known as an 'app'."
+    ],
+    "examples": [
+      "You can download the application from the app store.",
+      "This is a very useful application for editing photos on your phone."
+    ]
+  },
+  {
+    "word": "apply",
+    "collision_group_id": "apply",
+    "pos": "v",
+    "family": "application,n",
+    "translation_meaning": "להגיש בקשה",
+    "definitions": [
+      "To make a formal request for something, such as a job or a place at a university.",
+      "To be relevant to a particular case or person.",
+      "To put a substance onto a surface.",
+      "To use a particular method or idea."
+    ],
+    "examples": [
+      "I'm going to apply for that job vacancy.",
+      "This rule doesn't apply to new members."
+    ]
+  },
+  {
+    "word": "appreciate",
+    "collision_group_id": "appreciate",
+    "pos": "v",
+    "family": "appreciation,n",
+    "translation_meaning": "להעריך",
+    "definitions": [
+      "To recognize the full worth of something.",
+      "To be grateful for something that someone has done.",
+      "To understand a situation and its implications fully.",
+      "To value something highly."
+    ],
+    "examples": [
+      "I really appreciate all your help.",
+      "He doesn't appreciate the value of a good education."
+    ]
+  },
+  {
+    "word": "approach",
+    "collision_group_id": "approach_come_close",
+    "pos": "v, n",
+    "family": "come close",
+    "translation_meaning": "להתקרב",
+    "definitions": [
+      "To come near or nearer to someone or something in distance or time.",
+      "The act of coming closer.",
+      "A way of dealing with something.",
+      "To get closer to a place or person."
+    ],
+    "examples": [
+      "The train is now approaching the station.",
+      "As winter approached, the days grew shorter."
+    ]
+  },
+  {
+    "word": "approve",
+    "collision_group_id": "approve",
+    "pos": "v",
+    "family": "approval,n",
+    "translation_meaning": "לאשר",
+    "definitions": [
+      "To officially agree to or accept as satisfactory.",
+      "To have a positive opinion of someone or something.",
+      "To authorize or sanction.",
+      "To consent to something."
+    ],
+    "examples": [
+      "The committee approved the new budget.",
+      "My parents don't approve of my decision."
+    ]
+  },
+  {
+    "word": "architect",
+    "collision_group_id": "architect",
+    "pos": "n",
+    "family": "architecture,n",
+    "translation_meaning": "אדריכל",
+    "definitions": [
+      "A person who designs buildings and supervises their construction.",
+      "Someone who plans the design of buildings and structures.",
+      "A building designer.",
+      "A person who conceives and plans a large project."
+    ],
+    "examples": [
+      "He is a famous architect who designed many well-known buildings.",
+      "We hired an architect to design our new home."
+    ]
+  },
+  {
+    "word": "area",
+    "collision_group_id": "area_subject",
+    "pos": "n",
+    "family": "subject",
+    "translation_meaning": "תחום",
+    "definitions": [
+      "A subject or range of activity or interest.",
+      "A particular field of study or knowledge.",
+      "A region or part of a town or country.",
+      "A specific part of knowledge or activity."
+    ],
+    "examples": [
+      "He is an expert in the area of computer science.",
+      "This is a very interesting area of research."
+    ]
+  },
+  {
+    "word": "arrange",
+    "collision_group_id": "arrange",
+    "pos": "v",
+    "family": "arrangement,n",
+    "translation_meaning": "לארגן, לסדר",
+    "definitions": [
+      "To put things in a neat, attractive, or required order.",
+      "To plan or make preparations for a future event.",
+      "To organize things in a systematic way.",
+      "To set up or schedule something."
+    ],
+    "examples": [
+      "She arranged the flowers beautifully in a vase.",
+      "I've arranged a meeting for tomorrow morning."
+    ]
+  },
+  {
+    "word": "arrest",
+    "collision_group_id": "arrest",
+    "pos": "v, n",
+    "family": "",
+    "translation_meaning": "לעצור, מעצר",
+    "definitions": [
+      "To seize someone by legal authority and take them into custody.",
+      "The action of seizing someone to take them into custody.",
+      "To stop or check the progress of something.",
+      "To capture and hold by legal authority."
+    ],
+    "examples": [
+      "The police arrested him for the robbery.",
+      "He was placed under arrest for two days."
+    ]
+  },
+  {
+    "word": "aspect",
+    "collision_group_id": "aspect",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "היבט",
+    "definitions": [
+      "A particular part or feature of something.",
+      "A specific facet of a situation or problem.",
+      "A characteristic or quality.",
+      "A point of view to consider."
+    ],
+    "examples": [
+      "We need to consider all aspects of the problem before making a decision.",
+      "The book covers every aspect of the topic in detail."
+    ]
+  },
+  {
+    "word": "assess",
+    "collision_group_id": "assess",
+    "pos": "v",
+    "family": "assessment,n",
+    "translation_meaning": "להעריך",
+    "definitions": [
+      "To evaluate or estimate the nature, ability, or quality of something.",
+      "To judge the value or importance of something.",
+      "To calculate the value of property or income for taxation purposes.",
+      "To appraise or judge."
+    ],
+    "examples": [
+      "The teacher will assess the students' performance at the end of the year.",
+      "It's difficult to assess the impact of the new policy."
+    ]
+  },
+  {
+    "word": "at (long) last",
+    "collision_group_id": "at (long) last",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "סוף כל סוף",
+    "definitions": [
+      "Finally; after a long time or delay.",
+      "At the end of a period of waiting.",
+      "Eventually, after much anticipation.",
+      "After much delay."
+    ],
+    "examples": [
+      "At last, the rain has stopped.",
+      "He has found a job at long last."
+    ]
+  },
+  {
+    "word": "athlete",
+    "collision_group_id": "athlete",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אתלט, ספורטאי",
+    "definitions": [
+      "A person who is proficient in sports and other forms of physical exercise.",
+      "A person who competes in sports events.",
+      "A sportsman or sportswoman.",
+      "Someone who is skilled in athletics."
+    ],
+    "examples": [
+      "He is a professional athlete who competes internationally.",
+      "The Olympic athletes are training for the games."
+    ]
+  },
+  {
+    "word": "attach",
+    "collision_group_id": "attach",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לצרף",
+    "definitions": [
+      "To join or fasten something to something else.",
+      "To include a file with an email message.",
+      "To connect one thing to another.",
+      "To ascribe importance or value to."
+    ],
+    "examples": [
+      "Please attach a recent photograph to your application form.",
+      "I've attached the report to this email for you to review."
+    ]
+  },
+  {
+    "word": "attempt",
+    "collision_group_id": "attempt",
+    "pos": "n, v",
+    "family": "",
+    "translation_meaning": "ניסיון, לנסות",
+    "definitions": [
+      "To make an effort to achieve or complete something difficult.",
+      "An act of trying to do something.",
+      "To try to accomplish a task.",
+      "An endeavor or effort."
+    ],
+    "examples": [
+      "He attempted to break the world record, but failed.",
+      "It was a good attempt, even though she didn't succeed."
+    ]
+  },
+  {
+    "word": "attend",
+    "collision_group_id": "attend",
+    "pos": "v",
+    "family": "attendance,n",
+    "translation_meaning": "להיות נוכח",
+    "definitions": [
+      "To be present at an event, meeting, or function.",
+      "To go regularly to a place such as a school or church.",
+      "To deal with something.",
+      "To be at an event."
+    ],
+    "examples": [
+      "Are you going to attend the conference next week?",
+      "The meeting was attended by over 500 people."
+    ]
+  },
+  {
+    "word": "authority",
+    "collision_group_id": "authority",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "סמכות",
+    "definitions": [
+      "The power or right to give orders, make decisions, and enforce obedience.",
+      "A person or organization having power or control in a particular sphere.",
+      "An expert on a subject.",
+      "The power to influence others based on a position."
+    ],
+    "examples": [
+      "He has the authority to make the final decision.",
+      "The local authorities are responsible for maintaining the roads."
+    ]
+  },
+  {
+    "word": "avatar",
+    "collision_group_id": "avatar",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אווטאר",
+    "definitions": [
+      "An icon or figure representing a particular person in a video game, on the internet, etc.",
+      "A digital representation of a user.",
+      "A graphical image that represents a person in a virtual world.",
+      "A user's virtual persona."
+    ],
+    "examples": [
+      "He chose a dragon as his avatar in the online game.",
+      "You can customize your avatar's appearance with different clothes."
+    ]
+  },
+  {
+    "word": "award",
+    "collision_group_id": "award",
+    "pos": "n, v",
+    "family": "",
+    "translation_meaning": "פרס, להעניק",
+    "definitions": [
+      "A prize or other mark of recognition given in honor of an achievement.",
+      "To give something officially as a prize or reward.",
+      "An honor or distinction.",
+      "To bestow a prize upon someone."
+    ],
+    "examples": [
+      "She won an award for her latest novel.",
+      "He was awarded a medal for his bravery."
+    ]
+  },
+  {
+    "word": "awful",
+    "collision_group_id": "awful",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "נורא",
+    "definitions": [
+      "Very bad or unpleasant.",
+      "Terrible.",
+      "Extremely bad or of poor quality.",
+      "Used to emphasize a large amount (informal)."
+    ],
+    "examples": [
+      "The weather was awful all weekend.",
+      "I feel awful about what happened."
+    ]
+  },
+  {
+    "word": "babysit",
+    "collision_group_id": "babysit",
+    "pos": "v",
+    "family": "babysitter,n",
+    "translation_meaning": "לעשות בייביסיטר",
+    "definitions": [
+      "To look after a child or children while the parents are out.",
+      "To care for children temporarily as a job.",
+      "To act as a childminder.",
+      "To supervise children for a short time."
+    ],
+    "examples": [
+      "She babysits for her neighbors every Friday night.",
+      "Can you babysit for us tonight?"
+    ]
+  },
+  {
+    "word": "balance",
+    "collision_group_id": "balance",
+    "pos": "n, v",
+    "family": "not falling",
+    "translation_meaning": "שיווי משקל",
+    "definitions": [
+      "An even distribution of weight enabling someone or something to remain upright and steady.",
+      "To keep in a steady position without falling.",
+      "A state of equilibrium.",
+      "To offset two things so they are equal."
+    ],
+    "examples": [
+      "It's difficult to keep your balance on a moving boat.",
+      "She managed to balance the book on her head."
+    ]
+  },
+  {
+    "word": "bandage",
+    "collision_group_id": "bandage",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "תחבושת",
+    "definitions": [
+      "A strip of material used to bind up a wound or injury.",
+      "A dressing for a wound to protect it.",
+      "To bind a wound with a strip of cloth.",
+      "A protective covering for an injury."
+    ],
+    "examples": [
+      "The nurse put a bandage on his cut finger.",
+      "He had a bandage wrapped around his head."
+    ]
+  },
+  {
+    "word": "barber",
+    "collision_group_id": "barber",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ספר (גברים)",
+    "definitions": [
+      "A person who cuts men's hair and shaves or trims beards as an occupation.",
+      "A men's hairdresser.",
+      "A person whose trade is cutting hair and shaving.",
+      "A men's hairstylist."
+    ],
+    "examples": [
+      "He went to the barber to get a haircut.",
+      "My barber always tells the best stories."
+    ]
+  },
+  {
+    "word": "base",
+    "collision_group_id": "base_noun",
+    "pos": "n",
+    "family": "bottom",
+    "translation_meaning": "בסיס, תחתית",
+    "definitions": [
+      "The lowest part or edge of something, especially the part on which it rests.",
+      "The bottom support of anything.",
+      "A military headquarters.",
+      "The main ingredient of something."
+    ],
+    "examples": [
+      "The statue has a large marble base.",
+      "We started our climb from the base of the mountain."
+    ]
+  },
+  {
+    "word": "basic",
+    "collision_group_id": "basic",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "בסיסי",
+    "definitions": [
+      "Forming an essential foundation; fundamental.",
+      "Simple and not elaborate.",
+      "Of a primary or elementary level.",
+      "Essential and straightforward."
+    ],
+    "examples": [
+      "He has a basic understanding of the subject.",
+      "The hotel provides basic accommodation for travelers."
+    ]
+  },
+  {
+    "word": "basin",
+    "collision_group_id": "basin",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "כיור, אגן",
+    "definitions": [
+      "A bowl for washing, typically attached to a wall in a bathroom.",
+      "A round, open container, especially for liquids.",
+      "A large, low-lying area of land, often with a river.",
+      "A sink."
+    ],
+    "examples": [
+      "He washed his hands in the basin.",
+      "The Amazon basin is a vast and important region."
+    ]
+  },
+  {
+    "word": "basis",
+    "collision_group_id": "basis",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "בסיס",
+    "definitions": [
+      "The underlying foundation or principle for an idea, argument, or process.",
+      "The main reason for something.",
+      "A starting point for a system.",
+      "A foundation."
+    ],
+    "examples": [
+      "What is the basis for your conclusion?",
+      "The agreement will form the basis of our future cooperation."
+    ]
+  },
+  {
+    "word": "bean",
+    "collision_group_id": "bean",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "שעועית",
+    "definitions": [
+      "An edible seed, typically kidney-shaped, growing in long pods on certain plants.",
+      "A type of legume used as a vegetable.",
+      "The seed of a coffee plant.",
+      "A plant that produces pods with seeds."
+    ],
+    "examples": [
+      "I like to eat baked beans on toast.",
+      "Green beans are a very healthy vegetable."
+    ]
+  },
+  {
+    "word": "a stranger",
+    "collision_group_id": "a_stranger",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אדם זר",
+    "definitions": [
+      "Someone you do not know.",
+      "An unfamiliar person.",
+      "An individual with whom one is not acquainted.",
+      "A person who is new to a place."
+    ],
+    "examples": [
+      "It is not always safe to talk to a stranger.",
+      "A kind stranger helped me find my way when I was lost."
+    ]
+  },
+  {
+    "word": "a fortune",
+    "collision_group_id": "a_fortune",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "הון",
+    "definitions": [
+      "A very large amount of money.",
+      "An abundance of wealth or assets.",
+      "A substantial sum of money and riches.",
+      "A great deal of financial resources."
+    ],
+    "examples": [
+      "That antique vase is worth a fortune.",
+      "He made a fortune by investing in technology stocks."
+    ]
+  },
+  {
+    "word": "a principal",
+    "collision_group_id": "a_principal",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מנהל/ת בית ספר",
+    "definitions": [
+      "Someone who is in charge of a school.",
+      "The head of an elementary, middle, or high school.",
+      "The lead administrator of a school.",
+      "The person with the highest authority in a school."
+    ],
+    "examples": [
+      "The principal gave an announcement over the loudspeaker.",
+      "I have a meeting with the principal tomorrow afternoon."
+    ]
+  },
+  {
+    "word": "financial",
+    "collision_group_id": "financial",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "כספי, פיננסי",
+    "definitions": [
+      "Relating to money.",
+      "Connected with the management of money and finance.",
+      "Pertaining to monetary matters.",
+      "Involving finance and money."
+    ],
+    "examples": [
+      "The company is facing serious financial difficulties.",
+      "He works as a financial advisor."
+    ]
+  },
+  {
+    "word": "extraordinary",
+    "collision_group_id": "extraordinary",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "יוצא דופן",
+    "definitions": [
+      "Very unusual or surprising.",
+      "Beyond what is ordinary or regular.",
+      "Remarkable and amazing.",
+      "Highly exceptional."
+    ],
+    "examples": [
+      "She has an extraordinary talent for music.",
+      "The view from the mountaintop was extraordinary."
+    ]
+  },
+  {
+    "word": "raw",
+    "collision_group_id": "raw",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "נא",
+    "definitions": [
+      "Not cooked.",
+      "In its natural state; unprocessed.",
+      "Not yet prepared for eating.",
+      "Uncooked food."
+    ],
+    "examples": [
+      "Sushi is made with raw fish.",
+      "It is not safe to eat raw chicken."
+    ]
+  },
+  {
+    "word": "to rush",
+    "collision_group_id": "to_rush",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "למהר",
+    "definitions": [
+      "To hurry or move quickly.",
+      "To do something with great speed.",
+      "To act with haste.",
+      "To move with urgency."
+    ],
+    "examples": [
+      "We had to rush to catch the train.",
+      "Don't rush your work or you will make mistakes."
+    ]
+  },
+  {
+    "word": "to perform",
+    "collision_group_id": "to_perform_entertain",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להופיע",
+    "definitions": [
+      "To entertain people by acting or singing.",
+      "To present a play, concert, or other form of entertainment to an audience.",
+      "To do something to amuse an audience.",
+      "To execute a performance."
+    ],
+    "examples": [
+      "The band will perform live at the festival.",
+      "She loves to perform on stage."
+    ]
+  },
+  {
+    "word": "to lack",
+    "collision_group_id": "to_lack",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להיות חסר",
+    "definitions": [
+      "To not have enough of something.",
+      "To be without or be deficient in.",
+      "To have an insufficient quantity of something.",
+      "To be in need of something that is missing."
+    ],
+    "examples": [
+      "The project failed because it lacked funding.",
+      "He lacks the confidence to speak in public."
+    ]
+  },
+  {
+    "word": "barely",
+    "collision_group_id": "barely",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בקושי",
+    "definitions": [
+      "Hardly; by the narrowest margin.",
+      "Only just; almost not.",
+      "In a minimal or scant way.",
+      "With difficulty."
+    ],
+    "examples": [
+      "I could barely hear him over the loud music.",
+      "She was so tired she could barely keep her eyes open."
+    ]
+  },
+  {
+    "word": "lately",
+    "collision_group_id": "lately",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "לאחרונה",
+    "definitions": [
+      "Recently; in the near past.",
+      "In the time just before the present.",
+      "Not long ago.",
+      "Of late."
+    ],
+    "examples": [
+      "Have you seen any good movies lately?",
+      "I haven't been feeling very well lately."
+    ]
+  },
+  {
+    "word": "generally",
+    "collision_group_id": "generally",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בדרך כלל",
+    "definitions": [
+      "Usually; in most situations.",
+      "Mainly or for the most part.",
+      "By or to most people.",
+      "As a general rule."
+    ],
+    "examples": [
+      "Generally, I prefer to work in the morning.",
+      "The new policy was generally well received."
+    ]
+  },
+  {
+    "word": "to refuse",
+    "collision_group_id": "to_refuse",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לסרב",
+    "definitions": [
+      "To say that you are not willing to do something.",
+      "To indicate that one is unwilling to accept or grant something.",
+      "To decline an offer or request.",
+      "To show unwillingness to do something."
+    ],
+    "examples": [
+      "He refused to answer any more questions.",
+      "She refused my offer of help."
+    ]
+  },
+  {
+    "word": "to convince",
+    "collision_group_id": "to_convince",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לשכנע",
+    "definitions": [
+      "To persuade someone to do something or to believe something.",
+      "To cause someone to feel certain about something.",
+      "To make someone agree with your viewpoint.",
+      "To win someone over to your opinion."
+    ],
+    "examples": [
+      "I tried to convince him to stay, but he left anyway.",
+      "She managed to convince the committee to approve her proposal."
+    ]
+  },
+  {
+    "word": "to anticipate",
+    "collision_group_id": "to_anticipate",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לצפות",
+    "definitions": [
+      "To expect something to happen.",
+      "To regard as probable; to look forward to.",
+      "To foresee and prepare for a future event.",
+      "To act in advance of something."
+    ],
+    "examples": [
+      "We anticipate that the new product will be very successful.",
+      "It is impossible to anticipate every problem."
+    ]
+  },
+  {
+    "word": "sudden",
+    "collision_group_id": "sudden",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "פתאומי",
+    "definitions": [
+      "Quick and unexpected.",
+      "Happening or done quickly and without warning.",
+      "Abrupt.",
+      "Not expected."
+    ],
+    "examples": [
+      "There was a sudden change in the weather.",
+      "His sudden departure surprised everyone."
+    ]
+  },
+  {
+    "word": "sensible",
+    "collision_group_id": "sensible",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "הגיוני",
+    "definitions": [
+      "Reasonable and having good judgment.",
+      "Practical and based on good sense.",
+      "Showing wisdom and prudence.",
+      "Not foolish or impractical."
+    ],
+    "examples": [
+      "That was a very sensible decision.",
+      "She is a sensible and reliable person."
+    ]
+  },
+  {
+    "word": "crucial",
+    "collision_group_id": "crucial",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מכריע",
+    "definitions": [
+      "Extremely important or necessary.",
+      "Decisive or critical, especially for success or failure.",
+      "Of great importance.",
+      "Essential for a particular outcome."
+    ],
+    "examples": [
+      "It is crucial that we act immediately.",
+      "The next few weeks will be crucial for the project."
+    ]
+  },
+  {
+    "word": "a director",
+    "collision_group_id": "a_director",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מנהל",
+    "definitions": [
+      "A manager of a company or an organization.",
+      "A person who is in charge of an activity or department.",
+      "A member of the board of a company.",
+      "The person who supervises a film or play."
+    ],
+    "examples": [
+      "She was appointed as the new director of the company.",
+      "He is the director of the marketing department."
+    ]
+  },
+  {
+    "word": "an advance",
+    "collision_group_id": "an_advance_improvement",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "התקדמות",
+    "definitions": [
+      "An improvement or a development in something.",
+      "A forward movement or progress.",
+      "A step forward in a particular field.",
+      "A new development."
+    ],
+    "examples": [
+      "There have been great advances in medical technology.",
+      "This discovery is a major advance in science."
+    ]
+  },
+  {
+    "word": "an apology",
+    "collision_group_id": "an_apology",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "התנצלות",
+    "definitions": [
+      "Something you say to show you are sorry for doing something wrong.",
+      "A regretful acknowledgment of an offense or failure.",
+      "An expression of regret for a mistake.",
+      "A statement saying you are sorry."
+    ],
+    "examples": [
+      "He offered her a sincere apology.",
+      "I think you owe him an apology."
+    ]
+  },
+  {
+    "word": "remote",
+    "collision_group_id": "remote",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מרוחק",
+    "definitions": [
+      "Far from places where most people live.",
+      "Distant in space or time.",
+      "Situated far from the main centers of population.",
+      "Having very little connection with or relationship to."
+    ],
+    "examples": [
+      "They live in a remote village in the mountains.",
+      "There is a remote chance of success."
+    ]
+  },
+  {
+    "word": "incredible",
+    "collision_group_id": "incredible",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "לא ייאמן",
+    "definitions": [
+      "Difficult to believe; extraordinary.",
+      "Extremely good or impressive.",
+      "Astonishing.",
+      "Almost impossible to believe."
+    ],
+    "examples": [
+      "The view from the top was incredible.",
+      "He told an incredible story of his survival."
+    ]
+  },
+  {
+    "word": "talented",
+    "collision_group_id": "talented",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מוכשר",
+    "definitions": [
+      "Having a natural ability to do something well.",
+      "Showing a special skill or aptitude.",
+      "Gifted in a particular area.",
+      "Possessing a natural talent."
+    ],
+    "examples": [
+      "She is a very talented musician.",
+      "He is a talented artist with a bright future."
+    ]
+  },
+  {
+    "word": "to go abroad",
+    "collision_group_id": "to_go_abroad",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לנסוע לחו\"ל",
+    "definitions": [
+      "To travel to a foreign country.",
+      "To go to a different country, especially for a vacation or work.",
+      "To journey internationally.",
+      "To leave one's own country for another."
+    ],
+    "examples": [
+      "I would love to go abroad for a year.",
+      "He is going abroad on business next week."
+    ]
+  },
+  {
+    "word": "to take it easy",
+    "collision_group_id": "to_take_it_easy",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לקחת בקלות",
+    "definitions": [
+      "To relax and not worry or work too hard.",
+      "To proceed in a calm and leisurely manner.",
+      "To not overexert oneself.",
+      "To rest and avoid stress."
+    ],
+    "examples": [
+      "You've been working too hard; you should take it easy.",
+      "Take it easy, there's no need to panic."
+    ]
+  },
+  {
+    "word": "illustrate",
+    "collision_group_id": "illustrate",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לאייר",
+    "definitions": [
+      "To draw pictures for a book, magazine, etc.",
+      "To provide a book with pictures.",
+      "To make something clear with examples.",
+      "To serve as an example of."
+    ],
+    "examples": [
+      "The author decided to illustrate the book himself.",
+      "This chart will illustrate the company's growth."
+    ]
+  },
+  {
+    "word": "obey",
+    "collision_group_id": "obey",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לציית",
+    "definitions": [
+      "To do what you are told to do.",
+      "To comply with a command, direction, or request.",
+      "To follow a rule or law.",
+      "To submit to the authority of someone."
+    ],
+    "examples": [
+      "You must obey the rules of the school.",
+      "The dog was trained to obey simple commands."
+    ]
+  },
+  {
+    "word": "recognize",
+    "collision_group_id": "recognize",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לזהות",
+    "definitions": [
+      "To know who someone is because you have seen them before.",
+      "To identify someone or something from previous encounters.",
+      "To acknowledge the existence or validity of something.",
+      "To accept something as valid."
+    ],
+    "examples": [
+      "I didn't recognize you with your new haircut.",
+      "The government has refused to recognize the new regime."
+    ]
+  },
+  {
+    "word": "a majority",
+    "collision_group_id": "a_majority",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "רוב",
+    "definitions": [
+      "Most of the people or things in a group.",
+      "The greater number or part of a whole.",
+      "More than half of the total.",
+      "The winning number of votes in an election."
+    ],
+    "examples": [
+      "The majority of students voted against the proposal.",
+      "A large majority of the population supports the new law."
+    ]
+  },
+  {
+    "word": "leisure",
+    "collision_group_id": "leisure",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "פנאי",
+    "definitions": [
+      "The time when you are free from work and can relax.",
+      "Free time used for enjoyment.",
+      "Recreational time.",
+      "Time off from one's job."
+    ],
+    "examples": [
+      "What do you do in your leisure time?",
+      "The hotel offers many leisure facilities, such as a pool and a gym."
+    ]
+  },
+  {
+    "word": "a ceremony",
+    "collision_group_id": "a_ceremony",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "טקס",
+    "definitions": [
+      "A religious or social event that includes certain traditional actions.",
+      "A formal event held on a special occasion.",
+      "A set of formal acts for a public or religious event.",
+      "A rite or ritual."
+    ],
+    "examples": [
+      "The wedding ceremony was beautiful.",
+      "He attended the graduation ceremony."
+    ]
+  },
+  {
+    "word": "satisfactory",
+    "collision_group_id": "satisfactory",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "משביע רצון",
+    "definitions": [
+      "Adequate; good enough.",
+      "Fulfilling expectations or needs.",
+      "Acceptable, but not outstanding.",
+      "Meeting a required standard."
+    ],
+    "examples": [
+      "His work was satisfactory but not exceptional.",
+      "We have not yet found a satisfactory solution to the problem."
+    ]
+  },
+  {
+    "word": "ancient",
+    "collision_group_id": "ancient",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "עתיק",
+    "definitions": [
+      "From a long time ago; belonging to the very distant past.",
+      "Very old.",
+      "From an early period of history.",
+      "Having existed for a great while."
+    ],
+    "examples": [
+      "We visited the ancient ruins of a Roman city.",
+      "This is an ancient tradition that is still practiced today."
+    ]
+  },
+  {
+    "word": "unemployed",
+    "collision_group_id": "unemployed",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מובטל",
+    "definitions": [
+      "Without a job.",
+      "Not having paid employment but available to work.",
+      "Out of work.",
+      "Jobless."
+    ],
+    "examples": [
+      "He has been unemployed for six months.",
+      "The government has a program to help unemployed people."
+    ]
+  },
+  {
+    "word": "formerly",
+    "collision_group_id": "formerly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "לשעבר",
+    "definitions": [
+      "In the past; in an earlier period.",
+      "Previously.",
+      "At an earlier time.",
+      "Before the present time."
+    ],
+    "examples": [
+      "The building was formerly a school.",
+      "She was formerly known as an actress."
+    ]
+  },
+  {
+    "word": "roughly",
+    "collision_group_id": "roughly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בערך",
+    "definitions": [
+      "Not exactly; approximately.",
+      "In a way that is not precise.",
+      "More or less.",
+      "In a harsh or violent way."
+    ],
+    "examples": [
+      "There were roughly 50 people at the meeting.",
+      "The journey will take roughly two hours."
+    ]
+  },
+  {
+    "word": "potentially",
+    "collision_group_id": "potentially",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בפוטנציאל",
+    "definitions": [
+      "Possibly; with a chance of happening.",
+      "Used to express that something may happen.",
+      "As a possibility.",
+      "In a way that could develop in the future."
+    ],
+    "examples": [
+      "This is a potentially dangerous situation.",
+      "The new drug is potentially very effective."
+    ]
+  },
+  {
+    "word": "take away",
+    "collision_group_id": "take_away",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להסיר",
+    "definitions": [
+      "To remove something from a place.",
+      "To subtract a number.",
+      "To get food from a restaurant to eat elsewhere.",
+      "To cause something to disappear."
+    ],
+    "examples": [
+      "Please take away the dirty plates.",
+      "If you take 3 away from 10, you get 7."
+    ]
+  },
+  {
+    "word": "as a matter of fact",
+    "collision_group_id": "as_a_matter_of_fact",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "למעשה",
+    "definitions": [
+      "Actually; in reality.",
+      "Used to add emphasis to a statement.",
+      "In fact.",
+      "A phrase to introduce a surprising or correcting piece of information."
+    ],
+    "examples": [
+      "He seems shy, but as a matter of fact, he's very talkative.",
+      "As a matter of fact, I was just about to call you."
+    ]
+  },
+  {
+    "word": "in advance",
+    "collision_group_id": "in_advance",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מראש",
+    "definitions": [
+      "Before a particular time, or before doing something.",
+      "Ahead of time.",
+      "Beforehand.",
+      "In anticipation of a future event."
+    ],
+    "examples": [
+      "You need to book your tickets in advance.",
+      "Thank you in advance for your help."
+    ]
+  },
+  {
+    "word": "a quarrel",
+    "collision_group_id": "a_quarrel",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ריב",
+    "definitions": [
+      "An angry disagreement between two or more people.",
+      "A heated argument or dispute.",
+      "A verbal conflict.",
+      "To have an angry disagreement."
+    ],
+    "examples": [
+      "They had a bitter quarrel about money.",
+      "I don't want to have a quarrel with you."
+    ]
+  },
+  {
+    "word": "savings",
+    "collision_group_id": "savings",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חסכונות",
+    "definitions": [
+      "Money that is not spent but kept for use in the future.",
+      "The money a person has saved, especially in a bank.",
+      "An economy of or reduction in money or time.",
+      "Reserved funds."
+    ],
+    "examples": [
+      "He used all his savings to buy a new car.",
+      "It's important to have some savings for emergencies."
+    ]
+  },
+  {
+    "word": "an employee",
+    "collision_group_id": "an_employee",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "עובד",
+    "definitions": [
+      "Someone who is paid to work for a person, a company, or an organization.",
+      "A person who works for another in return for wages.",
+      "A member of a company's staff.",
+      "A worker."
+    ],
+    "examples": [
+      "The company has over 500 employees.",
+      "He is a loyal and hardworking employee."
+    ]
+  },
+  {
+    "word": "opposite",
+    "collision_group_id": "opposite",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מנוגד",
+    "definitions": [
+      "Completely different.",
+      "Situated on the other side of a space.",
+      "The contrary of something.",
+      "Facing in a contrary direction."
+    ],
+    "examples": [
+      "We have opposite opinions on this subject.",
+      "The bank is on the opposite side of the street."
+    ]
+  },
+  {
+    "word": "ideal",
+    "collision_group_id": "ideal",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "אידיאלי",
+    "definitions": [
+      "Perfect or most suitable.",
+      "Satisfying one's conception of what is best.",
+      "Existing only in the imagination.",
+      "Most appropriate for a purpose."
+    ],
+    "examples": [
+      "This is an ideal location for a picnic.",
+      "She is the ideal candidate for the job."
+    ]
+  },
+  {
+    "word": "generous",
+    "collision_group_id": "generous",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "נדיב",
+    "definitions": [
+      "Willing to give money or spend time helping others.",
+      "Showing a readiness to give more of something than is expected.",
+      "Larger or more plentiful than is usual.",
+      "Kind and giving."
+    ],
+    "examples": [
+      "It was very generous of you to lend me the money.",
+      "He made a generous donation to the charity."
+    ]
+  },
+  {
+    "word": "to retire",
+    "collision_group_id": "to_retire",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לפרוש",
+    "definitions": [
+      "To leave one's job, usually because of old age.",
+      "To stop working permanently.",
+      "To withdraw from one's position or occupation.",
+      "To go to bed."
+    ],
+    "examples": [
+      "He plans to retire next year at the age of 65.",
+      "She retired from teaching after 40 years."
+    ]
+  },
+  {
+    "word": "to struggle",
+    "collision_group_id": "to_struggle",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להיאבק",
+    "definitions": [
+      "To try very hard to do something difficult.",
+      "To make forceful or violent efforts to get free of restraint.",
+      "To have difficulty handling or coping with something.",
+      "To contend with an opponent."
+    ],
+    "examples": [
+      "She struggled to lift the heavy box.",
+      "The company is struggling to survive in the current market."
+    ]
+  },
+  {
+    "word": "to respond",
+    "collision_group_id": "to_respond",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להגיב",
+    "definitions": [
+      "To reply or say something as a reaction.",
+      "To act in response to something that has happened.",
+      "To answer.",
+      "To show a reaction to a stimulus."
+    ],
+    "examples": [
+      "He didn't respond to my question.",
+      "How did she respond to the news?"
+    ]
+  },
+  {
+    "word": "actually",
+    "collision_group_id": "actually",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "למעשה",
+    "definitions": [
+      "In fact; in reality.",
+      "Used to emphasize that something is true.",
+      "As a matter of fact.",
+      "Used to express surprise."
+    ],
+    "examples": [
+      "He seems shy, but he's actually very talkative.",
+      "I didn't actually see him, I just heard his voice."
+    ]
+  },
+  {
+    "word": "likely",
+    "collision_group_id": "likely",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "כנראה",
+    "definitions": [
+      "Probably will happen or is expected.",
+      "Such as well might happen or be true; probable.",
+      "Seeming to be true.",
+      "In all probability."
+    ],
+    "examples": [
+      "It's likely to rain later today.",
+      "She is the most likely candidate to win."
+    ]
+  },
+  {
+    "word": "permanently",
+    "collision_group_id": "permanently",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "באופן קבוע",
+    "definitions": [
+      "For a very long time or forever.",
+      "In a way that lasts or remains unchanged indefinitely.",
+      "Not temporarily.",
+      "For all time."
+    ],
+    "examples": [
+      "The accident left him permanently disabled.",
+      "She has decided to move to Canada permanently."
+    ]
+  },
+  {
+    "word": "right away",
+    "collision_group_id": "right_away",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מיד",
+    "definitions": [
+      "Immediately; without delay.",
+      "At once.",
+      "Straight away.",
+      "Without waiting."
+    ],
+    "examples": [
+      "I'll do it right away.",
+      "Please call me back right away."
+    ]
+  },
+  {
+    "word": "for sure",
+    "collision_group_id": "for_sure",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בוודאות",
+    "definitions": [
+      "Certainly; without any doubt.",
+      "Definitely.",
+      "Unquestionably.",
+      "For certain."
+    ],
+    "examples": [
+      "I know for sure that he was there.",
+      "Are you coming to the party? For sure!"
+    ]
+  },
+  {
+    "word": "wealth",
+    "collision_group_id": "wealth",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "עושר",
+    "definitions": [
+      "A large amount of money that a person has.",
+      "An abundance of valuable possessions or money.",
+      "The state of being rich.",
+      "A plentiful supply of a particular resource."
+    ],
+    "examples": [
+      "He acquired his wealth through wise investments.",
+      "The country has a wealth of natural resources."
+    ]
+  },
+  {
+    "word": "guidance",
+    "collision_group_id": "guidance",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "הכוונה",
+    "definitions": [
+      "Help or advice, often given to help deal with a problem.",
+      "The act of directing or showing the way.",
+      "Advice on what to do.",
+      "Leadership or direction."
+    ],
+    "examples": [
+      "I'm looking for some career guidance.",
+      "He needs the guidance of a good mentor."
+    ]
+  },
+  {
+    "word": "an appointment",
+    "collision_group_id": "an_appointment",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "פגישה",
+    "definitions": [
+      "A meeting arranged for a particular time.",
+      "A formal arrangement to meet or visit someone.",
+      "The act of assigning a job or position.",
+      "A scheduled meeting."
+    ],
+    "examples": [
+      "I have an appointment with the doctor at 10 a.m.",
+      "She had to cancel her appointment."
+    ]
+  },
+  {
+    "word": "a discovery",
+    "collision_group_id": "a_discovery",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "תגלית",
+    "definitions": [
+      "Something that is found or learned about for the first time.",
+      "The action of finding something new.",
+      "An act of finding something unexpected.",
+      "A revelation."
+    ],
+    "examples": [
+      "The discovery of penicillin revolutionized medicine.",
+      "He made an important scientific discovery."
+    ]
+  },
+  {
+    "word": "a mall",
+    "collision_group_id": "a_mall",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "קניון",
+    "definitions": [
+      "A shopping center.",
+      "A large indoor complex containing a variety of stores.",
+      "A large retail center.",
+      "A place with many shops."
+    ],
+    "examples": [
+      "Let's go to the mall this weekend.",
+      "The new mall has a cinema and a food court."
+    ]
+  },
+  {
+    "word": "a parcel",
+    "collision_group_id": "a_parcel",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חבילה",
+    "definitions": [
+      "A package.",
+      "An object wrapped in paper to be sent by mail.",
+      "A quantity of something wrapped up.",
+      "A piece of land."
+    ],
+    "examples": [
+      "I received a parcel in the mail today.",
+      "He sent the gift as a parcel."
+    ]
+  },
+  {
+    "word": "to combine",
+    "collision_group_id": "to_combine",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לשלב",
+    "definitions": [
+      "To join two or more things together.",
+      "To unite or merge to form a single unit.",
+      "To mix different elements.",
+      "To have two or more features."
+    ],
+    "examples": [
+      "The movie combines action and comedy.",
+      "You should combine the ingredients in a large bowl."
+    ]
+  },
+  {
+    "word": "to postpone",
+    "collision_group_id": "to_postpone",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לדחות",
+    "definitions": [
+      "To put something off until a later time.",
+      "To arrange for an event to take place at a later time.",
+      "To delay.",
+      "To defer an action."
+    ],
+    "examples": [
+      "The meeting was postponed until next week.",
+      "We had to postpone our vacation due to illness."
+    ]
+  },
+  {
+    "word": "to oppose",
+    "collision_group_id": "to_oppose",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להתנגד",
+    "definitions": [
+      "To disagree strongly with a person or an idea.",
+      "To be against something.",
+      "To resist or combat.",
+      "To express disapproval of."
+    ],
+    "examples": [
+      "Many local residents oppose the new development plan.",
+      "He opposed the decision from the beginning."
+    ]
+  },
+  {
+    "word": "essential",
+    "collision_group_id": "essential",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "חיוני",
+    "definitions": [
+      "Necessary; extremely important.",
+      "Absolutely required.",
+      "Fundamental.",
+      "Indispensable."
+    ],
+    "examples": [
+      "Water is essential for life.",
+      "It is essential to follow the safety rules."
+    ]
+  },
+  {
+    "word": "identical",
+    "collision_group_id": "identical",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "זהה",
+    "definitions": [
+      "Exactly the same.",
+      "Similar in every detail.",
+      "Being the very same one.",
+      "Having no differences."
+    ],
+    "examples": [
+      "The two paintings look identical.",
+      "They are identical twins and look exactly alike."
+    ]
+  },
+  {
+    "word": "curious",
+    "collision_group_id": "curious",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "סקרן",
+    "definitions": [
+      "Interested in learning about different things.",
+      "Eager to know or learn something.",
+      "Strange or unusual.",
+      "Inquisitive."
+    ],
+    "examples": [
+      "I was curious to find out what would happen next.",
+      "Children are naturally curious about the world."
+    ]
+  },
+  {
+    "word": "to pay attention",
+    "collision_group_id": "to_pay_attention",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לשים לב",
+    "definitions": [
+      "To watch, listen to, or think about something carefully.",
+      "To take notice of someone or something.",
+      "To concentrate on.",
+      "To focus one's mind on something."
+    ],
+    "examples": [
+      "You must pay attention in class.",
+      "Please pay attention to the instructions."
+    ]
+  },
+  {
+    "word": "to put up with",
+    "collision_group_id": "to_put_up_with",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לסבול",
+    "definitions": [
+      "To accept an unpleasant situation.",
+      "To tolerate or endure something without complaining.",
+      "To bear with someone or something patiently.",
+      "To withstand something undesirable."
+    ],
+    "examples": [
+      "I don't know how she puts up with his constant complaining.",
+      "I'm not going to put up with this behavior any longer."
+    ]
+  },
+  {
+    "word": "to rescue",
+    "collision_group_id": "to_rescue",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להציל",
+    "definitions": [
+      "To save someone from a dangerous situation.",
+      "To bring someone out of danger.",
+      "To recover from a bad situation.",
+      "To deliver from harm."
+    ],
+    "examples": [
+      "The firefighter rescued the child from the burning house.",
+      "They were rescued by the coast guard."
+    ]
+  },
+  {
+    "word": "to strike",
+    "collision_group_id": "to_strike",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להכות",
+    "definitions": [
+      "To hit someone or something.",
+      "To deliver a blow or punch.",
+      "To occur suddenly and have a harmful effect.",
+      "To refuse to work as a protest."
+    ],
+    "examples": [
+      "He struck the ball with the bat.",
+      "The clock struck midnight."
+    ]
+  },
+  {
+    "word": "terribly",
+    "collision_group_id": "terribly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "באופן נורא",
+    "definitions": [
+      "Very badly.",
+      "Extremely; very much.",
+      "In a shocking or unpleasant manner.",
+      "Awfully."
+    ],
+    "examples": [
+      "The team played terribly and lost the game.",
+      "I'm terribly sorry for what I said."
+    ]
+  },
+  {
+    "word": "shortly",
+    "collision_group_id": "shortly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בקרוב",
+    "definitions": [
+      "Soon; in a little while.",
+      "In a short time.",
+      "Not long from now.",
+      "Concisely or briefly."
+    ],
+    "examples": [
+      "The train will be arriving shortly.",
+      "I will be with you shortly."
+    ]
+  },
+  {
+    "word": "deliberately",
+    "collision_group_id": "deliberately",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בכוונה",
+    "definitions": [
+      "On purpose; intentionally.",
+      "In a careful and unhurried way.",
+      "With conscious intent.",
+      "Not by accident."
+    ],
+    "examples": [
+      "He deliberately ignored my question.",
+      "She spoke slowly and deliberately."
+    ]
+  },
+  {
+    "word": "initial",
+    "collision_group_id": "initial",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "ראשוני",
+    "definitions": [
+      "First; existing at the beginning.",
+      "The earliest stage of a process.",
+      "Occurring at the start.",
+      "The first letter of a name."
+    ],
+    "examples": [
+      "My initial reaction was one of shock.",
+      "The initial phase of the project was successful."
+    ]
+  },
+  {
+    "word": "anxious",
+    "collision_group_id": "anxious",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "חרד",
+    "definitions": [
+      "Worried and nervous.",
+      "Feeling uneasy about an uncertain outcome.",
+      "Eagerly wanting something to happen.",
+      "Characterized by a feeling of unease or apprehension."
+    ],
+    "examples": [
+      "I'm anxious about the upcoming exam.",
+      "She was anxious to hear the results."
+    ]
+  },
+  {
+    "word": "delicious",
+    "collision_group_id": "delicious",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "טעים",
+    "definitions": [
+      "Tastes very good.",
+      "Having a highly pleasant taste or smell.",
+      "Very pleasing to the senses.",
+      "Yummy."
+    ],
+    "examples": [
+      "Thank you for the delicious meal.",
+      "This chocolate cake is absolutely delicious."
+    ]
+  },
+  {
+    "word": "an expression",
+    "collision_group_id": "an_expression",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ביטוי",
+    "definitions": [
+      "A word or phrase with a particular meaning.",
+      "A group of words used as a single unit.",
+      "The look on someone's face.",
+      "The act of showing a feeling."
+    ],
+    "examples": [
+      "'Break a leg' is a common expression in the theater.",
+      "He used a common expression to make his point."
+    ]
+  },
+  {
+    "word": "a shock",
+    "collision_group_id": "a_shock",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "הלם",
+    "definitions": [
+      "A sudden and unpleasant experience.",
+      "A feeling of surprise and distress.",
+      "A violent shake or jolt.",
+      "An acute medical condition."
+    ],
+    "examples": [
+      "The news of his death came as a great shock.",
+      "She was in a state of shock after the accident."
+    ]
+  },
+  {
+    "word": "an objective",
+    "collision_group_id": "an_objective",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מטרה",
+    "definitions": [
+      "An aim or a goal.",
+      "Something that you are trying to achieve.",
+      "A purpose.",
+      "Not influenced by personal feelings."
+    ],
+    "examples": [
+      "The main objective of the course is to improve your speaking skills.",
+      "Our primary objective is to increase sales."
+    ]
+  },
+  {
+    "word": "to look forward to",
+    "collision_group_id": "to_look_forward_to",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לצפות ל",
+    "definitions": [
+      "To be excited about something that is going to happen.",
+      "To anticipate a future event with pleasure.",
+      "To eagerly await something.",
+      "To be happy about a forthcoming event."
+    ],
+    "examples": [
+      "I'm looking forward to our vacation next month.",
+      "She is looking forward to starting her new job."
+    ]
+  },
+  {
+    "word": "to make up",
+    "collision_group_id": "to_make_up",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להמציא",
+    "definitions": [
+      "To invent a story or an explanation.",
+      "To constitute or form a whole.",
+      "To put cosmetics on one's face.",
+      "To reconcile after a quarrel."
+    ],
+    "examples": [
+      "He made up a story about being sick to avoid going to school.",
+      "The team is made up of players from different countries."
+    ]
+  },
+  {
+    "word": "to take out",
+    "collision_group_id": "to_take_out",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להוציא",
+    "definitions": [
+      "To remove something from a place.",
+      "To invite someone to go out with you, especially on a date.",
+      "To obtain an official document like a license.",
+      "To get food from a restaurant to eat elsewhere."
+    ],
+    "examples": [
+      "He took his wallet out of his pocket.",
+      "I'm taking my parents out for dinner tonight."
+    ]
+  },
+  {
+    "word": "a priority",
+    "collision_group_id": "a_priority",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "עדיפות",
+    "definitions": [
+      "Something that is important and must be dealt with before other things.",
+      "A thing that is regarded as more important than another.",
+      "The fact of being regarded as more important.",
+      "Something that needs to be handled first."
+    ],
+    "examples": [
+      "My main priority right now is to find a job.",
+      "The safety of our children is our top priority."
+    ]
+  },
+  {
+    "word": "a characteristic",
+    "collision_group_id": "a_characteristic",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מאפיין",
+    "definitions": [
+      "A typical quality of someone or something.",
+      "A distinguishing feature or trait.",
+      "A special quality that makes something different.",
+      "An attribute."
+    ],
+    "examples": [
+      "A key characteristic of this species is its long tail.",
+      "Generosity is one of his best characteristics."
+    ]
+  },
+  {
+    "word": "an argument",
+    "collision_group_id": "an_argument_disagreement",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ויכוח",
+    "definitions": [
+      "A discussion in which people disagree with each other.",
+      "A heated exchange of opposing views.",
+      "A quarrel.",
+      "A reason given to persuade others."
+    ],
+    "examples": [
+      "They had an argument about money.",
+      "I don't want to get into an argument with you."
+    ]
+  },
+  {
+    "word": "a shower",
+    "collision_group_id": "a_shower_rain",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ממטר",
+    "definitions": [
+      "A short period of rain.",
+      "A brief fall of rain, often light.",
+      "An act of washing oneself under a spray of water.",
+      "A sudden downpour."
+    ],
+    "examples": [
+      "We got caught in a light shower on our way home.",
+      "The forecast predicts scattered showers for tomorrow."
+    ]
+  },
+  {
+    "word": "an injury",
+    "collision_group_id": "an_injury",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "פציעה",
+    "definitions": [
+      "Damage done to the body of a person or an animal.",
+      "Physical harm or damage.",
+      "A wound or trauma.",
+      "An instance of being harmed."
+    ],
+    "examples": [
+      "He suffered a serious injury in the car accident.",
+      "She has a minor knee injury from playing sports."
+    ]
+  },
+  {
+    "word": "to appreciate",
+    "collision_group_id": "to_appreciate",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להעריך",
+    "definitions": [
+      "To recognize the good qualities of someone or something.",
+      "To be grateful for something.",
+      "To understand a situation and its full implications.",
+      "To rise in value over time."
+    ],
+    "examples": [
+      "I really appreciate all the hard work you've done.",
+      "It's important to appreciate the little things in life."
+    ]
+  },
+  {
+    "word": "to generate",
+    "collision_group_id": "to_generate",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "ליצור",
+    "definitions": [
+      "To produce or create something.",
+      "To cause something to arise or come about.",
+      "To bring into existence.",
+      "To produce energy, especially electricity."
+    ],
+    "examples": [
+      "The new power plant will generate electricity for the entire region.",
+      "Her speech generated a lot of excitement."
+    ]
+  },
+  {
+    "word": "to switch",
+    "collision_group_id": "to_switch",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להחליף",
+    "definitions": [
+      "To change from doing one thing to doing something else.",
+      "To exchange one thing for another.",
+      "To move a device to turn it on or off.",
+      "To shift or change course."
+    ],
+    "examples": [
+      "She decided to switch careers and become a teacher.",
+      "Can you switch the TV to another channel?"
+    ]
+  },
+  {
+    "word": "to perform",
+    "collision_group_id": "to_perform_do",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לבצע",
+    "definitions": [
+      "To do something, such as a piece of work, task, or duty.",
+      "To carry out or accomplish an action.",
+      "To function in a particular way.",
+      "To entertain people by acting or singing."
+    ],
+    "examples": [
+      "The surgeon will perform the operation tomorrow.",
+      "The car performs well even in bad weather."
+    ]
+  },
+  {
+    "word": "to conclude",
+    "collision_group_id": "to_conclude",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להסיק",
+    "definitions": [
+      "To make a decision about something after careful consideration.",
+      "To arrive at a judgment or opinion by reasoning.",
+      "To bring something to an end.",
+      "To form a final judgment."
+    ],
+    "examples": [
+      "From the evidence, we can conclude that he is guilty.",
+      "I would like to conclude by thanking everyone for coming."
+    ]
+  },
+  {
+    "word": "to get rid of",
+    "collision_group_id": "to_get_rid_of",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להיפטר מ",
+    "definitions": [
+      "To throw out or dispose of something.",
+      "To take action so as to be free of an unwanted thing or person.",
+      "To eliminate.",
+      "To discard something you no longer need."
+    ],
+    "examples": [
+      "I need to get rid of these old clothes.",
+      "How can we get rid of this awful smell?"
+    ]
+  },
+  {
+    "word": "to be short of",
+    "collision_group_id": "to_be_short_of",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להיות בחוסר של",
+    "definitions": [
+      "To not have enough of something.",
+      "To have a lack or deficiency of a resource.",
+      "To be in need of more of something.",
+      "To have an insufficient supply."
+    ],
+    "examples": [
+      "We are short of time, so we need to hurry.",
+      "The company is short of cash."
+    ]
+  },
+  {
+    "word": "to be familiar with",
+    "collision_group_id": "to_be_familiar_with",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להכיר את",
+    "definitions": [
+      "To know something or someone well.",
+      "To have a good knowledge or understanding of something.",
+      "To be acquainted with a person or subject.",
+      "To recognize something easily."
+    ],
+    "examples": [
+      "Are you familiar with the author's work?",
+      "I am not familiar with that part of the city."
+    ]
+  },
+  {
+    "word": "to fry",
+    "collision_group_id": "to_fry",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לטגן",
+    "definitions": [
+      "To cook in hot oil or fat.",
+      "To prepare food in a pan with hot oil.",
+      "To be cooked in hot fat.",
+      "A method of cooking using oil."
+    ],
+    "examples": [
+      "I'm going to fry some eggs for breakfast.",
+      "The recipe says to fry the onions until they are golden brown."
+    ]
+  },
+  {
+    "word": "to manufacture",
+    "collision_group_id": "to_manufacture",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לייצר",
+    "definitions": [
+      "To make products using machines.",
+      "To produce goods in large quantities in a factory.",
+      "To fabricate or create something on a large scale.",
+      "To invent a false story."
+    ],
+    "examples": [
+      "The company manufactures car parts.",
+      "This factory manufactures electronic devices."
+    ]
+  },
+  {
+    "word": "to enable",
+    "collision_group_id": "to_enable",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לאפשר",
+    "definitions": [
+      "To make it possible for someone to do something.",
+      "To give someone the authority or means to do something.",
+      "To make something possible.",
+      "To activate a feature or function."
+    ],
+    "examples": [
+      "This new software will enable us to work more efficiently.",
+      "The loan enabled him to start his own business."
+    ]
+  },
+  {
+    "word": "silver",
+    "collision_group_id": "silver",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "כסף (מתכת)",
+    "definitions": [
+      "A type of metal that is shiny and grayish-white.",
+      "A precious metal used for jewelry and coins.",
+      "A shiny gray color.",
+      "A valuable metallic element."
+    ],
+    "examples": [
+      "She was wearing a beautiful silver necklace.",
+      "The medal was made of solid silver."
+    ]
+  },
+  {
+    "word": "an athlete",
+    "collision_group_id": "an_athlete",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אתלט",
+    "definitions": [
+      "Someone who competes in a sport.",
+      "A person who is proficient in sports and other forms of physical exercise.",
+      "A sportsman or sportswoman.",
+      "A person skilled in athletics."
+    ],
+    "examples": [
+      "He is a professional athlete who has won many awards.",
+      "Olympic athletes train for years to compete."
+    ]
+  },
+  {
+    "word": "a crowd",
+    "collision_group_id": "a_crowd",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "קהל",
+    "definitions": [
+      "A large number of people, especially in a public place.",
+      "A large group of people gathered together.",
+      "A multitude of people.",
+      "To fill a space almost completely."
+    ],
+    "examples": [
+      "A large crowd gathered to watch the concert.",
+      "He got lost in the crowd."
+    ]
+  },
+  {
+    "word": "honest",
+    "collision_group_id": "honest",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "ישר",
+    "definitions": [
+      "Always telling the truth.",
+      "Free of deceit; truthful and sincere.",
+      "Not lying, cheating, or stealing.",
+      "Fair and just."
+    ],
+    "examples": [
+      "He is an honest and reliable person.",
+      "To be honest, I didn't like the movie."
+    ]
+  },
+  {
+    "word": "separate",
+    "collision_group_id": "separate",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "נפרד",
+    "definitions": [
+      "Not joined to something else.",
+      "Forming or viewed as a distinct entity.",
+      "Different; distinct.",
+      "To cause to be apart."
+    ],
+    "examples": [
+      "We have separate rooms, so we won't disturb each other.",
+      "These are two separate issues that need to be addressed."
+    ]
+  },
+  {
+    "word": "loud",
+    "collision_group_id": "loud",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "רועש",
+    "definitions": [
+      "Making a lot of noise.",
+      "Producing or capable of producing a great deal of sound.",
+      "Not quiet.",
+      "At a high volume."
+    ],
+    "examples": [
+      "The music was too loud, so I asked him to turn it down.",
+      "He has a very loud voice."
+    ]
+  },
+  {
+    "word": "to define",
+    "collision_group_id": "to_define",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להגדיר",
+    "definitions": [
+      "To explain the meaning of a word.",
+      "To state or describe the exact nature or scope of something.",
+      "To specify the boundaries of an area.",
+      "To give the meaning of a term."
+    ],
+    "examples": [
+      "Can you define this technical term for me?",
+      "The contract clearly defines the responsibilities of each party."
+    ]
+  },
+  {
+    "word": "to remain",
+    "collision_group_id": "to_remain",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להישאר",
+    "definitions": [
+      "To stay in the same place.",
+      "To continue to exist or be in a particular condition.",
+      "To be left over after other parts have been removed.",
+      "To continue to be."
+    ],
+    "examples": [
+      "Please remain seated until the plane has stopped.",
+      "Only a few houses remained standing after the storm."
+    ]
+  },
+  {
+    "word": "to publish",
+    "collision_group_id": "to_publish",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להוציא לאור",
+    "definitions": [
+      "To produce a book, magazine, or newspaper for public sale.",
+      "To prepare and issue a work for public distribution.",
+      "To make information available to the public.",
+      "To print a work for others to read."
+    ],
+    "examples": [
+      "She is hoping to publish her first novel next year.",
+      "The results of the study were published in a scientific journal."
+    ]
+  },
+  {
+    "word": "in general",
+    "collision_group_id": "in_general",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "באופן כללי",
+    "definitions": [
+      "In most situations; usually.",
+      "On the whole; for the most part.",
+      "As a general rule.",
+      "Speaking broadly."
+    ],
+    "examples": [
+      "In general, I enjoy my job.",
+      "The weather here is, in general, very pleasant."
+    ]
+  },
+  {
+    "word": "in case of",
+    "collision_group_id": "in_case_of",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "במקרה של",
+    "definitions": [
+      "If and when something happens.",
+      "In the event of a particular situation.",
+      "Should something occur.",
+      "As a precaution against a possible event."
+    ],
+    "examples": [
+      "In case of fire, leave the building immediately.",
+      "You should have a backup plan in case of emergency."
+    ]
+  },
+  {
+    "word": "apart from",
+    "collision_group_id": "apart_from",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "חוץ מ",
+    "definitions": [
+      "Except for.",
+      "In addition to; besides.",
+      "Other than.",
+      "With the exclusion of."
+    ],
+    "examples": [
+      "Apart from the ending, it was a really good movie.",
+      "The room was empty apart from a single chair."
+    ]
+  },
+  {
+    "word": "concentration",
+    "collision_group_id": "concentration",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ריכוז",
+    "definitions": [
+      "The ability to think about one thing for a long time.",
+      "The action of focusing one's attention.",
+      "A close gathering of people or things.",
+      "The amount of a substance in a defined space."
+    ],
+    "examples": [
+      "This task requires a lot of concentration.",
+      "Loud noises can break my concentration."
+    ]
+  },
+  {
+    "word": "findings",
+    "collision_group_id": "findings",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ממצאים",
+    "definitions": [
+      "Information discovered as a result of research.",
+      "The conclusions of an official inquiry.",
+      "The results of an investigation.",
+      "Something that has been learned or discovered."
+    ],
+    "examples": [
+      "The findings of the study were published in a medical journal.",
+      "The police will present their findings to the court."
+    ]
+  },
+  {
+    "word": "emphasis",
+    "collision_group_id": "emphasis",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "דגש",
+    "definitions": [
+      "Special importance that is given to something.",
+      "Stress laid on a particular word or syllable.",
+      "A particular focus of attention.",
+      "The quality of being significant or important."
+    ],
+    "examples": [
+      "The school places a strong emphasis on creativity.",
+      "In his speech, he put great emphasis on the need for change."
+    ]
+  },
+  {
+    "word": "legal",
+    "collision_group_id": "legal",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "חוקי",
+    "definitions": [
+      "Allowed by the law.",
+      "Relating to or permitted by law.",
+      "Not forbidden by the rules.",
+      "Lawful."
+    ],
+    "examples": [
+      "It is not legal to drive without a license.",
+      "I need to get some legal advice."
+    ]
+  },
+  {
+    "word": "frequent",
+    "collision_group_id": "frequent",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "תדיר",
+    "definitions": [
+      "Happening often.",
+      "Occurring or done on many occasions.",
+      "Common; usual.",
+      "To visit a place often."
+    ],
+    "examples": [
+      "He is a frequent visitor to the library.",
+      "There are frequent buses to the city center."
+    ]
+  },
+  {
+    "word": "major",
+    "collision_group_id": "major",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "עיקרי",
+    "definitions": [
+      "Very large or important.",
+      "Serious or significant.",
+      "Greater in size or importance.",
+      "A student's main subject of study."
+    ],
+    "examples": [
+      "The storm caused major damage to the city.",
+      "This is a major issue that we need to address."
+    ]
+  },
+  {
+    "word": "to criticize",
+    "collision_group_id": "to_criticize",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "למתוח ביקורת",
+    "definitions": [
+      "To say what you think is wrong with someone or something.",
+      "To express disapproval of someone or something.",
+      "To judge the merits and faults of a work of art.",
+      "To find fault with."
+    ],
+    "examples": [
+      "The report was criticized for being inaccurate.",
+      "He is always criticizing my work."
+    ]
+  },
+  {
+    "word": "to select",
+    "collision_group_id": "to_select",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לבחור",
+    "definitions": [
+      "To choose something carefully.",
+      "To pick out as being the best or most suitable.",
+      "To make a choice from a group.",
+      "To opt for."
+    ],
+    "examples": [
+      "She was selected to represent the team.",
+      "You can select any item from the menu."
+    ]
+  },
+  {
+    "word": "to guess",
+    "collision_group_id": "to_guess",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לנחש",
+    "definitions": [
+      "To say something without being sure of all the facts.",
+      "To estimate or suppose something without sufficient information.",
+      "To form an opinion without being certain.",
+      "An estimate or conjecture."
+    ],
+    "examples": [
+      "Can you guess how old she is?",
+      "I guess it's going to rain."
+    ]
+  },
+  {
+    "word": "fully",
+    "collision_group_id": "fully",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "לחלוטין",
+    "definitions": [
+      "Completely or entirely.",
+      "To the greatest extent.",
+      "Without lacking any part.",
+      "Totally."
+    ],
+    "examples": [
+      "I fully agree with your decision.",
+      "The project is not yet fully completed."
+    ]
+  },
+  {
+    "word": "nearly",
+    "collision_group_id": "nearly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "כמעט",
+    "definitions": [
+      "Almost; very close to.",
+      "Not quite.",
+      "Just about.",
+      "Approaching a certain state or condition."
+    ],
+    "examples": [
+      "It's nearly time to go home.",
+      "I've nearly finished my homework."
+    ]
+  },
+  {
+    "word": "particularly",
+    "collision_group_id": "particularly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "במיוחד",
+    "definitions": [
+      "Especially; more than usual.",
+      "To a great degree.",
+      "In a special way.",
+      "Specifically."
+    ],
+    "examples": [
+      "I'm not particularly interested in politics.",
+      "The weather was particularly bad this winter."
+    ]
+  },
+  {
+    "word": "by oneself",
+    "collision_group_id": "by_oneself",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לבד",
+    "definitions": [
+      "Alone; without anyone else.",
+      "Without help from other people.",
+      "Independently.",
+      "On one's own."
+    ],
+    "examples": [
+      "He lives by himself in a small apartment.",
+      "She managed to complete the project by herself."
+    ]
+  },
+  {
+    "word": "an announcement",
+    "collision_group_id": "an_announcement",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "הודעה",
+    "definitions": [
+      "Something written or spoken that provides information.",
+      "A formal public statement.",
+      "The act of making something known publicly.",
+      "A proclamation."
+    ],
+    "examples": [
+      "The company made an announcement about its new product.",
+      "There was an announcement on the radio about the storm."
+    ]
+  },
+  {
+    "word": "a device",
+    "collision_group_id": "a_device",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מכשיר",
+    "definitions": [
+      "A piece of equipment that does a particular job.",
+      "A machine or tool designed for a specific purpose.",
+      "A gadget.",
+      "An apparatus."
+    ],
+    "examples": [
+      "A smartphone is a very useful device.",
+      "The hospital has the latest medical devices."
+    ]
+  },
+  {
+    "word": "an ocean",
+    "collision_group_id": "an_ocean",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אוקיינוס",
+    "definitions": [
+      "A very large area of sea.",
+      "One of the main areas into which the sea is divided.",
+      "A vast body of salt water.",
+      "The great body of salt water covering most of the Earth."
+    ],
+    "examples": [
+      "The Pacific Ocean is the largest in the world.",
+      "They sailed across the Atlantic Ocean."
+    ]
+  },
+  {
+    "word": "medicine",
+    "collision_group_id": "medicine",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "תרופה",
+    "definitions": [
+      "Something given to people who are ill to make them better.",
+      "A substance used for treating disease.",
+      "The science of treating diseases.",
+      "A drug or remedy."
+    ],
+    "examples": [
+      "The doctor prescribed some medicine for my cough.",
+      "You should take this medicine with food."
+    ]
+  },
+  {
+    "word": "brief",
+    "collision_group_id": "brief",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "קצר",
+    "definitions": [
+      "Continuing for a short time.",
+      "Of short duration.",
+      "Concise; using few words.",
+      "Not lasting for long."
+    ],
+    "examples": [
+      "We had a brief meeting to discuss the matter.",
+      "He made a brief visit to the city."
+    ]
+  },
+  {
+    "word": "entire",
+    "collision_group_id": "entire",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "שלם",
+    "definitions": [
+      "Complete; with no part left out.",
+      "Whole.",
+      "Including every part.",
+      "Total."
+    ],
+    "examples": [
+      "He ate the entire pizza by himself.",
+      "The entire village was destroyed in the fire."
+    ]
+  },
+  {
+    "word": "necessary",
+    "collision_group_id": "necessary",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "הכרחי",
+    "definitions": [
+      "Needed to achieve a particular result.",
+      "Required to be done; essential.",
+      "Unavoidable.",
+      "Indispensable."
+    ],
+    "examples": [
+      "Is it really necessary to spend so much money?",
+      "Experience is necessary for this job."
+    ]
+  },
+  {
+    "word": "increasingly",
+    "collision_group_id": "increasingly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "יותר ויותר",
+    "definitions": [
+      "More and more.",
+      "To a greater extent over time.",
+      "Progressively more.",
+      "In a growing manner."
+    ],
+    "examples": [
+      "It is becoming increasingly difficult to find a job.",
+      "She became increasingly anxious."
+    ]
+  },
+  {
+    "word": "definitely",
+    "collision_group_id": "definitely",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בהחלט",
+    "definitions": [
+      "Without any doubt; certainly.",
+      "In a clear and certain way.",
+      "For sure.",
+      "Unquestionably."
+    ],
+    "examples": [
+      "I will definitely be there tomorrow.",
+      "This is definitely the best option."
+    ]
+  },
+  {
+    "word": "eventually",
+    "collision_group_id": "eventually",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בסופו של דבר",
+    "definitions": [
+      "In the end, especially after a long time.",
+      "Finally; after a series of events.",
+      "After some time has passed.",
+      "Ultimately."
+    ],
+    "examples": [
+      "He eventually found a job after months of searching.",
+      "Eventually, she agreed to help him."
+    ]
+  },
+  {
+    "word": "to blame",
+    "collision_group_id": "to_blame",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להאשים",
+    "definitions": [
+      "To say that someone is responsible for doing something wrong.",
+      "To assign responsibility for a fault or wrong.",
+      "To hold someone accountable for a mistake.",
+      "To find fault with."
+    ],
+    "examples": [
+      "Don't blame me for your mistakes.",
+      "He was blamed for the accident."
+    ]
+  },
+  {
+    "word": "to persuade",
+    "collision_group_id": "to_persuade",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לשכנע",
+    "definitions": [
+      "To make people believe something by giving them good reasons.",
+      "To convince someone to do or believe something.",
+      "To cause someone to do something through reasoning.",
+      "To win someone over."
+    ],
+    "examples": [
+      "He tried to persuade her to change her mind.",
+      "She was persuaded by his arguments."
+    ]
+  },
+  {
+    "word": "temporary",
+    "collision_group_id": "temporary",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "זמני",
+    "definitions": [
+      "Not permanent; lasting for only a limited period of time.",
+      "For a short time.",
+      "Provisional.",
+      "The opposite of permanent."
+    ],
+    "examples": [
+      "This is just a temporary solution to the problem.",
+      "He has a temporary job for the summer."
+    ]
+  },
+  {
+    "word": "particular",
+    "collision_group_id": "particular",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מסוים",
+    "definitions": [
+      "Specific; relating to one individual thing.",
+      "Used to single out an individual member of a group.",
+      "Greater than usual; special.",
+      "Not general."
+    ],
+    "examples": [
+      "Is there any particular reason why you can't come?",
+      "I have no particular preference."
+    ]
+  },
+  {
+    "word": "global",
+    "collision_group_id": "global",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "עולמי",
+    "definitions": [
+      "Relating to the whole world.",
+      "Worldwide.",
+      "Affecting the entire planet.",
+      "International."
+    ],
+    "examples": [
+      "Climate change is a global issue.",
+      "The company has a global network of offices."
+    ]
+  },
+  {
+    "word": "to occur",
+    "collision_group_id": "to_occur",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להתרחש",
+    "definitions": [
+      "To happen; to take place.",
+      "To come into existence.",
+      "To be found or present.",
+      "To come to mind."
+    ],
+    "examples": [
+      "The accident occurred yesterday evening.",
+      "An idea occurred to me while I was in the shower."
+    ]
+  },
+  {
+    "word": "to afford",
+    "collision_group_id": "to_afford",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להרשות לעצמך",
+    "definitions": [
+      "To have enough money to buy something.",
+      "To be able to pay for something.",
+      "To have sufficient resources for.",
+      "To be able to bear the cost of."
+    ],
+    "examples": [
+      "I can't afford to buy a new car right now.",
+      "We can afford to go on vacation this year."
+    ]
+  },
+  {
+    "word": "to participate",
+    "collision_group_id": "to_participate",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להשתתף",
+    "definitions": [
+      "To take part in something.",
+      "To be involved in an activity.",
+      "To join in with others.",
+      "To have a share in an action."
+    ],
+    "examples": [
+      "Everyone is invited to participate in the festival.",
+      "She participated in the discussion."
+    ]
+  },
+  {
+    "word": "a reaction",
+    "collision_group_id": "a_reaction",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "תגובה",
+    "definitions": [
+      "A behavior or a feeling that is the result of something that happened.",
+      "An action performed in response to an event.",
+      "An adverse response of the body to a substance.",
+      "A response."
+    ],
+    "examples": [
+      "What was his reaction to the news?",
+      "She had a bad allergic reaction to the medicine."
+    ]
+  },
+  {
+    "word": "an investigation",
+    "collision_group_id": "an_investigation",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חקירה",
+    "definitions": [
+      "A careful search for facts.",
+      "The formal inquiry into an event or crime.",
+      "A systematic examination.",
+      "A detailed study."
+    ],
+    "examples": [
+      "The police have launched an investigation into the robbery.",
+      "The results of the investigation will be made public."
+    ]
+  },
+  {
+    "word": "an option",
+    "collision_group_id": "an_option",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אפשרות",
+    "definitions": [
+      "Something that you can choose to do.",
+      "A choice or alternative.",
+      "One of the possibilities available.",
+      "A possible course of action."
+    ],
+    "examples": [
+      "We have several options to choose from.",
+      "Going by train is another option."
+    ]
+  },
+  {
+    "word": "to allow",
+    "collision_group_id": "to_allow",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להרשות",
+    "definitions": [
+      "To permit someone to do something.",
+      "To give permission.",
+      "To make it possible for something to happen.",
+      "To let."
+    ],
+    "examples": [
+      "Smoking is not allowed in this building.",
+      "My parents won't allow me to stay out late."
+    ]
+  },
+  {
+    "word": "to doubt",
+    "collision_group_id": "to_doubt",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להטיל ספק",
+    "definitions": [
+      "Not to be sure of something.",
+      "To feel uncertain about something.",
+      "To question the truth or validity of.",
+      "To have a lack of conviction about."
+    ],
+    "examples": [
+      "I doubt that he will come.",
+      "She began to doubt her own judgment."
+    ]
+  },
+  {
+    "word": "to imagine",
+    "collision_group_id": "to_imagine",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לדמיין",
+    "definitions": [
+      "To form a mental picture of something.",
+      "To create an idea or image in one's mind.",
+      "To believe something is likely to be true; to suppose.",
+      "To visualize."
+    ],
+    "examples": [
+      "Can you imagine what it would be like to live on the moon?",
+      "I can't imagine life without you."
+    ]
+  },
+  {
+    "word": "now and then",
+    "collision_group_id": "now_and_then",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מדי פעם",
+    "definitions": [
+      "Sometimes.",
+      "From time to time; occasionally.",
+      "On some occasions.",
+      "Now and again."
+    ],
+    "examples": [
+      "We still see each other now and then.",
+      "Now and then, I like to go for a long walk."
+    ]
+  },
+  {
+    "word": "make an effort",
+    "collision_group_id": "make_an_effort",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לעשות מאמץ",
+    "definitions": [
+      "To try hard to do something.",
+      "To attempt something with determination.",
+      "To exert oneself.",
+      "To put in a strong attempt."
+    ],
+    "examples": [
+      "You need to make an effort to improve your grades.",
+      "She made an effort to be friendly to everyone."
+    ]
+  },
+  {
+    "word": "an inquiry",
+    "collision_group_id": "an_inquiry",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "שאילתה",
+    "definitions": [
+      "A question that is asked to get information.",
+      "An act of asking for information.",
+      "An official investigation.",
+      "A formal question."
+    ],
+    "examples": [
+      "We are receiving a lot of inquiries about our new product.",
+      "I made an inquiry about the price."
+    ]
+  },
+  {
+    "word": "a prediction",
+    "collision_group_id": "a_prediction",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "תחזית",
+    "definitions": [
+      "A statement about something that might happen in the future.",
+      "A forecast.",
+      "Something that is foretold.",
+      "An act of saying what will happen."
+    ],
+    "examples": [
+      "The weather prediction for tomorrow is rain.",
+      "His prediction turned out to be correct."
+    ]
+  },
+  {
+    "word": "an argument",
+    "collision_group_id": "an_argument_conversation",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ויכוח",
+    "definitions": [
+      "A conversation in which two or more people don't agree with each other.",
+      "A heated disagreement.",
+      "A reason or set of reasons given in support of an idea.",
+      "A quarrel."
+    ],
+    "examples": [
+      "I had an argument with my friend yesterday.",
+      "His main argument was that the plan was too expensive."
+    ]
+  },
+  {
+    "word": "entirely",
+    "collision_group_id": "entirely",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "לחלוטין",
+    "definitions": [
+      "Completely.",
+      "In every way; totally.",
+      "Without reservation.",
+      "Wholly."
+    ],
+    "examples": [
+      "I am not entirely sure that's the right answer.",
+      "The situation is entirely different now."
+    ]
+  },
+  {
+    "word": "instantly",
+    "collision_group_id": "instantly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "מיד",
+    "definitions": [
+      "Immediately; at once.",
+      "Without any delay.",
+      "Right away.",
+      "Instantaneously."
+    ],
+    "examples": [
+      "She recognized him instantly.",
+      "The problem was solved instantly."
+    ]
+  },
+  {
+    "word": "additional",
+    "collision_group_id": "additional",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "נוסף",
+    "definitions": [
+      "Extra; added to what is already present.",
+      "More than what was first mentioned.",
+      "Supplementary.",
+      "Further."
+    ],
+    "examples": [
+      "We will need additional funding for the project.",
+      "Do you have any additional questions?"
+    ]
+  },
+  {
+    "word": "usual",
+    "collision_group_id": "usual",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "רגיל",
+    "definitions": [
+      "Happening most of the time.",
+      "Habitually done, used, or observed.",
+      "Normal; typical.",
+      "Common."
+    ],
+    "examples": [
+      "I went to bed at my usual time.",
+      "It was a usual day at the office."
+    ]
+  },
+  {
+    "word": "probable",
+    "collision_group_id": "probable",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "סביר",
+    "definitions": [
+      "Likely to happen or be the case.",
+      "Having a high chance of occurring.",
+      "Expected to happen.",
+      "Almost certain."
+    ],
+    "examples": [
+      "The probable cause of the fire was a short circuit.",
+      "It is probable that they will win the game."
+    ]
+  },
+  {
+    "word": "powerful",
+    "collision_group_id": "powerful",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "חזק",
+    "definitions": [
+      "Very strong.",
+      "Having great power or strength.",
+      "Having a strong effect on people.",
+      "Potent."
+    ],
+    "examples": [
+      "He is a powerful leader.",
+      "The car has a powerful engine."
+    ]
+  },
+  {
+    "word": "to collect",
+    "collision_group_id": "to_collect",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לאסוף",
+    "definitions": [
+      "To bring together objects of the same type.",
+      "To gather things as a hobby.",
+      "To go somewhere to get someone or something.",
+      "To accumulate."
+    ],
+    "examples": [
+      "She collects antique dolls.",
+      "I need to collect my children from school."
+    ]
+  },
+  {
+    "word": "to achieve",
+    "collision_group_id": "to_achieve",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להשיג",
+    "definitions": [
+      "To succeed in doing something.",
+      "To reach a desired goal, usually through hard work.",
+      "To accomplish.",
+      "To attain a level of success."
+    ],
+    "examples": [
+      "He worked hard to achieve his goals.",
+      "She achieved great success in her career."
+    ]
+  },
+  {
+    "word": "to inform",
+    "collision_group_id": "to_inform",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "ליידע",
+    "definitions": [
+      "To tell someone about particular facts.",
+      "To give someone information.",
+      "To notify.",
+      "To make someone aware of something."
+    ],
+    "examples": [
+      "Please inform me of any changes.",
+      "He informed her that the meeting was canceled."
+    ]
+  },
+  {
+    "word": "a method",
+    "collision_group_id": "a_method",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "שיטה",
+    "definitions": [
+      "A particular way of doing something.",
+      "A procedure or process for attaining an object.",
+      "A technique.",
+      "A systematic way of doing things."
+    ],
+    "examples": [
+      "We need to find a better method for solving this problem.",
+      "What is your preferred method of communication?"
+    ]
+  },
+  {
+    "word": "a concept",
+    "collision_group_id": "a_concept",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "רעיון, מושג",
+    "definitions": [
+      "An idea or a principle.",
+      "An abstract idea.",
+      "A plan or intention.",
+      "A general notion."
+    ],
+    "examples": [
+      "The concept of democracy is complex.",
+      "She has a good concept of the project's goals."
+    ]
+  },
+  {
+    "word": "criticism",
+    "collision_group_id": "criticism",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ביקורת",
+    "definitions": [
+      "A negative opinion about something or someone.",
+      "The expression of disapproval.",
+      "The analysis and judgment of a literary or artistic work.",
+      "Finding fault with something."
+    ],
+    "examples": [
+      "He is very sensitive to criticism.",
+      "The movie received a lot of criticism from the public."
+    ]
+  },
+  {
+    "word": "constantly",
+    "collision_group_id": "constantly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "ללא הרף",
+    "definitions": [
+      "All the time; continuously.",
+      "Happening repeatedly over a period of time.",
+      "Always.",
+      "Without a pause."
+    ],
+    "examples": [
+      "He is constantly complaining about his job.",
+      "The phone was ringing constantly."
+    ]
+  },
+  {
+    "word": "efficiently",
+    "collision_group_id": "efficiently",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "ביעילות",
+    "definitions": [
+      "Without wasting time or energy.",
+      "In a well-organized and competent way.",
+      "Productively.",
+      "In an effective manner."
+    ],
+    "examples": [
+      "The new machine works more efficiently than the old one.",
+      "She completed the task quickly and efficiently."
+    ]
+  },
+  {
+    "word": "to employ",
+    "collision_group_id": "to_employ",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להעסיק",
+    "definitions": [
+      "To pay someone to work for you.",
+      "To give a job to someone.",
+      "To make use of something.",
+      "To hire."
+    ],
+    "examples": [
+      "The company employs more than 1,000 people.",
+      "We need to employ a new strategy."
+    ]
+  },
+  {
+    "word": "to obtain",
+    "collision_group_id": "to_obtain",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להשיג",
+    "definitions": [
+      "To get something from someone.",
+      "To acquire or secure something.",
+      "To come into possession of.",
+      "To gain."
+    ],
+    "examples": [
+      "You can obtain the information from the library.",
+      "He managed to obtain a copy of the report."
+    ]
+  },
+  {
+    "word": "to suggest",
+    "collision_group_id": "to_suggest",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להציע",
+    "definitions": [
+      "To mention an idea for other people to think about.",
+      "To put forward a plan or proposal.",
+      "To recommend.",
+      "To imply or indicate."
+    ],
+    "examples": [
+      "I suggest we go to the movies tonight.",
+      "Can you suggest a good restaurant?"
+    ]
+  },
+  {
+    "word": "in favor of",
+    "collision_group_id": "in_favor_of",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בעד",
+    "definitions": [
+      "In support of someone or something.",
+      "Approving of an idea or plan.",
+      "On the side of.",
+      "In agreement with."
+    ],
+    "examples": [
+      "Are you in favor of the new proposal?",
+      "The majority of people are in favor of the change."
+    ]
+  },
+  {
+    "word": "to take advantage of",
+    "collision_group_id": "to_take_advantage_of",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לנצל",
+    "definitions": [
+      "To make good use of something.",
+      "To use an opportunity to achieve a result.",
+      "To treat someone unfairly for one's own benefit.",
+      "To exploit."
+    ],
+    "examples": [
+      "You should take advantage of the sunny weather and go to the beach.",
+      "He took advantage of her kindness."
+    ]
+  },
+  {
+    "word": "to forgive",
+    "collision_group_id": "to_forgive",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לסלוח",
+    "definitions": [
+      "To stop being angry at someone who did something wrong.",
+      "To pardon an offense.",
+      "To stop blaming someone.",
+      "To excuse a mistake."
+    ],
+    "examples": [
+      "It's important to be able to forgive and forget.",
+      "I will never forgive him for what he did."
+    ]
+  },
+  {
+    "word": "to search",
+    "collision_group_id": "to_search",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לחפש",
+    "definitions": [
+      "To look for something.",
+      "To try to find something by looking carefully.",
+      "To examine a place to find something.",
+      "To investigate."
+    ],
+    "examples": [
+      "I'm searching for my keys.",
+      "The police are searching the area for clues."
+    ]
+  },
+  {
+    "word": "to protect",
+    "collision_group_id": "to_protect",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להגן",
+    "definitions": [
+      "To keep someone or something safe.",
+      "To defend from harm or danger.",
+      "To guard against risk.",
+      "To shield."
+    ],
+    "examples": [
+      "It's important to protect the environment.",
+      "This helmet will protect your head."
+    ]
+  },
+  {
+    "word": "valuable",
+    "collision_group_id": "valuable",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "יקר ערך",
+    "definitions": [
+      "Worth a lot of money.",
+      "Very useful or important.",
+      "Of great worth.",
+      "Precious."
+    ],
+    "examples": [
+      "This is a very valuable painting.",
+      "He gave me some valuable advice."
+    ]
+  },
+  {
+    "word": "current",
+    "collision_group_id": "current",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "נוכחי",
+    "definitions": [
+      "Happening now.",
+      "Belonging to the present time.",
+      "In general use at the present time.",
+      "A flow of water or electricity."
+    ],
+    "examples": [
+      "What is the current situation?",
+      "The current president is very popular."
+    ]
+  },
+  {
+    "word": "consequently",
+    "collision_group_id": "consequently",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "כתוצאה מכך",
+    "definitions": [
+      "As a result.",
+      "Therefore.",
+      "Because of what has just been mentioned.",
+      "Accordingly."
+    ],
+    "examples": [
+      "He was late and consequently missed the train.",
+      "The company lost a lot of money and consequently had to close."
+    ]
+  },
+  {
+    "word": "slightly",
+    "collision_group_id": "slightly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "במעט",
+    "definitions": [
+      "A little.",
+      "To a small degree.",
+      "Somewhat.",
+      "Not very much."
+    ],
+    "examples": [
+      "The price is slightly higher than I expected.",
+      "I'm feeling slightly tired."
+    ]
+  },
+  {
+    "word": "right now",
+    "collision_group_id": "right_now",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "כרגע",
+    "definitions": [
+      "At this moment.",
+      "Immediately.",
+      "Right away.",
+      "At the present time."
+    ],
+    "examples": [
+      "I'm busy right now, can I call you back?",
+      "I need you to come here right now."
+    ]
+  },
+  {
+    "word": "run out of",
+    "collision_group_id": "run_out_of",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "נגמר ל-",
+    "definitions": [
+      "To no longer have something.",
+      "To use up the entire supply of something.",
+      "To have none left.",
+      "To exhaust a supply."
+    ],
+    "examples": [
+      "We've run out of milk.",
+      "I'm running out of patience."
+    ]
+  },
+  {
+    "word": "evidence",
+    "collision_group_id": "evidence",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "הוכחה",
+    "definitions": [
+      "Information that proves something is true.",
+      "The available body of facts indicating whether a belief is true.",
+      "Proof.",
+      "Signs or indications of something."
+    ],
+    "examples": [
+      "The police have no evidence that he committed the crime.",
+      "There is clear evidence of a link between smoking and cancer."
+    ]
+  },
+  {
+    "word": "improvement",
+    "collision_group_id": "improvement",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "שיפור",
+    "definitions": [
+      "Making something better.",
+      "The act of enhancing in quality or condition.",
+      "A change that makes something better.",
+      "An enhancement."
+    ],
+    "examples": [
+      "There has been a great improvement in her work.",
+      "The new system is a big improvement."
+    ]
+  },
+  {
+    "word": "prevention",
+    "collision_group_id": "prevention",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מניעה",
+    "definitions": [
+      "Stopping something from happening.",
+      "The action of hindering or stopping an event.",
+      "The act of preventing something.",
+      "A measure to stop something bad."
+    ],
+    "examples": [
+      "Prevention is better than cure.",
+      "The organization focuses on crime prevention."
+    ]
+  },
+  {
+    "word": "to act",
+    "collision_group_id": "to_act",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לפעול",
+    "definitions": [
+      "To behave in a certain way.",
+      "To do something for a particular purpose.",
+      "To take action.",
+      "To perform in a play or film."
+    ],
+    "examples": [
+      "You need to act quickly.",
+      "He acted as if he didn't know me."
+    ]
+  },
+  {
+    "word": "to celebrate",
+    "collision_group_id": "to_celebrate",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לחגוג",
+    "definitions": [
+      "To do something on an important day.",
+      "To mark a special occasion with a social gathering.",
+      "To show that an event is important by doing something special.",
+      "To praise or honor an event."
+    ],
+    "examples": [
+      "How are you going to celebrate your birthday?",
+      "The team celebrated their victory."
+    ]
+  },
+  {
+    "word": "to receive",
+    "collision_group_id": "to_receive",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לקבל",
+    "definitions": [
+      "To be given something.",
+      "To get or be presented with something.",
+      "To experience or suffer something.",
+      "To welcome a guest."
+    ],
+    "examples": [
+      "Did you receive my letter?",
+      "She received a prize for her work."
+    ]
+  },
+  {
+    "word": "efficient",
+    "collision_group_id": "efficient",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "יעיל",
+    "definitions": [
+      "Able to do a job well without wasting time or energy.",
+      "Working in a well-organized and competent way.",
+      "Achieving maximum productivity with minimum wasted effort.",
+      "Productive and not wasteful."
+    ],
+    "examples": [
+      "The new system is much more efficient.",
+      "She is a very efficient worker."
+    ]
+  },
+  {
+    "word": "dangerous",
+    "collision_group_id": "dangerous",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מסוכן",
+    "definitions": [
+      "Not safe.",
+      "Able or likely to cause harm or injury.",
+      "Risky or perilous.",
+      "Involving risk."
+    ],
+    "examples": [
+      "It's a dangerous road at night.",
+      "Smoking is dangerous to your health."
+    ]
+  },
+  {
+    "word": "frequently",
+    "collision_group_id": "frequently",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "לעיתים קרובות",
+    "definitions": [
+      "Often.",
+      "On many occasions; regularly.",
+      "At short intervals.",
+      "Repeatedly."
+    ],
+    "examples": [
+      "He frequently travels abroad for his job.",
+      "This is a frequently asked question."
+    ]
+  },
+  {
+    "word": "finally",
+    "collision_group_id": "finally",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "לבסוף",
+    "definitions": [
+      "In the end; after a long time.",
+      "As the last in a series of things.",
+      "Ultimately.",
+      "After much delay."
+    ],
+    "examples": [
+      "After waiting for hours, the train finally arrived.",
+      "Finally, I would like to thank you all for coming."
+    ]
+  },
+  {
+    "word": "on the whole",
+    "collision_group_id": "on_the_whole",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "באופן כללי",
+    "definitions": [
+      "In general.",
+      "Taking everything into account.",
+      "For the most part.",
+      "Overall."
+    ],
+    "examples": [
+      "On the whole, I'm satisfied with the results.",
+      "There were a few problems, but on the whole, it was a successful event."
+    ]
+  },
+  {
+    "word": "so that",
+    "collision_group_id": "so_that",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "כדי ש",
+    "definitions": [
+      "In order to.",
+      "With the result or purpose that.",
+      "For the purpose of.",
+      "With the intention that."
+    ],
+    "examples": [
+      "I'm studying hard so that I can pass the exam.",
+      "Speak louder so that everyone can hear you."
+    ]
+  },
+  {
+    "word": "ahead of",
+    "collision_group_id": "ahead_of",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לפני",
+    "definitions": [
+      "Before.",
+      "In front of someone or something.",
+      "Further forward in time or space.",
+      "In advance of."
+    ],
+    "examples": [
+      "She finished the race ahead of all the other runners.",
+      "We have a lot of work ahead of us."
+    ]
+  },
+  {
+    "word": "a population",
+    "collision_group_id": "a_population",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אוכלוסייה",
+    "definitions": [
+      "All the people living in a particular area, city, or country.",
+      "The total number of inhabitants of a place.",
+      "A particular group of people.",
+      "The community of people in a region."
+    ],
+    "examples": [
+      "What is the population of China?",
+      "The world's population is increasing rapidly."
+    ]
+  },
+  {
+    "word": "a section",
+    "collision_group_id": "a_section",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חלק",
+    "definitions": [
+      "A separate part of something, such as of a book.",
+      "Any of the distinct parts into which something is divided.",
+      "A division of an area or object.",
+      "A segment."
+    ],
+    "examples": [
+      "I read the first section of the report.",
+      "The store has a large electronics section."
+    ]
+  },
+  {
+    "word": "translation",
+    "collision_group_id": "translation",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "תרגום",
+    "definitions": [
+      "Changing something that is spoken or written into another language.",
+      "The process of converting words from one language to another.",
+      "A written or spoken rendering of the meaning of a word in another language.",
+      "An interpretation."
+    ],
+    "examples": [
+      "The book is available in an English translation.",
+      "She works in translation."
+    ]
+  },
+  {
+    "word": "to deliver",
+    "collision_group_id": "to_deliver",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "למסור",
+    "definitions": [
+      "To bring something to someone's address.",
+      "To take goods, letters, or parcels to people's houses or places of work.",
+      "To give a speech or formal statement.",
+      "To provide something promised."
+    ],
+    "examples": [
+      "The postman delivers the mail every morning.",
+      "The company will deliver the furniture tomorrow."
+    ]
+  },
+  {
+    "word": "to observe",
+    "collision_group_id": "to_observe",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להתבונן",
+    "definitions": [
+      "To watch something carefully.",
+      "To notice or perceive something and register it as being significant.",
+      "To monitor.",
+      "To see and pay attention to."
+    ],
+    "examples": [
+      "Scientists observe the behavior of animals in the wild.",
+      "I observed that he was acting strangely."
+    ]
+  },
+  {
+    "word": "to cooperate",
+    "collision_group_id": "to_cooperate",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לשתף פעולה",
+    "definitions": [
+      "To work together for a particular purpose.",
+      "To act jointly with another or others.",
+      "To assist someone willingly.",
+      "To collaborate."
+    ],
+    "examples": [
+      "The two countries agreed to cooperate on the project.",
+      "We need everyone to cooperate to get this done."
+    ]
+  },
+  {
+    "word": "obvious",
+    "collision_group_id": "obvious",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "ברור",
+    "definitions": [
+      "Easy to notice or to understand.",
+      "Clearly perceived; plain to see.",
+      "Not difficult to comprehend.",
+      "Evident."
+    ],
+    "examples": [
+      "It was obvious that she was unhappy.",
+      "For obvious reasons, we can't go."
+    ]
+  },
+  {
+    "word": "strange",
+    "collision_group_id": "strange",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מוזר",
+    "definitions": [
+      "Unusual or unexpected.",
+      "Difficult to understand or explain.",
+      "Not familiar.",
+      "Peculiar."
+    ],
+    "examples": [
+      "I heard a strange noise last night.",
+      "He's been acting very strange lately."
+    ]
+  },
+  {
+    "word": "skilled",
+    "collision_group_id": "skilled",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מיומן",
+    "definitions": [
+      "Having the ability to do something well.",
+      "Having or showing the knowledge, ability, or training to perform a certain activity.",
+      "Expert at a particular task.",
+      "Proficient."
+    ],
+    "examples": [
+      "She is a highly skilled surgeon.",
+      "We need a skilled worker for this job."
+    ]
+  },
+  {
+    "word": "a schedule",
+    "collision_group_id": "a_schedule",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "לוח זמנים",
+    "definitions": [
+      "A plan of what you are going to do and when you will do it.",
+      "A timetable.",
+      "A program of events.",
+      "To plan an event for a particular time."
+    ],
+    "examples": [
+      "My schedule is very busy this week.",
+      "What is the schedule for today's events?"
+    ]
+  },
+  {
+    "word": "an event",
+    "collision_group_id": "an_event",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אירוע",
+    "definitions": [
+      "Something that happens, especially something important.",
+      "A planned public or social occasion.",
+      "An occurrence.",
+      "An item in a sports program."
+    ],
+    "examples": [
+      "The wedding was a memorable event.",
+      "The conference is a major annual event."
+    ]
+  },
+  {
+    "word": "a region",
+    "collision_group_id": "a_region",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אזור",
+    "definitions": [
+      "A large area of land.",
+      "An area having definable characteristics but not always fixed boundaries.",
+      "A particular part of a country or the world.",
+      "A district."
+    ],
+    "examples": [
+      "This region is famous for its wine.",
+      "The northern region of the country is mountainous."
+    ]
+  },
+  {
+    "word": "to be in charge of",
+    "collision_group_id": "to_be_in_charge_of",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להיות אחראי על",
+    "definitions": [
+      "To be responsible for something or someone.",
+      "To have control over a person, group, or task.",
+      "To be the leader of.",
+      "To manage."
+    ],
+    "examples": [
+      "She is in charge of the entire project.",
+      "Who is in charge here?"
+    ]
+  },
+  {
+    "word": "to consider",
+    "collision_group_id": "to_consider",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לשקול",
+    "definitions": [
+      "To think about something carefully.",
+      "To take something into account before making a decision.",
+      "To have an opinion about someone or something.",
+      "To contemplate."
+    ],
+    "examples": [
+      "I'm considering a job offer.",
+      "We need to consider all the options."
+    ]
+  },
+  {
+    "word": "to prevent",
+    "collision_group_id": "to_prevent",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "למנוע",
+    "definitions": [
+      "To stop something from happening.",
+      "To keep an event or action from occurring.",
+      "To hinder or obstruct.",
+      "To make something impossible."
+    ],
+    "examples": [
+      "The new measures are intended to prevent crime.",
+      "He tried to prevent me from leaving."
+    ]
+  },
+  {
+    "word": "a consequence",
+    "collision_group_id": "a_consequence",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "תוצאה",
+    "definitions": [
+      "A result of something that has happened.",
+      "An effect or outcome of an action.",
+      "Importance or relevance.",
+      "An aftermath."
+    ],
+    "examples": [
+      "He must face the consequences of his actions.",
+      "The accident was a tragic consequence of his carelessness."
+    ]
+  },
+  {
+    "word": "a challenge",
+    "collision_group_id": "a_challenge",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אתגר",
+    "definitions": [
+      "Something that is difficult to achieve.",
+      "A task or situation that tests someone's abilities.",
+      "An invitation to compete.",
+      "A difficult task."
+    ],
+    "examples": [
+      "Learning a new language is a real challenge.",
+      "She loves a good challenge."
+    ]
+  },
+  {
+    "word": "an opportunity",
+    "collision_group_id": "an_opportunity",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "הזדמנות",
+    "definitions": [
+      "A chance to do something.",
+      "A favorable time or set of circumstances for doing something.",
+      "A good occasion.",
+      "A possibility to achieve something."
+    ],
+    "examples": [
+      "This is a great opportunity to start a new career.",
+      "Don't miss this opportunity."
+    ]
+  },
+  {
+    "word": "properly",
+    "collision_group_id": "properly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "כראוי",
+    "definitions": [
+      "In the correct way.",
+      "Satisfactorily or correctly.",
+      "Appropriately.",
+      "Rightly."
+    ],
+    "examples": [
+      "Make sure you do the job properly.",
+      "The machine is not working properly."
+    ]
+  },
+  {
+    "word": "occasionally",
+    "collision_group_id": "occasionally",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "מדי פעם",
+    "definitions": [
+      "Sometimes; from time to time.",
+      "Now and then.",
+      "Infrequently.",
+      "On some occasions."
+    ],
+    "examples": [
+      "I see him occasionally.",
+      "We occasionally go out for dinner."
+    ]
+  },
+  {
+    "word": "familiar",
+    "collision_group_id": "familiar",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מוכר",
+    "definitions": [
+      "Something or someone that is well known to you.",
+      "Having a good knowledge of something.",
+      "Commonly seen or heard.",
+      "Informal and friendly."
+    ],
+    "examples": [
+      "His face looks familiar.",
+      "Are you familiar with this author?"
+    ]
+  },
+  {
+    "word": "visible",
+    "collision_group_id": "visible",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "נראה לעין",
+    "definitions": [
+      "Something that can be seen.",
+      "Able to be perceived by the eye.",
+      "Apparent.",
+      "Noticeable."
+    ],
+    "examples": [
+      "The mountains were visible in the distance.",
+      "There was a visible change in her mood."
+    ]
+  },
+  {
+    "word": "reliable",
+    "collision_group_id": "reliable",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "אמין",
+    "definitions": [
+      "Something that can be trusted to work well.",
+      "Consistently good in quality or performance.",
+      "Dependable.",
+      "Trustworthy."
+    ],
+    "examples": [
+      "This is a reliable car.",
+      "He is a very reliable employee."
+    ]
+  },
+  {
+    "word": "to carry on",
+    "collision_group_id": "to_carry_on",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להמשיך",
+    "definitions": [
+      "To continue doing something.",
+      "To proceed with an activity.",
+      "To not stop.",
+      "To behave in an excited or silly way."
+    ],
+    "examples": [
+      "Please carry on with your work.",
+      "She decided to carry on despite the difficulties."
+    ]
+  },
+  {
+    "word": "to come across",
+    "collision_group_id": "to_come_across",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להיתקל ב",
+    "definitions": [
+      "To find something by chance.",
+      "To meet someone accidentally.",
+      "To seem to be a particular type of person.",
+      "To encounter unexpectedly."
+    ],
+    "examples": [
+      "I came across an old photo while cleaning my room.",
+      "She comes across as a very confident person."
+    ]
+  },
+  {
+    "word": "quantity",
+    "collision_group_id": "quantity",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "כמות",
+    "definitions": [
+      "Amount.",
+      "The number of something.",
+      "A certain amount.",
+      "A large number."
+    ],
+    "examples": [
+      "We need a large quantity of food for the party.",
+      "Quality is more important than quantity."
+    ]
+  },
+  {
+    "word": "silence",
+    "collision_group_id": "silence",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "שקט",
+    "definitions": [
+      "No sound.",
+      "A complete absence of noise.",
+      "To make someone or something quiet.",
+      "The state of being quiet."
+    ],
+    "examples": [
+      "A complete silence fell over the room.",
+      "I need silence to concentrate."
+    ]
+  },
+  {
+    "word": "to reject",
+    "collision_group_id": "to_reject",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לדחות",
+    "definitions": [
+      "To refuse to accept something.",
+      "To not accept a proposal or offer.",
+      "To dismiss as inadequate.",
+      "To turn down."
+    ],
+    "examples": [
+      "He rejected her offer of help.",
+      "The committee rejected the proposal."
+    ]
+  },
+  {
+    "word": "to permit",
+    "collision_group_id": "to_permit",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להרשות",
+    "definitions": [
+      "To allow someone to do something.",
+      "To give permission for an action.",
+      "To authorize.",
+      "An official document giving permission."
+    ],
+    "examples": [
+      "Smoking is not permitted in this building.",
+      "The rules do not permit guests after midnight."
+    ]
+  },
+  {
+    "word": "to attempt",
+    "collision_group_id": "to_attempt",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לנסות",
+    "definitions": [
+      "To try to do something.",
+      "To make an effort to achieve something difficult.",
+      "An effort to do something.",
+      "To endeavor."
+    ],
+    "examples": [
+      "He attempted to break the world record.",
+      "She will attempt to climb the mountain."
+    ]
+  },
+  {
+    "word": "significant",
+    "collision_group_id": "significant",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "משמעותי",
+    "definitions": [
+      "Important; worthy of attention.",
+      "Sufficiently great or important.",
+      "Having a particular meaning.",
+      "Notable."
+    ],
+    "examples": [
+      "There has been a significant increase in prices.",
+      "This is a significant moment in our history."
+    ]
+  },
+  {
+    "word": "accurate",
+    "collision_group_id": "accurate",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מדויק",
+    "definitions": [
+      "Without any errors.",
+      "Correct in all details; exact.",
+      "Precise.",
+      "Free from mistakes."
+    ],
+    "examples": [
+      "The report is accurate.",
+      "He gave an accurate description of the event."
+    ]
+  },
+  {
+    "word": "optional",
+    "collision_group_id": "optional",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "אופציונלי",
+    "definitions": [
+      "Something you can choose not to do.",
+      "Available to be chosen but not obligatory.",
+      "Not compulsory.",
+      "Left to one's choice."
+    ],
+    "examples": [
+      "Attendance at the meeting is optional.",
+      "The extra features are optional."
+    ]
+  },
+  {
+    "word": "normally",
+    "collision_group_id": "normally",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בדרך כלל",
+    "definitions": [
+      "Usually.",
+      "Under normal or typical conditions.",
+      "In a regular way.",
+      "As a rule."
+    ],
+    "examples": [
+      "I normally go to bed at 11 PM.",
+      "The bus is normally on time."
+    ]
+  },
+  {
+    "word": "previously",
+    "collision_group_id": "previously",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "קודם לכן",
+    "definitions": [
+      "Before the present time.",
+      "At an earlier time.",
+      "Formerly.",
+      "In the past."
+    ],
+    "examples": [
+      "He was previously the CEO of the company.",
+      "I have seen this movie previously."
+    ]
+  },
+  {
+    "word": "briefly",
+    "collision_group_id": "briefly",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "בקיצור",
+    "definitions": [
+      "For a short time.",
+      "In a few words; concisely.",
+      "In a concise manner.",
+      "For a brief period."
+    ],
+    "examples": [
+      "He spoke briefly about his new book.",
+      "I'll be back briefly."
+    ]
+  },
+  {
+    "word": "to figure out",
+    "collision_group_id": "to_figure_out",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להבין",
+    "definitions": [
+      "To think about something until you understand it.",
+      "To solve a problem.",
+      "To come to understand.",
+      "To decipher."
+    ],
+    "examples": [
+      "I can't figure out how to solve this puzzle.",
+      "We need to figure out a better way."
+    ]
+  },
+  {
+    "word": "to take up",
+    "collision_group_id": "to_take_up",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להתחיל",
+    "definitions": [
+      "To begin doing something new.",
+      "To become interested in a new activity.",
+      "To occupy time or space.",
+      "To start a new hobby."
+    ],
+    "examples": [
+      "I've decided to take up painting.",
+      "This new project will take up a lot of my time."
+    ]
+  },
+  {
+    "word": "to consist of",
+    "collision_group_id": "to_consist_of",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להיות מורכב מ",
+    "definitions": [
+      "To be made up of something.",
+      "To be composed of.",
+      "To have as its parts.",
+      "To comprise."
+    ],
+    "examples": [
+      "The team consists of five members.",
+      "The book consists of three main parts."
+    ]
+  },
+  {
+    "word": "to supply",
+    "collision_group_id": "to_supply",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לספק",
+    "definitions": [
+      "To provide people with something they need or want.",
+      "To make something available.",
+      "To furnish with.",
+      "A stock of a resource."
+    ],
+    "examples": [
+      "The company supplies electricity to the city.",
+      "We can supply you with all the information you need."
+    ]
+  },
+  {
+    "word": "to recommend",
+    "collision_group_id": "to_recommend",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להמליץ",
+    "definitions": [
+      "To advise someone to do something.",
+      "To suggest something as being good or suitable.",
+      "To endorse.",
+      "To put forward with approval."
+    ],
+    "examples": [
+      "Can you recommend a good restaurant?",
+      "I would recommend that you see a doctor."
+    ]
+  },
+  {
+    "word": "to assume",
+    "collision_group_id": "to_assume",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להניח",
+    "definitions": [
+      "To believe that something might be true.",
+      "To suppose to be the case, without proof.",
+      "To take for granted.",
+      "To take on a responsibility."
+    ],
+    "examples": [
+      "I assume you're coming to the party.",
+      "Let's assume his story is true."
+    ]
+  },
+  {
+    "word": "in the long run",
+    "collision_group_id": "in_the_long_run",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בטווח הארוך",
+    "definitions": [
+      "Eventually; over a long period of time.",
+      "Ultimately.",
+      "In the future.",
+      "After a long time."
+    ],
+    "examples": [
+      "It may seem difficult now, but it will be worth it in the long run.",
+      "In the long run, we need to find a better solution."
+    ]
+  },
+  {
+    "word": "out of date",
+    "collision_group_id": "out_of_date",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מיושן",
+    "definitions": [
+      "Can no longer be used; old-fashioned.",
+      "No longer valid or current.",
+      "Obsolete.",
+      "Not up-to-date."
+    ],
+    "examples": [
+      "This information is out of date.",
+      "His ideas are a bit out of date."
+    ]
+  },
+  {
+    "word": "from time to time",
+    "collision_group_id": "from_time_to_time",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מדי פעם",
+    "definitions": [
+      "Sometimes.",
+      "Occasionally.",
+      "Now and then.",
+      "Infrequently."
+    ],
+    "examples": [
+      "I see him from time to time.",
+      "From time to time, I like to go for a walk."
+    ]
+  },
+  {
+    "word": "passenger",
+    "collision_group_id": "passenger",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "נוסע",
+    "definitions": [
+      "Someone who travels on a bus or a train.",
+      "A traveler in a vehicle, but not the driver.",
+      "A person who is conveyed in a vehicle.",
+      "A traveler."
+    ],
+    "examples": [
+      "The bus was full of passengers.",
+      "All passengers must have a valid ticket."
+    ]
+  },
+  {
+    "word": "to invent",
+    "collision_group_id": "to_invent",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להמציא",
+    "definitions": [
+      "To make a new type of thing.",
+      "To create or design something that has not existed before.",
+      "To make up a false story.",
+      "To fabricate."
+    ],
+    "examples": [
+      "Who invented the telephone?",
+      "He invented an excuse for being late."
+    ]
+  },
+  {
+    "word": "to request",
+    "collision_group_id": "to_request",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לבקש",
+    "definitions": [
+      "To ask for something.",
+      "To politely or formally ask for something.",
+      "An act of asking for something.",
+      "To demand."
+    ],
+    "examples": [
+      "I'd like to request a meeting with you.",
+      "He requested more information."
+    ]
+  },
+  {
+    "word": "to predict",
+    "collision_group_id": "to_predict",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לחזות",
+    "definitions": [
+      "To say something will happen in the future.",
+      "To forecast.",
+      "To make a statement about a future event.",
+      "To foretell."
+    ],
+    "examples": [
+      "It's difficult to predict the future.",
+      "They predicted that the company would fail."
+    ]
+  },
+  {
+    "word": "suggestion",
+    "collision_group_id": "suggestion",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "הצעה",
+    "definitions": [
+      "An idea you ask someone to think about.",
+      "A proposal or recommendation.",
+      "An idea put forward for consideration.",
+      "A hint or trace of something."
+    ],
+    "examples": [
+      "Do you have any suggestions?",
+      "I have a suggestion for you."
+    ]
+  },
+  {
+    "word": "tradition",
+    "collision_group_id": "tradition",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מסורת",
+    "definitions": [
+      "A way of life common to a group of people.",
+      "A long-established custom or belief.",
+      "A belief or behavior passed down within a group.",
+      "A convention."
+    ],
+    "examples": [
+      "It's a family tradition to have a big dinner on Sundays.",
+      "This is an ancient tradition."
+    ]
+  },
+  {
+    "word": "secret",
+    "collision_group_id": "secret",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "סוד",
+    "definitions": [
+      "Something that other people don't know about.",
+      "Something that is kept unknown or unseen by others.",
+      "Confidential information.",
+      "A mystery."
+    ],
+    "examples": [
+      "Can you keep a secret?",
+      "The meeting was held in secret."
+    ]
+  },
+  {
+    "word": "to give up",
+    "collision_group_id": "to_give_up",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לוותר",
+    "definitions": [
+      "To stop trying to do something.",
+      "To cease making an effort; to surrender.",
+      "To quit a habit.",
+      "To abandon an attempt."
+    ],
+    "examples": [
+      "Don't give up on your dreams.",
+      "He gave up smoking last year."
+    ]
+  },
+  {
+    "word": "to set out",
+    "collision_group_id": "to_set_out",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לצאת לדרך",
+    "definitions": [
+      "To start a journey.",
+      "To begin a trip or course of action.",
+      "To embark on a journey.",
+      "To arrange or display things."
+    ],
+    "examples": [
+      "They set out on their adventure early in the morning.",
+      "He set out to break the world record."
+    ]
+  }
+]

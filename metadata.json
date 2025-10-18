@@ -1,0 +1,5 @@
+{
+  "name": "Vocabulary Matcher",
+  "description": "An interactive web app to practice and learn English vocabulary by matching words to their definitions. The app features a '3-of-6' matching game, immediate feedback, and detailed flashcards for review.",
+  "requestFramePermissions": []
+}

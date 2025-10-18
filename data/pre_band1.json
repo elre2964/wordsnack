@@ -1,0 +1,3334 @@
+[
+  {
+    "word": "a few",
+    "collision_group_id": "a few",
+    "pos": "det, pron",
+    "family": "",
+    "translation_meaning": "כמה, מספר",
+    "definitions": [
+      "A small number of people or things.",
+      "Some; a few.",
+      "Not many, but more than one.",
+      "A small quantity."
+    ],
+    "examples": [
+      "I have a few questions to ask.",
+      "Only a few people came to the party."
+    ]
+  },
+  {
+    "word": "a/an",
+    "collision_group_id": "a/an",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "(תווית סתמית)",
+    "definitions": [
+      "Used to refer to a single, but not specific, person or thing.",
+      "The indefinite article.",
+      "One of any kind.",
+      "Used before a noun that is not specific."
+    ],
+    "examples": [
+      "I saw a cat in the garden.",
+      "She is an excellent student."
+    ]
+  },
+  {
+    "word": "add",
+    "collision_group_id": "add",
+    "pos": "v",
+    "family": "total",
+    "translation_meaning": "להוסיף",
+    "definitions": [
+      "To put something with another thing or group of things.",
+      "To join numbers together to get a total.",
+      "To say something extra.",
+      "To include another item."
+    ],
+    "examples": [
+      "Add the eggs to the flour and sugar.",
+      "If you add 2 and 3, you get 5."
+    ]
+  },
+  {
+    "word": "all the time",
+    "collision_group_id": "all the time",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "כל הזמן",
+    "definitions": [
+      "Continuously; without stopping.",
+      "Happening constantly.",
+      "During the entire period.",
+      "Always."
+    ],
+    "examples": [
+      "He talks about football all the time.",
+      "The baby cries all the time."
+    ]
+  },
+  {
+    "word": "and",
+    "collision_group_id": "and",
+    "pos": "conj",
+    "family": "in addition",
+    "translation_meaning": "וגם",
+    "definitions": [
+      "Used to connect two words, phrases, or clauses.",
+      "In addition to.",
+      "As well as.",
+      "A connecting word."
+    ],
+    "examples": [
+      "I like apples and bananas.",
+      "He is tall and strong."
+    ]
+  },
+  {
+    "word": "Are you ready?",
+    "collision_group_id": "Are you ready?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "את/ה מוכן/ה?",
+    "definitions": [
+      "A question to ask if someone is prepared for something.",
+      "A way to check if someone is prepared.",
+      "Asking if someone is in a suitable state for an action.",
+      "A query about preparedness."
+    ],
+    "examples": [
+      "Are you ready to go?",
+      "The test is about to start, are you ready?"
+    ]
+  },
+  {
+    "word": "as",
+    "collision_group_id": "as",
+    "pos": "adv, prep",
+    "family": "job someone has",
+    "translation_meaning": "בתור, כ...",
+    "definitions": [
+      "Used to describe the function or role of a person or thing.",
+      "In the capacity of.",
+      "When; while.",
+      "Because."
+    ],
+    "examples": [
+      "She works as a teacher.",
+      "He used his coat as a blanket."
+    ]
+  },
+  {
+    "word": "ask",
+    "collision_group_id": "ask",
+    "pos": "v",
+    "family": "enquire",
+    "translation_meaning": "לשאול",
+    "definitions": [
+      "To say something in order to get an answer or information.",
+      "To make a query.",
+      "To request information.",
+      "To pose a question."
+    ],
+    "examples": [
+      "Can I ask you a question?",
+      "He asked for directions to the station."
+    ]
+  },
+  {
+    "word": "ask for",
+    "collision_group_id": "ask for",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לבקש",
+    "definitions": [
+      "To request to have or be given something.",
+      "To make a request for an item.",
+      "To ask to speak to someone.",
+      "To inquire about something."
+    ],
+    "examples": [
+      "He asked for a glass of water.",
+      "She is too shy to ask for help."
+    ]
+  },
+  {
+    "word": "at",
+    "collision_group_id": "at",
+    "pos": "prep",
+    "family": "point of time",
+    "translation_meaning": "ב (שעה)",
+    "definitions": [
+      "Used to state a specific time.",
+      "Indicating a particular moment.",
+      "Used to state the location of an event.",
+      "Used to state a person's age."
+    ],
+    "examples": [
+      "The meeting is at 3 o'clock.",
+      "I'll see you at noon."
+    ]
+  },
+  {
+    "word": "at home",
+    "collision_group_id": "at home",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בבית",
+    "definitions": [
+      "In or to one's own house.",
+      "Inside one's place of residence.",
+      "Feeling comfortable and relaxed.",
+      "In a domestic environment."
+    ],
+    "examples": [
+      "I'm staying at home tonight.",
+      "He is not at home right now."
+    ]
+  },
+  {
+    "word": "bad",
+    "collision_group_id": "bad",
+    "pos": "adj",
+    "family": "unpleasant",
+    "translation_meaning": "רע",
+    "definitions": [
+      "Not good; of a poor quality.",
+      "Unpleasant or unwelcome.",
+      "Severe or serious.",
+      "Evil or immoral."
+    ],
+    "examples": [
+      "The weather was really bad yesterday.",
+      "I had a bad dream last night."
+    ]
+  },
+  {
+    "word": "bag",
+    "collision_group_id": "bag",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "תיק, שקית",
+    "definitions": [
+      "A flexible container with an opening at the top, used for carrying things.",
+      "A small sack.",
+      "A suitcase or handbag.",
+      "A container for carrying items."
+    ],
+    "examples": [
+      "She put her books in her school bag.",
+      "I need a plastic bag for my groceries."
+    ]
+  },
+  {
+    "word": "be going to do/be something",
+    "collision_group_id": "be going to do/be sth",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "עומד לקרות",
+    "definitions": [
+      "Used to express a future plan or intention.",
+      "Indicating a future event.",
+      "A way to talk about the future.",
+      "A plan or prediction for what will happen."
+    ],
+    "examples": [
+      "I am going to visit my grandparents this weekend.",
+      "It looks like it is going to rain."
+    ]
+  },
+  {
+    "word": "be",
+    "collision_group_id": "be",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "להיות",
+    "definitions": [
+      "To exist or live.",
+      "To have a particular quality or state.",
+      "A linking verb.",
+      "A state of existence."
+    ],
+    "examples": [
+      "I want to be a doctor when I grow up.",
+      "The book is on the table."
+    ]
+  },
+  {
+    "word": "bed",
+    "collision_group_id": "bed",
+    "pos": "n",
+    "family": "furniture",
+    "translation_meaning": "מיטה",
+    "definitions": [
+      "A piece of furniture used for sleeping on.",
+      "A place for rest or sleep.",
+      "A plot of ground for plants.",
+      "A base or foundation."
+    ],
+    "examples": [
+      "It's time to go to bed.",
+      "The room has a large, comfortable bed."
+    ]
+  },
+  {
+    "word": "best",
+    "collision_group_id": "best",
+    "pos": "adj",
+    "family": "better than all",
+    "translation_meaning": "הכי טוב",
+    "definitions": [
+      "Of the highest quality or excellence.",
+      "The most suitable or desirable.",
+      "Superior to all others.",
+      "The superlative of 'good'."
+    ],
+    "examples": [
+      "This is the best book I've ever read.",
+      "She is my best friend."
+    ]
+  },
+  {
+    "word": "big",
+    "collision_group_id": "big",
+    "pos": "adj",
+    "family": "large",
+    "translation_meaning": "גדול",
+    "definitions": [
+      "Of a considerable size or extent.",
+      "Large in scale.",
+      "Important or serious.",
+      "Not small."
+    ],
+    "examples": [
+      "He lives in a big house.",
+      "This is a big problem."
+    ]
+  },
+  {
+    "word": "bit",
+    "collision_group_id": "bit",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מעט, חתיכה",
+    "definitions": [
+      "A small piece, part, or quantity of something.",
+      "A short period of time.",
+      "A unit of information in a computer.",
+      "A small amount."
+    ],
+    "examples": [
+      "Can I have a little bit of sugar?",
+      "Wait a bit, I'm almost ready."
+    ]
+  },
+  {
+    "word": "both",
+    "collision_group_id": "both",
+    "pos": "det, pron",
+    "family": "",
+    "translation_meaning": "שניהם",
+    "definitions": [
+      "Used to refer to two people or things, regarded and identified together.",
+      "The one and the other.",
+      "The pair of them.",
+      "Referring to two items."
+    ],
+    "examples": [
+      "Both of my parents are doctors.",
+      "I like both of these shirts."
+    ]
+  },
+  {
+    "word": "box",
+    "collision_group_id": "box",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "קופסה",
+    "definitions": [
+      "A container with a flat base and sides, typically square or rectangular.",
+      "A container for holding things.",
+      "To fight with the fists for sport.",
+      "A partitioned area in a theater."
+    ],
+    "examples": [
+      "The present was in a large box.",
+      "I need a box to store these old photos."
+    ]
+  },
+  {
+    "word": "boy",
+    "collision_group_id": "boy",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ילד",
+    "definitions": [
+      "A male child or young man.",
+      "A young male.",
+      "A son.",
+      "An informal term for a man."
+    ],
+    "examples": [
+      "The little boy was playing with his toys.",
+      "There are more boys than girls in this class."
+    ]
+  },
+  {
+    "word": "bus",
+    "collision_group_id": "bus",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אוטובוס",
+    "definitions": [
+      "A large motor vehicle carrying passengers by road.",
+      "A public transport vehicle.",
+      "To travel by a large passenger vehicle.",
+      "A vehicle for many people."
+    ],
+    "examples": [
+      "I take the bus to school every day.",
+      "Let's wait for the next bus."
+    ]
+  },
+  {
+    "word": "bus stop",
+    "collision_group_id": "bus stop",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "תחנת אוטובוס",
+    "definitions": [
+      "A designated place where a public transport vehicle halts for passengers.",
+      "A place where people wait for a bus.",
+      "A stop on a bus route.",
+      "A designated waiting area for a bus."
+    ],
+    "examples": [
+      "The bus stop is just around the corner.",
+      "I'm waiting at the bus stop."
+    ]
+  },
+  {
+    "word": "but",
+    "collision_group_id": "but",
+    "pos": "conj",
+    "family": "contrast",
+    "translation_meaning": "אבל",
+    "definitions": [
+      "Used to introduce a phrase or clause contrasting with what has already been mentioned.",
+      "However.",
+      "Except.",
+      "A conjunction for showing a difference."
+    ],
+    "examples": [
+      "I want to go, but I'm too tired.",
+      "He is rich, but he is not happy."
+    ]
+  },
+  {
+    "word": "camp",
+    "collision_group_id": "camp_noun",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מחנה",
+    "definitions": [
+      "A place with temporary accommodation of tents, huts, or other structures.",
+      "A place for holidays or activities.",
+      "To live for a time in a tent.",
+      "A group with a shared belief."
+    ],
+    "examples": [
+      "We stayed at a camp by the lake.",
+      "I'm going to a summer camp this year."
+    ]
+  },
+  {
+    "word": "can",
+    "collision_group_id": "can_ability",
+    "pos": "v",
+    "family": "modal, ability",
+    "translation_meaning": "יכול",
+    "definitions": [
+      "To be able to do something.",
+      "Having the power or skill to do something.",
+      "Used to express possibility.",
+      "A metal container."
+    ],
+    "examples": [
+      "I can speak three languages.",
+      "Can you help me with this?"
+    ]
+  },
+  {
+    "word": "cat",
+    "collision_group_id": "cat",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חתול",
+    "definitions": [
+      "A small domesticated carnivorous mammal with soft fur.",
+      "A feline animal.",
+      "A common household pet.",
+      "A small furry animal."
+    ],
+    "examples": [
+      "I have a pet cat.",
+      "The cat was sleeping on the sofa."
+    ]
+  },
+  {
+    "word": "come back",
+    "collision_group_id": "come back",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לחזור",
+    "definitions": [
+      "To return to a place.",
+      "To arrive back at a location.",
+      "To return to a previous state.",
+      "To be remembered."
+    ],
+    "examples": [
+      "What time will you come back?",
+      "Come back soon!"
+    ]
+  },
+  {
+    "word": "cost",
+    "collision_group_id": "cost",
+    "pos": "n, v",
+    "family": "",
+    "translation_meaning": "עלות, לעלות",
+    "definitions": [
+      "The amount of money required to buy something.",
+      "To require the payment of a specified sum of money.",
+      "A price.",
+      "An amount that has to be paid."
+    ],
+    "examples": [
+      "How much does this cost?",
+      "The cost of living is very high in this city."
+    ]
+  },
+  {
+    "word": "cut",
+    "collision_group_id": "cut_verb",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לחתוך",
+    "definitions": [
+      "To make an opening or wound with a sharp-edged tool.",
+      "To divide into pieces with a sharp implement.",
+      "To reduce the amount of something.",
+      "An injury from a sharp object."
+    ],
+    "examples": [
+      "Be careful not to cut yourself with that knife.",
+      "She cut the cake into six pieces."
+    ]
+  },
+  {
+    "word": "dad",
+    "collision_group_id": "dad",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אבא",
+    "definitions": [
+      "One's father.",
+      "An informal term for father.",
+      "A male parent.",
+      "A term of address for one's father."
+    ],
+    "examples": [
+      "My dad is a doctor.",
+      "I'm going to visit my dad this weekend."
+    ]
+  },
+  {
+    "word": "desk",
+    "collision_group_id": "desk",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "שולחן כתיבה",
+    "definitions": [
+      "A piece of furniture with a flat top and one or more drawers, used as a workplace.",
+      "A table for writing or working at.",
+      "A counter in a hotel or office.",
+      "A workspace."
+    ],
+    "examples": [
+      "He was sitting at his desk working on his computer.",
+      "The books are on the desk."
+    ]
+  },
+  {
+    "word": "do",
+    "collision_group_id": "do_aux",
+    "pos": "aux v",
+    "family": "questions/negatives",
+    "translation_meaning": "(פועל עזר)",
+    "definitions": [
+      "Used to form questions and negative sentences.",
+      "A helping verb.",
+      "Used to add emphasis.",
+      "To perform an action."
+    ],
+    "examples": [
+      "Do you like ice cream?",
+      "I don't know the answer."
+    ]
+  },
+  {
+    "word": "Do you have...?",
+    "collision_group_id": "Do you have …?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "האם יש לך...?",
+    "definitions": [
+      "A question to ask if someone possesses something.",
+      "A way to ask about ownership.",
+      "A query about having something.",
+      "A question about possession."
+    ],
+    "examples": [
+      "Do you have a pen I can borrow?",
+      "Do you have any brothers or sisters?"
+    ]
+  },
+  {
+    "word": "Do you know...?",
+    "collision_group_id": "Do you know …?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "האם אתה יודע...?",
+    "definitions": [
+      "A question to ask if someone has information.",
+      "A way to ask about knowledge.",
+      "A query about awareness of a fact.",
+      "A question about information."
+    ],
+    "examples": [
+      "Do you know what time it is?",
+      "Do you know where the station is?"
+    ]
+  },
+  {
+    "word": "Do you like...?",
+    "collision_group_id": "Do you like …?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "האם אתה אוהב...?",
+    "definitions": [
+      "A question to ask about someone's preference.",
+      "A way to ask if someone enjoys something.",
+      "A query about one's taste.",
+      "A question about liking something."
+    ],
+    "examples": [
+      "Do you like chocolate ice cream?",
+      "Do you like to read books?"
+    ]
+  },
+  {
+    "word": "dog",
+    "collision_group_id": "dog",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "כלב",
+    "definitions": [
+      "A domesticated carnivorous mammal with a long snout and a barking cry.",
+      "A canine animal.",
+      "A common household pet.",
+      "A furry animal often kept as a companion."
+    ],
+    "examples": [
+      "I have a pet dog.",
+      "The dog was barking."
+    ]
+  },
+  {
+    "word": "egg",
+    "collision_group_id": "egg",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ביצה",
+    "definitions": [
+      "An oval object laid by female birds, reptiles, etc., and containing a new life.",
+      "A common food item from a chicken.",
+      "A female reproductive cell.",
+      "A food item often eaten for breakfast."
+    ],
+    "examples": [
+      "I had a boiled egg for breakfast.",
+      "We need to buy some eggs."
+    ]
+  },
+  {
+    "word": "end",
+    "collision_group_id": "end",
+    "pos": "n, v",
+    "family": "",
+    "translation_meaning": "סוף, לסיים",
+    "definitions": [
+      "The final part of something.",
+      "To come or bring to a conclusion.",
+      "A finish.",
+      "The last part."
+    ],
+    "examples": [
+      "This is the end of the movie.",
+      "The story has a happy end."
+    ]
+  },
+  {
+    "word": "Excuse me please",
+    "collision_group_id": "Excuse me please",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "סלח/י לי בבקשה",
+    "definitions": [
+      "A polite phrase to get someone's attention.",
+      "A way to apologize for interrupting.",
+      "A courteous phrase to ask someone to move.",
+      "A polite expression."
+    ],
+    "examples": [
+      "Excuse me please, can you tell me the time?",
+      "Excuse me please, you dropped your wallet."
+    ]
+  },
+  {
+    "word": "fact",
+    "collision_group_id": "fact",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "עובדה",
+    "definitions": [
+      "A thing that is known or proved to be true.",
+      "A piece of information that is true.",
+      "Reality.",
+      "Something that has actually happened."
+    ],
+    "examples": [
+      "It is a fact that the earth is round.",
+      "Tell me an interesting fact."
+    ]
+  },
+  {
+    "word": "fan",
+    "collision_group_id": "fan_machine",
+    "pos": "n",
+    "family": "machine",
+    "translation_meaning": "מאוורר",
+    "definitions": [
+      "A device with rotating blades that creates a current of air for cooling.",
+      "A machine for moving air.",
+      "An admirer of a person or thing.",
+      "A cooling device."
+    ],
+    "examples": [
+      "It's hot, can you turn on the fan?",
+      "The fan is making a strange noise."
+    ]
+  },
+  {
+    "word": "fast",
+    "collision_group_id": "fast",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "מהיר",
+    "definitions": [
+      "Moving or capable of moving at high speed.",
+      "Happening quickly.",
+      "Not slow.",
+      "Rapid."
+    ],
+    "examples": [
+      "He is a very fast runner.",
+      "This is a fast train."
+    ]
+  },
+  {
+    "word": "fifth",
+    "collision_group_id": "fifth",
+    "pos": "ordinal number",
+    "family": "",
+    "translation_meaning": "חמישי",
+    "definitions": [
+      "Constituting number five in a sequence.",
+      "The number 5 in an order.",
+      "The position after fourth.",
+      "One of five equal parts."
+    ],
+    "examples": [
+      "This is the fifth time I've called you.",
+      "He finished in fifth place."
+    ]
+  },
+  {
+    "word": "film",
+    "collision_group_id": "film",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "סרט",
+    "definitions": [
+      "A story or event recorded by a camera as a set of moving images.",
+      "A movie.",
+      "A thin flexible strip coated with a light-sensitive emulsion for exposure in a camera.",
+      "To make a movie."
+    ],
+    "examples": [
+      "Let's watch a film tonight.",
+      "What is your favorite film?"
+    ]
+  },
+  {
+    "word": "film star",
+    "collision_group_id": "film star",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "כוכב קולנוע",
+    "definitions": [
+      "A very famous and popular actor or actress in movies.",
+      "A movie celebrity.",
+      "A leading actor in films.",
+      "A very famous screen actor."
+    ],
+    "examples": [
+      "He is a famous Hollywood film star.",
+      "She dreams of becoming a film star."
+    ]
+  },
+  {
+    "word": "Fine!",
+    "collision_group_id": "Fine!",
+    "pos": "exclam",
+    "family": "",
+    "translation_meaning": "בסדר!",
+    "definitions": [
+      "An expression of agreement or acceptance.",
+      "Okay.",
+      "Used to show you agree to something.",
+      "An exclamation of consent."
+    ],
+    "examples": [
+      "Fine, I'll do it your way.",
+      "You want to go now? Fine!"
+    ]
+  },
+  {
+    "word": "friend",
+    "collision_group_id": "friend",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חבר",
+    "definitions": [
+      "A person whom one knows and with whom one has a bond of mutual affection.",
+      "A companion.",
+      "A person you like and trust.",
+      "A pal."
+    ],
+    "examples": [
+      "He is my best friend.",
+      "I'm going to the movies with a friend."
+    ]
+  },
+  {
+    "word": "from",
+    "collision_group_id": "from_origin",
+    "pos": "prep",
+    "family": "origin",
+    "translation_meaning": "מ (מקור)",
+    "definitions": [
+      "Indicating the point in space at which a journey, motion, or action starts.",
+      "The starting point.",
+      "Indicating the source of something.",
+      "Out of."
+    ],
+    "examples": [
+      "I am from Israel.",
+      "The train from London is late."
+    ]
+  },
+  {
+    "word": "fun",
+    "collision_group_id": "fun",
+    "pos": "n",
+    "family": "pleasure",
+    "translation_meaning": "כיף",
+    "definitions": [
+      "Enjoyment, amusement, or lighthearted pleasure.",
+      "Something that is enjoyable.",
+      "Amusing and entertaining.",
+      "A good time."
+    ],
+    "examples": [
+      "We had a lot of fun at the party.",
+      "It was a fun day."
+    ]
+  },
+  {
+    "word": "get",
+    "collision_group_id": "get_obtain",
+    "pos": "v",
+    "family": "obtain, received",
+    "translation_meaning": "לקבל, להשיג",
+    "definitions": [
+      "To receive, obtain, or buy something.",
+      "To come to have something.",
+      "To acquire.",
+      "To fetch."
+    ],
+    "examples": [
+      "I got a new bike for my birthday.",
+      "Can you get me a glass of water?"
+    ]
+  },
+  {
+    "word": "get up",
+    "collision_group_id": "get up",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לקום",
+    "definitions": [
+      "To rise from bed after sleeping.",
+      "To stand up.",
+      "To get out of bed.",
+      "To rise to one's feet."
+    ],
+    "examples": [
+      "I get up at 7 o'clock every morning.",
+      "He got up from his chair."
+    ]
+  },
+  {
+    "word": "gift",
+    "collision_group_id": "gift",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "מתנה",
+    "definitions": [
+      "A thing given willingly to someone without payment; a present.",
+      "A natural ability or talent.",
+      "Something given to someone.",
+      "A special talent."
+    ],
+    "examples": [
+      "I received a lovely gift for my birthday.",
+      "She has a gift for music."
+    ]
+  },
+  {
+    "word": "glad",
+    "collision_group_id": "glad",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "שמח",
+    "definitions": [
+      "Pleased; delighted.",
+      "Happy about something.",
+      "Feeling joy or pleasure.",
+      "Content."
+    ],
+    "examples": [
+      "I'm so glad to see you.",
+      "She was glad that the exams were over."
+    ]
+  },
+  {
+    "word": "go",
+    "collision_group_id": "go",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "ללכת",
+    "definitions": [
+      "To move from one place to another; to travel.",
+      "To proceed.",
+      "To attend an event.",
+      "To leave a place."
+    ],
+    "examples": [
+      "I'm going to the store.",
+      "Let's go for a walk."
+    ]
+  },
+  {
+    "word": "go away",
+    "collision_group_id": "go away",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "ללכת, לעזוב",
+    "definitions": [
+      "To leave a place or a person.",
+      "To depart.",
+      "To disappear.",
+      "To travel somewhere for a vacation."
+    ],
+    "examples": [
+      "Please go away and leave me alone.",
+      "We're going away for the weekend."
+    ]
+  },
+  {
+    "word": "go out",
+    "collision_group_id": "go out_leave",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לצאת",
+    "definitions": [
+      "To leave one's home to go to a social event.",
+      "To have a romantic relationship.",
+      "(of a light) to be extinguished.",
+      "To leave the house."
+    ],
+    "examples": [
+      "Are you going out tonight?",
+      "The lights went out."
+    ]
+  },
+  {
+    "word": "Good luck!",
+    "collision_group_id": "Good luck!",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בהצלחה!",
+    "definitions": [
+      "An expression of good wishes for someone's success.",
+      "Wishing someone a favorable outcome.",
+      "A way to wish someone well.",
+      "An encouraging phrase."
+    ],
+    "examples": [
+      "Good luck on your exam!",
+      "I wish you the best of luck."
+    ]
+  },
+  {
+    "word": "good morning",
+    "collision_group_id": "good morning / goodbye / bye",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בוקר טוב",
+    "definitions": [
+      "A polite greeting used in the morning.",
+      "A morning salutation.",
+      "A way to say hello in the early part of the day.",
+      "A cheerful morning greeting."
+    ],
+    "examples": [
+      "Good morning, how are you?",
+      "He said good morning to his colleagues."
+    ]
+  },
+  {
+    "word": "goodbye",
+    "collision_group_id": "good morning / goodbye / bye",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "להתראות",
+    "definitions": [
+      "Used to express good wishes when parting.",
+      "A farewell.",
+      "A way to say you are leaving.",
+      "An expression of parting."
+    ],
+    "examples": [
+      "Goodbye, see you tomorrow.",
+      "She waved goodbye to her friends."
+    ]
+  },
+  {
+    "word": "half",
+    "collision_group_id": "half",
+    "pos": "adj, n",
+    "family": "",
+    "translation_meaning": "חצי",
+    "definitions": [
+      "Either of two equal or corresponding parts into which something is or can be divided.",
+      "50 percent of something.",
+      "One of two equal parts.",
+      "A part of a whole."
+    ],
+    "examples": [
+      "I'll be back in half an hour.",
+      "She ate half of the pizza."
+    ]
+  },
+  {
+    "word": "hand",
+    "collision_group_id": "hand",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "יד",
+    "definitions": [
+      "The end part of a person's arm beyond the wrist, including the palm, fingers, and thumb.",
+      "To give something to someone.",
+      "A part of the body.",
+      "The pointer on a clock or watch."
+    ],
+    "examples": [
+      "He was holding a book in his hand.",
+      "Can you give me a hand with this?"
+    ]
+  },
+  {
+    "word": "Happy birthday!",
+    "collision_group_id": "Happy birthday!",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "יום הולדת שמח!",
+    "definitions": [
+      "An expression of good wishes on a person's birthday.",
+      "A greeting for someone's special day.",
+      "A way to celebrate someone's birth.",
+      "A cheerful birthday greeting."
+    ],
+    "examples": [
+      "Happy birthday, I hope you have a great day!",
+      "She sang 'Happy Birthday' to him."
+    ]
+  },
+  {
+    "word": "hat",
+    "collision_group_id": "hat",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "כובע",
+    "definitions": [
+      "A covering for the head, worn for warmth, as a fashion item, or as part of a uniform.",
+      "A piece of headwear.",
+      "A head covering.",
+      "An item worn on the head."
+    ],
+    "examples": [
+      "She was wearing a big, floppy hat.",
+      "He took off his hat when he entered the room."
+    ]
+  },
+  {
+    "word": "have",
+    "collision_group_id": "have",
+    "pos": "v",
+    "family": "possess",
+    "translation_meaning": "יש ל...",
+    "definitions": [
+      "To own, hold, or possess something.",
+      "To experience or undergo.",
+      "An auxiliary verb to form perfect tenses.",
+      "To be in possession of."
+    ],
+    "examples": [
+      "I have a new car.",
+      "Do you have any brothers or sisters?"
+    ]
+  },
+  {
+    "word": "Have a good day!",
+    "collision_group_id": "Have a good day!",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "שיהיה לך יום טוב!",
+    "definitions": [
+      "A polite phrase said when parting from someone.",
+      "An expression of good wishes for the day.",
+      "A friendly farewell.",
+      "A way to wish someone well for the day."
+    ],
+    "examples": [
+      "Have a good day at work!",
+      "He smiled and said, 'Have a good day!'"
+    ]
+  },
+  {
+    "word": "he",
+    "collision_group_id": "he",
+    "pos": "pron",
+    "family": "",
+    "translation_meaning": "הוא",
+    "definitions": [
+      "Used to refer to a man, boy, or male animal previously mentioned.",
+      "The third-person singular male pronoun.",
+      "Referring to a male person.",
+      "A male individual."
+    ],
+    "examples": [
+      "He is my brother.",
+      "Where is he going?"
+    ]
+  },
+  {
+    "word": "hello",
+    "collision_group_id": "hello",
+    "pos": "exclam",
+    "family": "",
+    "translation_meaning": "שלום",
+    "definitions": [
+      "Used as a greeting or to begin a telephone conversation.",
+      "A common salutation.",
+      "A way to greet someone.",
+      "An expression of greeting."
+    ],
+    "examples": [
+      "Hello, how are you?",
+      "She said hello to me in the street."
+    ]
+  },
+  {
+    "word": "help",
+    "collision_group_id": "help",
+    "pos": "v",
+    "family": "assist",
+    "translation_meaning": "לעזור",
+    "definitions": [
+      "To make it easier for someone to do something by offering one's services or resources.",
+      "To assist.",
+      "The action of assisting someone.",
+      "To provide support."
+    ],
+    "examples": [
+      "Can you help me with this heavy box?",
+      "He offered to help me."
+    ]
+  },
+  {
+    "word": "her",
+    "collision_group_id": "her",
+    "pos": "pron, adj",
+    "family": "",
+    "translation_meaning": "שלה, אותה",
+    "definitions": [
+      "Used as the object of a verb or preposition to refer to a female person.",
+      "Belonging to or associated with a female person.",
+      "The possessive and objective form of 'she'.",
+      "Referring to a female."
+    ],
+    "examples": [
+      "I gave the book to her.",
+      "This is her car."
+    ]
+  },
+  {
+    "word": "him",
+    "collision_group_id": "him",
+    "pos": "pron",
+    "family": "",
+    "translation_meaning": "שלו, אותו",
+    "definitions": [
+      "Used as the object of a verb or preposition to refer to a male person.",
+      "The objective form of 'he'.",
+      "Referring to a male.",
+      "A male individual."
+    ],
+    "examples": [
+      "I saw him at the party.",
+      "She gave the book to him."
+    ]
+  },
+  {
+    "word": "hit",
+    "collision_group_id": "hit_strike",
+    "pos": "v",
+    "family": "strike, touch",
+    "translation_meaning": "להכות",
+    "definitions": [
+      "To bring one's hand or a tool into contact with someone or something quickly and forcefully.",
+      "To strike.",
+      "A successful and popular song or film.",
+      "To touch with force."
+    ],
+    "examples": [
+      "He hit the ball with the bat.",
+      "She hit him on the arm."
+    ]
+  },
+  {
+    "word": "hot",
+    "collision_group_id": "hot_temp",
+    "pos": "adj",
+    "family": "high temperature",
+    "translation_meaning": "חם",
+    "definitions": [
+      "Having a high degree of heat.",
+      "At a high temperature.",
+      "Spicy.",
+      "Popular."
+    ],
+    "examples": [
+      "It's very hot today.",
+      "The coffee is too hot to drink."
+    ]
+  },
+  {
+    "word": "How are you?",
+    "collision_group_id": "How are you?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מה שלומך?",
+    "definitions": [
+      "A polite greeting to ask about someone's well-being.",
+      "A common salutation.",
+      "A way to ask about a person's condition.",
+      "A friendly inquiry."
+    ],
+    "examples": [
+      "Hello, how are you?",
+      "I haven't seen you in a while, how are you?"
+    ]
+  },
+  {
+    "word": "How do you say...?",
+    "collision_group_id": "How do you say …?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "איך אומרים...?",
+    "definitions": [
+      "A question to ask for the translation of a word or phrase.",
+      "A way to ask for a word in another language.",
+      "A query about pronunciation or translation.",
+      "A linguistic question."
+    ],
+    "examples": [
+      "How do you say 'hello' in French?",
+      "How do you say this word?"
+    ]
+  },
+  {
+    "word": "How many?",
+    "collision_group_id": "How many?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "כמה?",
+    "definitions": [
+      "A question to ask about the quantity of countable nouns.",
+      "Asking about a number.",
+      "A query about quantity.",
+      "Used for countable items."
+    ],
+    "examples": [
+      "How many people are coming to the party?",
+      "How many books do you have?"
+    ]
+  },
+  {
+    "word": "How much?",
+    "collision_group_id": "How much?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "כמה?",
+    "definitions": [
+      "A question to ask about the amount or price of something.",
+      "Asking about a quantity or cost.",
+      "A query about uncountable nouns.",
+      "Used for amount or price."
+    ],
+    "examples": [
+      "How much does this cost?",
+      "How much sugar do you want in your coffee?"
+    ]
+  },
+  {
+    "word": "How old are you?",
+    "collision_group_id": "How old are you?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בן/בת כמה את/ה?",
+    "definitions": [
+      "A question to ask about a person's age.",
+      "A query about how many years someone has lived.",
+      "A common question about age.",
+      "Asking for someone's age."
+    ],
+    "examples": [
+      "How old are you?",
+      "He asked the child, 'How old are you?'"
+    ]
+  },
+  {
+    "word": "I",
+    "collision_group_id": "I",
+    "pos": "pron",
+    "family": "",
+    "translation_meaning": "אני",
+    "definitions": [
+      "Used by a speaker to refer to himself or herself.",
+      "The first-person singular pronoun.",
+      "The person who is speaking or writing.",
+      "The self."
+    ],
+    "examples": [
+      "I am a student.",
+      "I live in this city."
+    ]
+  },
+  {
+    "word": "I am ...",
+    "collision_group_id": "I am/I'm ... (fine, sick, hungry, tired, thirsty, sad, happy …).",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אני...",
+    "definitions": [
+      "Used to describe one's current state or feeling.",
+      "A statement about one's condition.",
+      "A way to express how you feel.",
+      "The first-person form of 'to be'."
+    ],
+    "examples": [
+      "I am hungry.",
+      "I'm very happy to see you."
+    ]
+  },
+  {
+    "word": "I am ... years old.",
+    "collision_group_id": "I am/I'm … years old.",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אני בן/בת...",
+    "definitions": [
+      "A way to state one's age.",
+      "A phrase to say how many years you have lived.",
+      "A statement about one's age.",
+      "Expressing one's age."
+    ],
+    "examples": [
+      "I am 25 years old.",
+      "I'm ten years old."
+    ]
+  },
+  {
+    "word": "I feel well",
+    "collision_group_id": "I feel well",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אני מרגיש/ה טוב",
+    "definitions": [
+      "To be in a good state of health.",
+      "To not be sick.",
+      "To feel healthy.",
+      "To be in good physical condition."
+    ],
+    "examples": [
+      "I feel well enough to go to work.",
+      "After a good night's sleep, I feel well."
+    ]
+  },
+  {
+    "word": "I have...",
+    "collision_group_id": "I have …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "יש לי...",
+    "definitions": [
+      "Used to indicate possession.",
+      "A statement of ownership.",
+      "A way to say that you own something.",
+      "Expressing possession."
+    ],
+    "examples": [
+      "I have a dog.",
+      "I have a question."
+    ]
+  },
+  {
+    "word": "I like... / I don't like...",
+    "collision_group_id": "I like … I don't like …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אני אוהב/ת... / אני לא אוהב/ת...",
+    "definitions": [
+      "Used to express preference or dislike.",
+      "A way to state your tastes.",
+      "Expressing enjoyment or lack thereof.",
+      "A statement of personal preference."
+    ],
+    "examples": [
+      "I like chocolate ice cream.",
+      "I don't like horror movies."
+    ]
+  },
+  {
+    "word": "I live in...",
+    "collision_group_id": "I live in …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אני גר/ה ב...",
+    "definitions": [
+      "Used to state your place of residence.",
+      "A way to say where your home is.",
+      "A statement about your location.",
+      "Expressing one's place of abode."
+    ],
+    "examples": [
+      "I live in a small town.",
+      "I live in an apartment."
+    ]
+  },
+  {
+    "word": "if",
+    "collision_group_id": "if_provided",
+    "pos": "conj",
+    "family": "provided",
+    "translation_meaning": "אם",
+    "definitions": [
+      "On the condition that.",
+      "Introducing a conditional clause.",
+      "In the event that.",
+      "Supposing that."
+    ],
+    "examples": [
+      "I'll go if you go.",
+      "If you're tired, you should rest."
+    ]
+  },
+  {
+    "word": "I'm a boy/girl",
+    "collision_group_id": "I'm a  boy/I'm a girl/He's a boy/She's a girl",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אני בן/בת",
+    "definitions": [
+      "A statement of one's gender.",
+      "A way to identify as male or female.",
+      "Expressing one's sex.",
+      "A basic self-identification."
+    ],
+    "examples": [
+      "I'm a boy and my sister is a girl.",
+      "He's a boy in my class."
+    ]
+  },
+  {
+    "word": "I'm ready",
+    "collision_group_id": "I'm ready",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אני מוכן/ה",
+    "definitions": [
+      "A statement that you are prepared for something.",
+      "A way to say you are in a suitable state for an action.",
+      "I am prepared.",
+      "Expressing readiness."
+    ],
+    "examples": [
+      "I'm ready to go now.",
+      "Are you ready? Yes, I'm ready."
+    ]
+  },
+  {
+    "word": "I'm sorry",
+    "collision_group_id": "I'm sorry",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אני מצטער/ת",
+    "definitions": [
+      "An expression of apology.",
+      "A way to say you regret something.",
+      "Used to apologize for a mistake.",
+      "A polite expression of regret."
+    ],
+    "examples": [
+      "I'm sorry for being late.",
+      "I'm sorry, I didn't mean to hurt you."
+    ]
+  },
+  {
+    "word": "in",
+    "collision_group_id": "in_inside",
+    "pos": "prep",
+    "family": "inside",
+    "translation_meaning": "בתוך",
+    "definitions": [
+      "Expressing the situation of something that is enclosed or surrounded.",
+      "Within the limits of a place.",
+      "Located inside.",
+      "In a certain place."
+    ],
+    "examples": [
+      "The cat is in the box.",
+      "I live in a big city."
+    ]
+  },
+  {
+    "word": "in a minute",
+    "collision_group_id": "in a minute",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בעוד דקה",
+    "definitions": [
+      "Very soon.",
+      "In a very short time.",
+      "Shortly.",
+      "In a moment."
+    ],
+    "examples": [
+      "I'll be ready in a minute.",
+      "The bus will be here in a minute."
+    ]
+  },
+  {
+    "word": "in front of somebody/something",
+    "collision_group_id": "in front of sb/sth",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מול, לפני",
+    "definitions": [
+      "In a position ahead of someone or something.",
+      "Directly before.",
+      "Facing.",
+      "Ahead of."
+    ],
+    "examples": [
+      "He was standing in front of me in the line.",
+      "The car is parked in front of the house."
+    ]
+  },
+  {
+    "word": "it",
+    "collision_group_id": "it",
+    "pos": "pron, det",
+    "family": "thing",
+    "translation_meaning": "זה",
+    "definitions": [
+      "Used to refer to a thing previously mentioned or easily identified.",
+      "The third-person singular pronoun for an object.",
+      "Referring to an animal or object.",
+      "A pronoun for a thing."
+    ],
+    "examples": [
+      "What is it?",
+      "It is a beautiful day."
+    ]
+  },
+  {
+    "word": "it doesn't matter",
+    "collision_group_id": "it doesn't matter",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "זה לא משנה",
+    "definitions": [
+      "It is not important.",
+      "It makes no difference.",
+      "It is of no consequence.",
+      "A way to dismiss a problem."
+    ],
+    "examples": [
+      "It doesn't matter if we're a little late.",
+      "Don't worry, it doesn't matter."
+    ]
+  },
+  {
+    "word": "It is a/an...",
+    "collision_group_id": "It is a/an …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "זהו/זאת...",
+    "definitions": [
+      "Used to identify or describe something.",
+      "A way to state what something is.",
+      "A phrase for identification.",
+      "This is..."
+    ],
+    "examples": [
+      "It is a beautiful day.",
+      "It is an interesting book."
+    ]
+  },
+  {
+    "word": "its",
+    "collision_group_id": "its",
+    "pos": "pron, det",
+    "family": "",
+    "translation_meaning": "שלו/שלה",
+    "definitions": [
+      "Belonging to or associated with a thing previously mentioned.",
+      "The possessive form of 'it'.",
+      "Relating to a thing.",
+      "A possessive determiner."
+    ],
+    "examples": [
+      "The dog wagged its tail.",
+      "The company has its own problems."
+    ]
+  },
+  {
+    "word": "It's hot/cold",
+    "collision_group_id": "It's hot/cold",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "חם/קר",
+    "definitions": [
+      "Used to describe the temperature.",
+      "A statement about the weather.",
+      "Expressing the thermal condition.",
+      "A comment on the temperature."
+    ],
+    "examples": [
+      "It's hot today, let's go for a swim.",
+      "It's cold outside, you should wear a coat."
+    ]
+  },
+  {
+    "word": "It's not fair",
+    "collision_group_id": "It's/That's not fair",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "זה לא הוגן",
+    "definitions": [
+      "An expression of protest against something that you think is unjust.",
+      "That is unjust.",
+      "A complaint about inequality.",
+      "A cry of injustice."
+    ],
+    "examples": [
+      "It's not fair that he gets to go and I don't.",
+      "That's not fair, I was here first!"
+    ]
+  },
+  {
+    "word": "job",
+    "collision_group_id": "job_employment",
+    "pos": "n",
+    "family": "paid employment",
+    "translation_meaning": "עבודה",
+    "definitions": [
+      "A paid position of regular employment.",
+      "A person's occupation.",
+      "A task or piece of work.",
+      "A profession."
+    ],
+    "examples": [
+      "He is looking for a new job.",
+      "What is your job?"
+    ]
+  },
+  {
+    "word": "kid",
+    "collision_group_id": "kid",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "ילד",
+    "definitions": [
+      "A child or young person.",
+      "An informal term for a child.",
+      "A young goat.",
+      "To joke with someone."
+    ],
+    "examples": [
+      "The kids are playing in the garden.",
+      "I'm just kidding."
+    ]
+  },
+  {
+    "word": "last",
+    "collision_group_id": "last",
+    "pos": "adj",
+    "family": "after all others",
+    "translation_meaning": "אחרון",
+    "definitions": [
+      "Coming after all others in time or order.",
+      "The final one.",
+      "The most recent.",
+      "To continue for a period of time."
+    ],
+    "examples": [
+      "This is the last page of the book.",
+      "I saw him last week."
+    ]
+  },
+  {
+    "word": "left",
+    "collision_group_id": "left_side",
+    "pos": "adj, adv",
+    "family": "opposite of right",
+    "translation_meaning": "שמאל",
+    "definitions": [
+      "On, toward, or relating to the side of a human body that is to the west when facing north.",
+      "The opposite of right.",
+      "Remaining after the rest has been used.",
+      "The past tense of 'leave'."
+    ],
+    "examples": [
+      "Turn left at the next corner.",
+      "He writes with his left hand."
+    ]
+  },
+  {
+    "word": "let",
+    "collision_group_id": "let",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לתת, להרשות",
+    "definitions": [
+      "To allow someone to do something.",
+      "To permit.",
+      "Used to make suggestions.",
+      "To rent out a property."
+    ],
+    "examples": [
+      "Let me help you with that.",
+      "My parents won't let me go to the party."
+    ]
+  },
+  {
+    "word": "let's",
+    "collision_group_id": "let's",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בוא/י",
+    "definitions": [
+      "Used to make a suggestion that includes the speaker.",
+      "Short for 'let us'.",
+      "A way to propose an activity.",
+      "A common suggestion starter."
+    ],
+    "examples": [
+      "Let's go to the movies.",
+      "Let's eat."
+    ]
+  },
+  {
+    "word": "Let's go",
+    "collision_group_id": "Let's go",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בוא נלך",
+    "definitions": [
+      "A suggestion to start moving or to leave a place.",
+      "An expression of encouragement.",
+      "Come on.",
+      "A way to start an activity."
+    ],
+    "examples": [
+      "It's getting late, let's go.",
+      "Let's go and explore the city."
+    ]
+  },
+  {
+    "word": "Let's play...",
+    "collision_group_id": "Let's play …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בוא/י נשחק...",
+    "definitions": [
+      "A suggestion to start a game or sport.",
+      "A way to propose a playful activity.",
+      "An invitation to join in a game.",
+      "A phrase to start a game."
+    ],
+    "examples": [
+      "Let's play a game of cards.",
+      "Let's play football."
+    ]
+  },
+  {
+    "word": "lost",
+    "collision_group_id": "lost",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "אבוד",
+    "definitions": [
+      "Unable to be found.",
+      "Having been deprived of or having ceased to have something.",
+      "Unable to find one's way.",
+      "The past tense of 'lose'."
+    ],
+    "examples": [
+      "I've lost my keys.",
+      "We got lost in the city."
+    ]
+  },
+  {
+    "word": "lot",
+    "collision_group_id": "lot",
+    "pos": "adv",
+    "family": "",
+    "translation_meaning": "הרבה",
+    "definitions": [
+      "A large number or amount.",
+      "A great deal.",
+      "Much.",
+      "An item in an auction."
+    ],
+    "examples": [
+      "I have a lot of work to do.",
+      "Thanks a lot for your help."
+    ]
+  },
+  {
+    "word": "mad",
+    "collision_group_id": "mad_crazy",
+    "pos": "adj",
+    "family": "crazy",
+    "translation_meaning": "משוגע",
+    "definitions": [
+      "Mentally ill.",
+      "Extremely foolish or enthusiastic.",
+      "Angry.",
+      "Insane."
+    ],
+    "examples": [
+      "You must be mad to go swimming in this weather.",
+      "He is mad about football."
+    ]
+  },
+  {
+    "word": "man",
+    "collision_group_id": "man",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "איש",
+    "definitions": [
+      "An adult male human being.",
+      "A male person.",
+      "Humankind.",
+      "A husband or boyfriend."
+    ],
+    "examples": [
+      "A man was waiting outside.",
+      "He is a kind and generous man."
+    ]
+  },
+  {
+    "word": "me",
+    "collision_group_id": "me",
+    "pos": "pron",
+    "family": "",
+    "translation_meaning": "אותי",
+    "definitions": [
+      "Used as the object of a verb or preposition when the speaker is referring to himself or herself.",
+      "The objective form of 'I'.",
+      "Referring to the speaker.",
+      "The person speaking."
+    ],
+    "examples": [
+      "Can you help me?",
+      "He gave the book to me."
+    ]
+  },
+  {
+    "word": "milk",
+    "collision_group_id": "milk",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חלב",
+    "definitions": [
+      "An opaque white fluid rich in fat and protein, secreted by female mammals for the nourishment of their young.",
+      "A white liquid from cows.",
+      "To draw a white liquid from an animal.",
+      "A common drink."
+    ],
+    "examples": [
+      "I like to have milk with my cereal.",
+      "We need to buy some milk."
+    ]
+  },
+  {
+    "word": "mix",
+    "collision_group_id": "mix_combine",
+    "pos": "v",
+    "family": "combine substances",
+    "translation_meaning": "לערבב",
+    "definitions": [
+      "To combine or put together to form one substance or mass.",
+      "To blend.",
+      "A combination of different things.",
+      "To socialize with people."
+    ],
+    "examples": [
+      "Mix the flour and sugar together.",
+      "Don't mix business with pleasure."
+    ]
+  },
+  {
+    "word": "mom/mum",
+    "collision_group_id": "mom/mum",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "אמא",
+    "definitions": [
+      "One's mother.",
+      "An informal term for mother.",
+      "A female parent.",
+      "A term of address for one's mother."
+    ],
+    "examples": [
+      "I'm going to visit my mom this weekend.",
+      "My mum is a great cook."
+    ]
+  },
+  {
+    "word": "My address is...",
+    "collision_group_id": "My address is …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "הכתובת שלי היא...",
+    "definitions": [
+      "A phrase to state where you live.",
+      "A way to give your location.",
+      "A statement of one's place of residence.",
+      "Used to provide your home details."
+    ],
+    "examples": [
+      "My address is 123 Main Street.",
+      "He asked, 'What's your address?' and I replied, 'My address is...'"
+    ]
+  },
+  {
+    "word": "My name is...",
+    "collision_group_id": "My name is …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "שמי...",
+    "definitions": [
+      "A phrase used to introduce yourself.",
+      "A way to state your name.",
+      "A basic self-introduction.",
+      "The way to tell someone your name."
+    ],
+    "examples": [
+      "Hello, my name is John.",
+      "My name is Sarah, nice to meet you."
+    ]
+  },
+  {
+    "word": "net",
+    "collision_group_id": "net",
+    "pos": "n",
+    "family": "the Internet",
+    "translation_meaning": "אינטרנט",
+    "definitions": [
+      "A global computer network providing a variety of information and communication facilities.",
+      "The Internet.",
+      "A device made of mesh for catching fish or insects.",
+      "A final amount of money."
+    ],
+    "examples": [
+      "I found the information on the net.",
+      "You can buy almost anything on the net."
+    ]
+  },
+  {
+    "word": "next",
+    "collision_group_id": "next_follows",
+    "pos": "adj",
+    "family": "the one that follows the present one",
+    "translation_meaning": "הבא",
+    "definitions": [
+      "Coming immediately after the present one in time or order.",
+      "The one after this one.",
+      "On the first occasion after the present.",
+      "Adjacent to."
+    ],
+    "examples": [
+      "I'll see you next week.",
+      "Who is the next person in line?"
+    ]
+  },
+  {
+    "word": "next to",
+    "collision_group_id": "next to",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "ליד",
+    "definitions": [
+      "Beside; adjacent to.",
+      "At the side of.",
+      "Almost.",
+      "Close to."
+    ],
+    "examples": [
+      "He sat next to me.",
+      "The bank is next to the post office."
+    ]
+  },
+  {
+    "word": "no",
+    "collision_group_id": "no",
+    "pos": "exclam",
+    "family": "negative reply",
+    "translation_meaning": "לא",
+    "definitions": [
+      "Used to give a negative response.",
+      "The opposite of yes.",
+      "Not any.",
+      "A refusal."
+    ],
+    "examples": [
+      "\"Are you coming?\" \"No, I'm not.\"",
+      "No, you can't have another cookie."
+    ]
+  },
+  {
+    "word": "no one",
+    "collision_group_id": "no one",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אף אחד",
+    "definitions": [
+      "No person; not anyone.",
+      "Nobody.",
+      "Not a single person.",
+      "Zero people."
+    ],
+    "examples": [
+      "There was no one at home.",
+      "No one knows the answer."
+    ]
+  },
+  {
+    "word": "No problem!",
+    "collision_group_id": "No problem!",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אין בעיה!",
+    "definitions": [
+      "A polite response to an expression of thanks or an apology.",
+      "You're welcome.",
+      "It's okay.",
+      "A way to show that something is not an issue."
+    ],
+    "examples": [
+      "\"Thanks for your help.\" \"No problem!\"",
+      "\"I'm sorry I'm late.\" \"No problem.\""
+    ]
+  },
+  {
+    "word": "not",
+    "collision_group_id": "not",
+    "pos": "adv",
+    "family": "to form a negative phrase after be/can, etc.",
+    "translation_meaning": "לא",
+    "definitions": [
+      "Used to make a statement negative.",
+      "A word that expresses denial or refusal.",
+      "The opposite of 'yes'.",
+      "In no way."
+    ],
+    "examples": [
+      "I am not tired.",
+      "You should not do that."
+    ]
+  },
+  {
+    "word": "of",
+    "collision_group_id": "of_belong",
+    "pos": "prep",
+    "family": "belong",
+    "translation_meaning": "של",
+    "definitions": [
+      "Expressing the relationship of belonging or possession.",
+      "Indicating ownership.",
+      "Relating to.",
+      "Made from."
+    ],
+    "examples": [
+      "This is the house of my friend.",
+      "The cover of the book is red."
+    ]
+  },
+  {
+    "word": "on",
+    "collision_group_id": "on",
+    "pos": "prep",
+    "family": "surface, day/date",
+    "translation_meaning": "על, ב",
+    "definitions": [
+      "Physically in contact with and supported by a surface.",
+      "Used to state a day or date.",
+      "Regarding a particular subject.",
+      "In a position."
+    ],
+    "examples": [
+      "The book is on the table.",
+      "My birthday is on a Monday this year."
+    ]
+  },
+  {
+    "word": "once upon a time",
+    "collision_group_id": "once upon a time",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "היה היה פעם",
+    "definitions": [
+      "A long time ago; the traditional opening of a fairy tale.",
+      "In the distant past.",
+      "A way to begin a traditional story.",
+      "A long time in the past."
+    ],
+    "examples": [
+      "Once upon a time, there was a beautiful princess.",
+      "Once upon a time, in a faraway land..."
+    ]
+  },
+  {
+    "word": "past",
+    "collision_group_id": "past_position",
+    "pos": "prep, adv",
+    "family": "position",
+    "translation_meaning": "מעבר ל",
+    "definitions": [
+      "To or on the further side of.",
+      "Beyond a particular point.",
+      "The time before the present.",
+      "No longer existing."
+    ],
+    "examples": [
+      "He walked past me without saying hello.",
+      "The post office is just past the bank."
+    ]
+  },
+  {
+    "word": "pen",
+    "collision_group_id": "pen",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "עט",
+    "definitions": [
+      "An instrument for writing or drawing with ink.",
+      "A writing tool.",
+      "A small enclosure for animals.",
+      "To write."
+    ],
+    "examples": [
+      "Can I borrow your pen?",
+      "Please sign the form with a blue pen."
+    ]
+  },
+  {
+    "word": "pencil",
+    "collision_group_id": "pencil",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "עיפרון",
+    "definitions": [
+      "An instrument for writing or drawing, consisting of a thin stick of graphite enclosed in a wooden case.",
+      "A writing tool with a graphite core.",
+      "To write with a graphite instrument.",
+      "A drawing tool."
+    ],
+    "examples": [
+      "I need a pencil and a piece of paper.",
+      "Please write your name in pencil."
+    ]
+  },
+  {
+    "word": "pet",
+    "collision_group_id": "pet",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "חיית מחמד",
+    "definitions": [
+      "A domestic or tamed animal kept for companionship or pleasure.",
+      "An animal kept in the home.",
+      "A favorite.",
+      "To stroke or pat an animal affectionately."
+    ],
+    "examples": [
+      "Do you have any pets?",
+      "My favorite pet is my dog."
+    ]
+  },
+  {
+    "word": "plan",
+    "collision_group_id": "plan",
+    "pos": "n",
+    "family": "arrangement",
+    "translation_meaning": "תוכנית",
+    "definitions": [
+      "A decision about what you are going to do in the future.",
+      "An intention or arrangement.",
+      "A detailed diagram or drawing.",
+      "To decide on and arrange in advance."
+    ],
+    "examples": [
+      "What are your plans for the weekend?",
+      "I have a plan to save money."
+    ]
+  },
+  {
+    "word": "plus",
+    "collision_group_id": "plus",
+    "pos": "prep, adj",
+    "family": "",
+    "translation_meaning": "ועוד, פלוס",
+    "definitions": [
+      "With the addition of.",
+      "Also.",
+      "The mathematical sign (+).",
+      "An advantage."
+    ],
+    "examples": [
+      "Two plus two equals four.",
+      "The job has a good salary, plus a company car."
+    ]
+  },
+  {
+    "word": "red",
+    "collision_group_id": "red",
+    "pos": "n, adj",
+    "family": "",
+    "translation_meaning": "אדום",
+    "definitions": [
+      "The color of blood or fire.",
+      "A primary color.",
+      "Associated with danger or warning.",
+      "A color at the end of the spectrum."
+    ],
+    "examples": [
+      "She was wearing a red dress.",
+      "The traffic light turned red."
+    ]
+  },
+  {
+    "word": "rent",
+    "collision_group_id": "rent",
+    "pos": "n, v",
+    "family": "",
+    "translation_meaning": "לשכור, שכר דירה",
+    "definitions": [
+      "A tenant's regular payment to a landlord for the use of property.",
+      "To pay someone for the use of something.",
+      "To let someone use something in return for payment.",
+      "A payment for temporary use."
+    ],
+    "examples": [
+      "How much is the rent for this apartment?",
+      "We decided to rent a car."
+    ]
+  },
+  {
+    "word": "rest",
+    "collision_group_id": "rest",
+    "pos": "n, v",
+    "family": "",
+    "translation_meaning": "לנוח, מנוחה",
+    "definitions": [
+      "A period of relaxing or sleeping.",
+      "To cease work or movement in order to relax.",
+      "The remaining part of something.",
+      "A pause."
+    ],
+    "examples": [
+      "I need to get some rest.",
+      "Let's take a rest before we continue."
+    ]
+  },
+  {
+    "word": "run",
+    "collision_group_id": "run_move",
+    "pos": "v",
+    "family": "move fast",
+    "translation_meaning": "לרוץ",
+    "definitions": [
+      "To move at a speed faster than a walk.",
+      "To travel quickly on foot.",
+      "To manage or operate a business.",
+      "To compete in a race."
+    ],
+    "examples": [
+      "I run five kilometers every morning.",
+      "He had to run to catch the bus."
+    ]
+  },
+  {
+    "word": "sad",
+    "collision_group_id": "sad",
+    "pos": "adj",
+    "family": "",
+    "translation_meaning": "עצוב",
+    "definitions": [
+      "Feeling or showing sorrow; unhappy.",
+      "Not happy.",
+      "Causing feelings of sorrow.",
+      "Mournful."
+    ],
+    "examples": [
+      "I was sad to hear the news.",
+      "She looks sad."
+    ]
+  },
+  {
+    "word": "Say it again please",
+    "collision_group_id": "Say it again please",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אמור זאת שוב בבקשה",
+    "definitions": [
+      "A polite request to repeat what was said.",
+      "A way to ask someone to repeat themselves.",
+      "Please repeat that.",
+      "A phrase for when you didn't hear something."
+    ],
+    "examples": [
+      "I didn't hear you, say it again please.",
+      "Could you say it again please, more slowly?"
+    ]
+  },
+  {
+    "word": "see you later",
+    "collision_group_id": "see you later",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "נתראה אחר כך",
+    "definitions": [
+      "A phrase used when parting from someone you expect to see again soon.",
+      "Goodbye for now.",
+      "A common farewell.",
+      "An informal way to say goodbye."
+    ],
+    "examples": [
+      "I have to go now, see you later.",
+      "See you later, have a good day!"
+    ]
+  },
+  {
+    "word": "send",
+    "collision_group_id": "send",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לשלוח",
+    "definitions": [
+      "To cause something to go or be taken to a particular destination.",
+      "To dispatch a letter or message.",
+      "To transmit.",
+      "To make something go somewhere."
+    ],
+    "examples": [
+      "I need to send this letter.",
+      "She sent me an email."
+    ]
+  },
+  {
+    "word": "Show me...",
+    "collision_group_id": "Show me …",
+    "pos": "",
+    "family": "conversation",
+    "translation_meaning": "הראה לי...",
+    "definitions": [
+      "A request to be shown something.",
+      "A command to display an object.",
+      "A way to ask to see something.",
+      "A phrase to request a demonstration."
+    ],
+    "examples": [
+      "Show me your new dress.",
+      "Can you show me how to do it?"
+    ]
+  },
+  {
+    "word": "sit",
+    "collision_group_id": "sit",
+    "pos": "v",
+    "family": "body position",
+    "translation_meaning": "לשבת",
+    "definitions": [
+      "To adopt or be in a position in which one's weight is supported by one's buttocks.",
+      "To be in a seated position.",
+      "To take a seat.",
+      "To rest on the lower part of the body."
+    ],
+    "examples": [
+      "Please sit down.",
+      "He was sitting on the sofa."
+    ]
+  },
+  {
+    "word": "six",
+    "collision_group_id": "six",
+    "pos": "cardinal number",
+    "family": "",
+    "translation_meaning": "שש",
+    "definitions": [
+      "The number equivalent to the sum of three and three.",
+      "The number 6.",
+      "One more than five.",
+      "A cardinal number."
+    ],
+    "examples": [
+      "There are six people in my family.",
+      "I have six apples."
+    ]
+  },
+  {
+    "word": "sleep",
+    "collision_group_id": "sleep_verb",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לישון",
+    "definitions": [
+      "To rest in a state of natural unconsciousness.",
+      "To be in a state of rest.",
+      "A condition of body and mind that recurs for several hours.",
+      "To repose."
+    ],
+    "examples": [
+      "I need to sleep for at least eight hours.",
+      "The baby is sleeping."
+    ]
+  },
+  {
+    "word": "so",
+    "collision_group_id": "so_reason",
+    "pos": "conj",
+    "family": "reason",
+    "translation_meaning": "אז, לכן",
+    "definitions": [
+      "And for that reason; therefore.",
+      "As a result.",
+      "To such a great extent.",
+      "In order that."
+    ],
+    "examples": [
+      "It was raining, so I took an umbrella.",
+      "He was tired, so he went to bed."
+    ]
+  },
+  {
+    "word": "soft",
+    "collision_group_id": "soft_not_hard",
+    "pos": "adj",
+    "family": "not hard",
+    "translation_meaning": "רך",
+    "definitions": [
+      "Easy to mold, cut, compress, or fold.",
+      "Not firm or hard.",
+      "Having a pleasing quality.",
+      "Quiet and gentle."
+    ],
+    "examples": [
+      "The bed is very soft.",
+      "I prefer soft bread."
+    ]
+  },
+  {
+    "word": "spend",
+    "collision_group_id": "spend",
+    "pos": "v",
+    "family": "money",
+    "translation_meaning": "לבזבז",
+    "definitions": [
+      "To give money to pay for goods or services.",
+      "To use money.",
+      "To pass time in a specified way.",
+      "To use up a resource."
+    ],
+    "examples": [
+      "I spent a lot of money on my new car.",
+      "How do you spend your free time?"
+    ]
+  },
+  {
+    "word": "stand",
+    "collision_group_id": "stand",
+    "pos": "v",
+    "family": "rise",
+    "translation_meaning": "לעמוד",
+    "definitions": [
+      "To have or maintain an upright position, supported by one's feet.",
+      "To be in an upright position.",
+      "To get up on one's feet.",
+      "To tolerate."
+    ],
+    "examples": [
+      "Please stand up.",
+      "He was standing by the window."
+    ]
+  },
+  {
+    "word": "stop",
+    "collision_group_id": "stop_halt",
+    "pos": "v",
+    "family": "halt",
+    "translation_meaning": "לעצור",
+    "definitions": [
+      "To come to an end; to cease to happen.",
+      "To prevent from happening.",
+      "A place where a bus or train halts.",
+      "To finish an activity."
+    ],
+    "examples": [
+      "Please stop talking.",
+      "The rain has stopped."
+    ]
+  },
+  {
+    "word": "sun",
+    "collision_group_id": "sun",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "שמש",
+    "definitions": [
+      "The star around which the earth orbits.",
+      "The light or warmth received from this star.",
+      "A star at the center of a solar system.",
+      "The source of daylight."
+    ],
+    "examples": [
+      "The sun is shining brightly today.",
+      "Don't look directly at the sun."
+    ]
+  },
+  {
+    "word": "swim",
+    "collision_group_id": "swim_verb",
+    "pos": "v",
+    "family": "",
+    "translation_meaning": "לשחות",
+    "definitions": [
+      "To propel the body through water by using the limbs.",
+      "To move through water.",
+      "An act of moving through water.",
+      "To be immersed in a liquid."
+    ],
+    "examples": [
+      "I like to swim in the sea.",
+      "Can you swim?"
+    ]
+  },
+  {
+    "word": "take a picture",
+    "collision_group_id": "take a picture",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לצלם תמונה",
+    "definitions": [
+      "To capture an image using a camera.",
+      "To photograph.",
+      "To create a photograph.",
+      "To use a camera to get an image."
+    ],
+    "examples": [
+      "Can you take a picture of me?",
+      "I took a lot of pictures on my vacation."
+    ]
+  },
+  {
+    "word": "Take care!",
+    "collision_group_id": "Take care!",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "שמור על עצמך!",
+    "definitions": [
+      "Used to say goodbye in a friendly way.",
+      "An expression of good wishes for someone's safety.",
+      "Be careful.",
+      "A friendly farewell."
+    ],
+    "examples": [
+      "Goodbye, take care!",
+      "Take care on your journey."
+    ]
+  },
+  {
+    "word": "talk",
+    "collision_group_id": "talk_say",
+    "pos": "v",
+    "family": "say",
+    "translation_meaning": "לדבר",
+    "definitions": [
+      "To speak in order to give information or express ideas or feelings.",
+      "To have a conversation.",
+      "A conversation or discussion.",
+      "To communicate with words."
+    ],
+    "examples": [
+      "I need to talk to you about something.",
+      "They were talking loudly."
+    ]
+  },
+  {
+    "word": "Tell a story",
+    "collision_group_id": "Tell a story",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לספר סיפור",
+    "definitions": [
+      "To narrate an account of imaginary or real events.",
+      "To recount a tale.",
+      "To describe a series of events.",
+      "To share a narrative."
+    ],
+    "examples": [
+      "Grandpa, can you tell us a story?",
+      "She loves to tell stories about her travels."
+    ]
+  },
+  {
+    "word": "ten",
+    "collision_group_id": "ten",
+    "pos": "cardinal number",
+    "family": "",
+    "translation_meaning": "עשר",
+    "definitions": [
+      "The number equivalent to the sum of nine and one.",
+      "The number 10.",
+      "One more than nine.",
+      "A cardinal number."
+    ],
+    "examples": [
+      "I have ten fingers.",
+      "There are ten people in the room."
+    ]
+  },
+  {
+    "word": "test",
+    "collision_group_id": "test_exam",
+    "pos": "n,v",
+    "family": "exam",
+    "translation_meaning": "מבחן",
+    "definitions": [
+      "A procedure to determine a person's knowledge or ability.",
+      "An examination.",
+      "To check someone's knowledge.",
+      "A trial or experiment."
+    ],
+    "examples": [
+      "I have a history test tomorrow.",
+      "The teacher will test us on the new material."
+    ]
+  },
+  {
+    "word": "than",
+    "collision_group_id": "than",
+    "pos": "",
+    "family": "in comparisons",
+    "translation_meaning": "מ...",
+    "definitions": [
+      "Used to introduce the second element in a comparison.",
+      "A word used for comparing things.",
+      "In contrast to.",
+      "A conjunction for comparisons."
+    ],
+    "examples": [
+      "He is taller than me.",
+      "This book is more interesting than that one."
+    ]
+  },
+  {
+    "word": "thank you",
+    "collision_group_id": "thank you",
+    "pos": "exclam",
+    "family": "",
+    "translation_meaning": "תודה",
+    "definitions": [
+      "A polite expression of gratitude.",
+      "A way to show appreciation.",
+      "Thanks.",
+      "An expression of gratitude."
+    ],
+    "examples": [
+      "Thank you for your help.",
+      "Thank you for coming."
+    ]
+  },
+  {
+    "word": "that",
+    "collision_group_id": "that_seen",
+    "pos": "det",
+    "family": "can be seen",
+    "translation_meaning": "ההוא",
+    "definitions": [
+      "Used to identify a specific person or thing that is at a distance.",
+      "The one further away.",
+      "Referring to something previously mentioned.",
+      "A determiner for a distant object."
+    ],
+    "examples": [
+      "What is that building over there?",
+      "I don't like that color."
+    ]
+  },
+  {
+    "word": "the",
+    "collision_group_id": "the",
+    "pos": "det",
+    "family": "particular",
+    "translation_meaning": "ה' הידיעה",
+    "definitions": [
+      "Used to refer to a specific or particular person or thing.",
+      "The definite article.",
+      "Denoting one or more people or things already mentioned.",
+      "A determiner for a specific item."
+    ],
+    "examples": [
+      "The book is on the table.",
+      "The sun is shining."
+    ]
+  },
+  {
+    "word": "their",
+    "collision_group_id": "their_plural",
+    "pos": "det",
+    "family": "",
+    "translation_meaning": "שלהם/ן",
+    "definitions": [
+      "Belonging to or associated with the people or things previously mentioned.",
+      "The possessive form of 'they'.",
+      "Relating to them.",
+      "A possessive determiner."
+    ],
+    "examples": [
+      "The students are doing their homework.",
+      "They have lost their keys."
+    ]
+  },
+  {
+    "word": "them",
+    "collision_group_id": "them",
+    "pos": "pron",
+    "family": "",
+    "translation_meaning": "אותם/ן",
+    "definitions": [
+      "Used as the object of a verb or preposition to refer to two or more people or things.",
+      "The objective form of 'they'.",
+      "Referring to a group.",
+      "The third-person plural object."
+    ],
+    "examples": [
+      "I saw them at the party.",
+      "She gave the books to them."
+    ]
+  },
+  {
+    "word": "then",
+    "collision_group_id": "then_time",
+    "pos": "adv",
+    "family": "at that time; next",
+    "translation_meaning": "אז, אחר כך",
+    "definitions": [
+      "At a particular time in the past or future.",
+      "Next in order.",
+      "As a consequence.",
+      "Afterward."
+    ],
+    "examples": [
+      "I was living in London then.",
+      "First we'll go to the bank, and then we'll go home."
+    ]
+  },
+  {
+    "word": "there is / there are",
+    "collision_group_id": "there is / there are / there was, etc",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "יש...",
+    "definitions": [
+      "Used to state that something exists or is in a place.",
+      "A phrase to indicate presence.",
+      "A way to say that something is present.",
+      "Used to point something out."
+    ],
+    "examples": [
+      "There is a book on the table.",
+      "There are many people here."
+    ]
+  },
+  {
+    "word": "they",
+    "collision_group_id": "they",
+    "pos": "pron",
+    "family": "used when referring to a group of people, animals or things",
+    "translation_meaning": "הם/הן",
+    "definitions": [
+      "Used to refer to two or more people or things previously mentioned.",
+      "The third-person plural pronoun.",
+      "A group of people or things.",
+      "Can refer to a single person of unspecified gender."
+    ],
+    "examples": [
+      "They are my friends.",
+      "The books are on the shelf; they are very old."
+    ]
+  },
+  {
+    "word": "this",
+    "collision_group_id": "this",
+    "pos": "det",
+    "family": "to refer to something or someone that can be seen",
+    "translation_meaning": "זה",
+    "definitions": [
+      "Used to identify a specific person or thing close at hand.",
+      "The one here.",
+      "Referring to something near.",
+      "A determiner for a close object."
+    ],
+    "examples": [
+      "This is my house.",
+      "What is this?"
+    ]
+  },
+  {
+    "word": "This is a/an...",
+    "collision_group_id": "This is a/an …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "זהו/זאת...",
+    "definitions": [
+      "Used to identify or describe something.",
+      "A way to state what something is.",
+      "A phrase for identification.",
+      "It is..."
+    ],
+    "examples": [
+      "This is a beautiful painting.",
+      "This is an interesting book."
+    ]
+  },
+  {
+    "word": "This is my...",
+    "collision_group_id": "This is my …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "זהו/זאת ה... שלי",
+    "definitions": [
+      "Used to introduce a person or thing that belongs to you.",
+      "A way to show ownership and introduce something.",
+      "A phrase for presentation.",
+      "Used to identify a possession."
+    ],
+    "examples": [
+      "This is my brother.",
+      "This is my new car."
+    ]
+  },
+  {
+    "word": "three",
+    "collision_group_id": "three",
+    "pos": "cardinal number",
+    "family": "",
+    "translation_meaning": "שלוש",
+    "definitions": [
+      "The number equivalent to the sum of two and one.",
+      "The number 3.",
+      "One more than two.",
+      "A cardinal number."
+    ],
+    "examples": [
+      "I have three sisters.",
+      "There are three books on the table."
+    ]
+  },
+  {
+    "word": "to",
+    "collision_group_id": "to",
+    "pos": "",
+    "family": "infinitive marker",
+    "translation_meaning": "ל...",
+    "definitions": [
+      "Used with the base form of a verb to form the infinitive.",
+      "A grammatical particle.",
+      "Expressing motion in a direction.",
+      "Identifying the person affected."
+    ],
+    "examples": [
+      "I want to go home.",
+      "It's nice to meet you."
+    ]
+  },
+  {
+    "word": "today",
+    "collision_group_id": "today_adv",
+    "pos": "adv",
+    "family": "on this day",
+    "translation_meaning": "היום",
+    "definitions": [
+      "On or in the course of this present day.",
+      "At the present time.",
+      "This very day.",
+      "Currently."
+    ],
+    "examples": [
+      "What are you doing today?",
+      "I'm very busy today."
+    ]
+  },
+  {
+    "word": "Today is...",
+    "collision_group_id": "Today is … (weather: rainy, hot, cold, nice)",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "היום...",
+    "definitions": [
+      "A phrase to describe the current day's weather.",
+      "A way to state the weather condition.",
+      "A comment on the present atmospheric condition.",
+      "A description of the weather."
+    ],
+    "examples": [
+      "Today is a beautiful day.",
+      "Today is cold and windy."
+    ]
+  },
+  {
+    "word": "top",
+    "collision_group_id": "top_highest",
+    "pos": "n, adj",
+    "family": "highest part",
+    "translation_meaning": "החלק העליון",
+    "definitions": [
+      "The highest or uppermost point or part of something.",
+      "The best or most important.",
+      "The upper surface.",
+      "A piece of clothing for the upper body."
+    ],
+    "examples": [
+      "The book is on the top of the shelf.",
+      "We climbed to the top of the mountain."
+    ]
+  },
+  {
+    "word": "trip",
+    "collision_group_id": "trip",
+    "pos": "n",
+    "family": "",
+    "translation_meaning": "טיול",
+    "definitions": [
+      "A journey or excursion, especially for pleasure.",
+      "A short journey.",
+      "To catch one's foot on something and stumble.",
+      "An expedition."
+    ],
+    "examples": [
+      "We're going on a trip to the mountains.",
+      "How was your trip?"
+    ]
+  },
+  {
+    "word": "up",
+    "collision_group_id": "up_prep",
+    "pos": "prep",
+    "family": "higher position; not in bed",
+    "translation_meaning": "למעלה",
+    "definitions": [
+      "Towards a higher place or position.",
+      "Out of bed.",
+      "To a higher level.",
+      "In an upward direction."
+    ],
+    "examples": [
+      "He climbed up the ladder.",
+      "What time did you get up this morning?"
+    ]
+  },
+  {
+    "word": "us",
+    "collision_group_id": "us",
+    "pos": "pron",
+    "family": "",
+    "translation_meaning": "אותנו",
+    "definitions": [
+      "Used as the object of a verb or preposition when the speaker is referring to himself or herself and one or more other people.",
+      "The objective form of 'we'.",
+      "Referring to a group including the speaker.",
+      "The speaker and others."
+    ],
+    "examples": [
+      "Can you help us?",
+      "He gave the book to us."
+    ]
+  },
+  {
+    "word": "wait for",
+    "collision_group_id": "wait for",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לחכות ל",
+    "definitions": [
+      "To stay in one place or delay action until a particular time or event.",
+      "To await.",
+      "To stay where one is until someone arrives.",
+      "To anticipate an event."
+    ],
+    "examples": [
+      "I'm waiting for the bus.",
+      "Please wait for me, I'm almost ready."
+    ]
+  },
+  {
+    "word": "We like to...",
+    "collision_group_id": "We like to …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "אנחנו אוהבים ל...",
+    "definitions": [
+      "A phrase to express a shared preference or enjoyment.",
+      "A way for a group to state a liking.",
+      "Expressing a collective preference.",
+      "A statement of a group's enjoyment."
+    ],
+    "examples": [
+      "We like to go to the beach in the summer.",
+      "We like to play football on weekends."
+    ]
+  },
+  {
+    "word": "Well done!",
+    "collision_group_id": "Well done!",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "כל הכבוד!",
+    "definitions": [
+      "An expression of praise for an achievement.",
+      "Good job!",
+      "A way to congratulate someone.",
+      "An exclamation of approval."
+    ],
+    "examples": [
+      "You passed the exam? Well done!",
+      "Well done on finishing the race."
+    ]
+  },
+  {
+    "word": "What do you like?",
+    "collision_group_id": "What  (fruit / vegetable / sport) do you like?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מה אתה אוהב?",
+    "definitions": [
+      "A question to ask about someone's preferences.",
+      "A way to inquire about someone's tastes.",
+      "A query about what someone enjoys.",
+      "A question about liking something."
+    ],
+    "examples": [
+      "What fruit do you like?",
+      "What sports do you like?"
+    ]
+  },
+  {
+    "word": "What color is your...?",
+    "collision_group_id": "What color is your …?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "באיזה צבע...?",
+    "definitions": [
+      "A question to ask about the hue of an object.",
+      "A query about the shade of something.",
+      "A way to ask about an item's color.",
+      "A question about color."
+    ],
+    "examples": [
+      "What color is your car?",
+      "What color is her hair?"
+    ]
+  },
+  {
+    "word": "What is it?",
+    "collision_group_id": "What is it?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מה זה?",
+    "definitions": [
+      "A question to ask for the identification of something.",
+      "A query to identify an object.",
+      "A way to ask about something unknown.",
+      "A question for identification."
+    ],
+    "examples": [
+      "I found something in the garden. What is it?",
+      "What is it you want to tell me?"
+    ]
+  },
+  {
+    "word": "What is this?",
+    "collision_group_id": "What is this? What's this?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מה זה?",
+    "definitions": [
+      "A question to ask for the identification of a nearby object.",
+      "A query to identify something close.",
+      "A way to ask about an unknown item.",
+      "A question for identification."
+    ],
+    "examples": [
+      "What is this thing on my desk?",
+      "What's this? I've never seen it before."
+    ]
+  },
+  {
+    "word": "What's your name?",
+    "collision_group_id": "What's (what is) your name?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "איך קוראים לך?",
+    "definitions": [
+      "A question to ask for a person's name.",
+      "A common introductory question.",
+      "A way to ask for identification.",
+      "A query about someone's name."
+    ],
+    "examples": [
+      "Hello, what's your name?",
+      "He asked the boy, 'What's your name?'"
+    ]
+  },
+  {
+    "word": "What's the matter?",
+    "collision_group_id": "What's the matter?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מה הבעיה?",
+    "definitions": [
+      "A question to ask what is wrong.",
+      "A way to inquire about a problem.",
+      "What is the issue?",
+      "A question about a difficulty."
+    ],
+    "examples": [
+      "You look upset, what's the matter?",
+      "What's the matter with the car? It won't start."
+    ]
+  },
+  {
+    "word": "Where do you live?",
+    "collision_group_id": "Where do you live?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "איפה אתה גר?",
+    "definitions": [
+      "A question to ask about a person's place of residence.",
+      "A query about where someone's home is.",
+      "A way to ask for a person's address.",
+      "A question about location."
+    ],
+    "examples": [
+      "Where do you live?",
+      "She asked him where he lived."
+    ]
+  },
+  {
+    "word": "Where is the...?",
+    "collision_group_id": "Where is the …? Where's the …",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "איפה ה...?",
+    "definitions": [
+      "A question to ask for the location of something.",
+      "A query to find a place or thing.",
+      "A way to ask for directions.",
+      "A question about location."
+    ],
+    "examples": [
+      "Where is the nearest bank?",
+      "Where's the bathroom?"
+    ]
+  },
+  {
+    "word": "Who has...?",
+    "collision_group_id": "Who has …?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "למי יש...?",
+    "definitions": [
+      "A question to ask about possession.",
+      "A query to identify the owner of something.",
+      "A way to ask who possesses an item.",
+      "A question about ownership."
+    ],
+    "examples": [
+      "Who has a pen I can borrow?",
+      "Who has the keys?"
+    ]
+  },
+  {
+    "word": "Who is this?",
+    "collision_group_id": "Who is this? Who's this?",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "מי זה?",
+    "definitions": [
+      "A question to ask for the identification of a person.",
+      "A query to identify someone.",
+      "A way to ask who someone is.",
+      "A question for identification."
+    ],
+    "examples": [
+      "Who is this person in the photograph?",
+      "Who's this at the door?"
+    ]
+  },
+  {
+    "word": "yes",
+    "collision_group_id": "yes",
+    "pos": "adv, n",
+    "family": "",
+    "translation_meaning": "כן",
+    "definitions": [
+      "Used to give an affirmative response.",
+      "The opposite of no.",
+      "An expression of agreement or consent.",
+      "An affirmative answer."
+    ],
+    "examples": [
+      "\"Are you coming?\" \"Yes, I am.\"",
+      "Yes, you can have another cookie."
+    ]
+  },
+  {
+    "word": "Yes, please",
+    "collision_group_id": "Yes, please",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "כן בבקשה",
+    "definitions": [
+      "A polite way to accept an offer.",
+      "A courteous affirmative response.",
+      "A polite acceptance.",
+      "A phrase to accept something offered."
+    ],
+    "examples": [
+      "\"Would you like some tea?\" \"Yes, please.\"",
+      "Yes, please, I'd love some help."
+    ]
+  },
+  {
+    "word": "you",
+    "collision_group_id": "you",
+    "pos": "pron",
+    "family": "person/people addressed",
+    "translation_meaning": "את/ה/ם/ן",
+    "definitions": [
+      "Used to refer to the person or people that the speaker is addressing.",
+      "The second-person pronoun.",
+      "The person being spoken to.",
+      "Can refer to one or more people."
+    ],
+    "examples": [
+      "You are my best friend.",
+      "What are you doing?"
+    ]
+  },
+  {
+    "word": "you're welcome",
+    "collision_group_id": "you're welcome",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "בבקשה",
+    "definitions": [
+      "A polite response to an expression of thanks.",
+      "A way to reply to 'thank you'.",
+      "No problem.",
+      "A courteous response."
+    ],
+    "examples": [
+      "\"Thank you for your help.\" \"You're welcome.\"",
+      "You're welcome, I was happy to help."
+    ]
+  },
+  {
+    "word": "sit down",
+    "collision_group_id": "sit down",
+    "pos": "",
+    "family": "",
+    "translation_meaning": "לשבת",
+    "definitions": [
+      "To move your body into a seated position.",
+      "To take a seat.",
+      "To lower oneself onto a chair or other surface.",
+      "To be seated."
+    ],
+    "examples": [
+      "Please sit down and make yourself comfortable.",
+      "He sat down on the sofa."
+    ]
+  }
+]
