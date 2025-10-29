@@ -48,5 +48,10 @@
     "id": "from_bagrut",
     "name": "תרגול נוסף מבגרויות",
     "path": "/data/from_bagrut.json"
+  },
+    {
+    "id": "band3_core2",
+    "name": "band 3 core 2",
+    "path": "/data/band3_core2.json"
   }
 ]
