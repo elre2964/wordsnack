@@ -31,24 +31,14 @@ export type Match = {
 
 export type FeedbackType = 'correct' | 'incorrect' | 'none';
 
-export interface VocabSetInfo {
-  id: string;
-  name: string;
-  path: string;
-}
-
 export interface LoadedVocabSet {
   id: string;
   name: string;
   words: Word[];
 }
 
-// FIX: Define RawWordData interface for fetched vocabulary data to ensure type safety.
-export interface RawWordData {
-  word: string;
-  pos: string;
-  definitions: string[];
-  examples: string[];
-  translation_meaning?: string;
-  collision_group_id: string;
+export interface VocabSetInfo {
+  id: string;
+  name: string;
+  path: string;
 }

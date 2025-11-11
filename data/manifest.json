@@ -1,57 +1,23 @@
+
 [
-  {
-    "id": "band3_core1_d",
-    "name": "Band 3 Core 1 - D",
-    "path": "/data/band3_core1_d.json"
-  },
-  {
-    "id": "band3_core1_c",
-    "name": "Band 3 Core 1 - C",
-    "path": "/data/band3_core1_c.json"
-  },
     {
-    "id": "band3_core1_b",
-    "name": "Band 3 Core 1 - B",
-    "path": "/data/band3_core1_b.json"
-  },
-    {
-    "id": "band3_core1_a",
-    "name": "Band 3 Core 1 - A",
-    "path": "/data/band3_core1_a.json"
+    "id": "band3_core1_A",
+    "name": "band 3 core 1 - A",
+    "path": "/data/band3_core1_A.xlsx"
   },
   {
-    "id": "band2_core1",
-    "name": "Band 2 Core 1",
-    "path": "/data/band2_core1.json"
+    "id": "band3_core1_B",
+    "name": "band 3 core 1 - B",
+    "path": "/data/band3_core1_B.xlsx"
   },
   {
-    "id": "band2_core2",
-    "name": "Band 2 Core 2",
-    "path": "/data/band2_core2.json"
+    "id": "band3_core1_C",
+    "name": "band 3 core 1 - C",
+    "path": "/data/band3_core1_C.xlsx"
   },
   {
-    "id": "pre_band1",
-    "name": "pre band 1",
-    "path": "/data/pre_band1.json"
-  },
-      {
-    "id": "band1_core1",
-    "name": "band 1 core 1",
-    "path": "/data/band1_core1.json"
-  },
-  {
-    "id": "band1_core2",
-    "name": "band 1 core 2",
-    "path": "/data/band1_core2.json"
-  },
-  {
-    "id": "from_bagrut",
-    "name": "תרגול נוסף מבגרויות",
-    "path": "/data/from_bagrut.json"
-  },
-    {
-    "id": "band3_core2",
-    "name": "band 3 core 2",
-    "path": "/data/band3_core2.json"
+    "id": "band3_core1_D",
+    "name": "band 3 core 1 - D",
+    "path": "/data/band3_core1_D.xlsx"
   }
 ]
