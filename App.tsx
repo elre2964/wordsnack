@@ -1,5 +1,8 @@
 
 
+
+
+
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import type { Word, TargetDefinition, GameState, FeedbackType, LoadedVocabSet, VocabSetInfo } from './types';
 import WordPill from './components/WordPill';
@@ -10,7 +13,8 @@ import WordOfTheDay from './components/WordOfTheDay';
 // Declare XLSX to inform TypeScript that it's a global variable from a script tag
 declare const XLSX: any;
 
-interface RawJsonWordData {
+// Target structure for a word after parsing, used throughout the app.
+interface ParsedWordData {
   word: string;
   pos?: string;
   definitions: string[];
@@ -33,8 +37,8 @@ const shuffleArray = <T,>(array: T[]): T[] => {
   return [...array].sort(() => Math.random() - 0.5);
 };
 
-// Helper function to load and parse vocab sets. Tries XLSX first, falls back to JSON.
-const loadAndParseVocabSet = async (path: string): Promise<RawJsonWordData[]> => {
+// Helper function to load and parse vocab sets. Tries XLSX first, falls back to JSON, and handles multiple JSON formats.
+const loadAndParseVocabSet = async (path: string): Promise<ParsedWordData[]> => {
   // Try fetching the XLSX file first
   let response = await fetch(path);
   if (!response.ok) {
@@ -47,16 +51,56 @@ const loadAndParseVocabSet = async (path: string): Promise<RawJsonWordData[]> =>
       throw new Error(`Vocabulary file not found at ${path} or ${jsonPath}`);
     }
 
-    // It's a JSON file, so parse it as JSON
-    const jsonData: Partial<RawJsonWordData>[] = await response.json();
-    return jsonData.map(rawWord => ({
-      word: rawWord.word || '',
-      pos: rawWord.pos || '',
-      definitions: rawWord.definitions || [],
-      examples: rawWord.examples || [],
-      translation_meaning: rawWord.translation_meaning || '',
-      collision_group_id: rawWord.collision_group_id || '',
-    }));
+    // It's a JSON file, so parse it and determine the format
+    const jsonData: any[] = await response.json();
+
+    if (!jsonData || jsonData.length === 0) {
+      return [];
+    }
+
+    const firstWord = jsonData[0];
+
+    // New format check: has "definition_1" and not "definitions" array
+    if (typeof firstWord.definition_1 === 'string' && !Array.isArray(firstWord.definitions)) {
+      return jsonData.map((rawWord: any): ParsedWordData => {
+        const definitions: string[] = [];
+        const examples: string[] = [];
+
+        Object.keys(rawWord).forEach(key => {
+          if (key.startsWith('definition_')) {
+            const value = rawWord[key];
+            if (typeof value === 'string' && value.trim()) {
+              definitions.push(value.trim());
+            }
+          } else if (key.startsWith('example_')) {
+            const value = rawWord[key];
+            if (typeof value === 'string' && value.trim()) {
+              examples.push(value.trim());
+            }
+          }
+        });
+        
+        return {
+          word: rawWord.word || '',
+          pos: rawWord.part_of_speech || '',
+          definitions,
+          examples,
+          translation_meaning: rawWord.translation || '',
+          collision_group_id: rawWord.collision_group_id || '',
+        };
+      });
+    } 
+    // Old format check: has "definitions" array
+    else {
+      return jsonData.map((rawWord: any): ParsedWordData => ({
+        word: rawWord.word || '',
+        pos: rawWord.pos || '',
+        definitions: rawWord.definitions || [],
+        examples: rawWord.examples || [],
+        translation_meaning: rawWord.translation_meaning || '',
+        collision_group_id: rawWord.collision_group_id || '',
+      }));
+    }
   }
 
   // It's an XLSX file
@@ -64,10 +108,10 @@ const loadAndParseVocabSet = async (path: string): Promise<RawJsonWordData[]> =>
   const workbook = XLSX.read(arrayBuffer);
   const sheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];
-  const jsonData = XLSX.utils.sheet_to_json(worksheet) as XlsxRow[];
+  const xlsxJsonData = XLSX.utils.sheet_to_json(worksheet) as XlsxRow[];
 
   // Transform the data to match the app's expected structure
-  return jsonData.map((row: XlsxRow) => {
+  return xlsxJsonData.map((row: XlsxRow): ParsedWordData => {
     const definitions = typeof row.definitions === 'string'
       ? row.definitions.split('\n').map((s: string) => s.trim()).filter(Boolean)
       : (Array.isArray(row.definitions) ? row.definitions : []);
@@ -152,11 +196,8 @@ const App: React.FC = () => {
               id: `${firstSet.name.replace(/\s/g, '_')}-${randomWord.word.replace(/\s/g, '_')}-wod`,
               word: randomWord.word,
               partOfSpeech: randomWord.pos || 'N/A',
-              // FIX: Corrected variable from rawWord to randomWord.
               definitions: randomWord.definitions || [],
-              // FIX: Corrected variable from rawWord to randomWord.
               examples: randomWord.examples || [],
-              // FIX: Corrected variable from rawWord to randomWord.
               flashcard: { translation: randomWord.translation_meaning || '', explanation: '' },
               setName: firstSet.name,
               collision_group_id: randomWord.collision_group_id,
@@ -390,7 +431,8 @@ const App: React.FC = () => {
         {error && <p className="text-red-400 bg-red-900/50 p-4 rounded-lg my-6 max-w-lg text-center animate-scaleUp">{error}</p>}
 
         <div className="w-full max-w-lg bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 mt-8 animate-scaleUp">
-            <h2 className="text-2xl font-bold text-center text-slate-300 mb-6 font-lexend">Available Sets</h2>
+            <h2 className="text-2xl font-bold text-center text-slate-300 mb-2 font-lexend">Available Sets</h2>
+            <p className="text-center text-slate-400 mb-4 text-sm">לבגרות 5 יח"ל - נדרש Band 3</p>
             <div className="space-y-3 max-h-60 overflow-y-auto pr-2">
               {availableSets.map((set, index) => (
                 <label key={set.id} style={{ animationDelay: `${index * 50}ms` }} className="flex items-center p-3 bg-slate-900/50 rounded-lg border-2 border-slate-700 hover:bg-slate-700/50 has-[:checked]:border-sky-500 has-[:checked]:bg-sky-900/30 has-[:checked]:ring-2 has-[:checked]:ring-sky-500/50 transition-all cursor-pointer animate-fadeIn opacity-0">

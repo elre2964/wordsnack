@@ -28,22 +28,22 @@
   {
     "id": "band3_core1_A",
     "name": "Band 3 Core 1 - A",
-    "path": "/data/band3_core1_a.xlsx"
+    "path": "/data/band3_core1_A.Json"
   },
   {
     "id": "band3_core1_B",
     "name": "Band 3 Core 1 - B",
-    "path": "/data/band3_core1_b.xlsx"
+    "path": "/data/band3_core1_B.json"
   },
   {
     "id": "band3_core1_C",
     "name": "Band 3 Core 1 - C",
-    "path": "/data/band3_core1_c.xlsx"
+    "path": "/data/band3_core1_C.json"
   },
   {
     "id": "band3_core1_D",
     "name": "Band 3 Core 1 - D",
-    "path": "/data/band3_core1_d.xlsx"
+    "path": "/data/band3_core1_D.json"
   },
   {
     "id": "from_bagrut",
