@@ -7,25 +7,84 @@ import DefinitionBox from './components/DefinitionBox';
 import Flashcard from './components/Flashcard';
 import WordOfTheDay from './components/WordOfTheDay';
 
-// Make SheetJS library available in the component
+// Declare XLSX to inform TypeScript that it's a global variable from a script tag
 declare const XLSX: any;
 
-// FIX: Define an interface for the raw data from XLSX to provide type safety.
-interface RawWordData {
+interface RawJsonWordData {
   word: string;
-  part_of_speech?: string;
-  definition_1?: string;
-  definition_2?: string;
-  definition_3?: string;
-  definition_4?: string;
-  example_1?: string;
-  example_2?: string;
-  translation?: string;
+  pos?: string;
+  definitions: string[];
+  examples: string[];
+  translation_meaning?: string;
+  collision_group_id?: string;
+}
+
+// Add interface for raw data from XLSX to improve type safety.
+interface XlsxRow {
+  word?: string;
+  pos?: string;
+  definitions?: string | string[];
+  examples?: string | string[];
+  translation_meaning?: string;
   collision_group_id?: string;
 }
 
 const shuffleArray = <T,>(array: T[]): T[] => {
   return [...array].sort(() => Math.random() - 0.5);
+};
+
+// Helper function to load and parse vocab sets. Tries XLSX first, falls back to JSON.
+const loadAndParseVocabSet = async (path: string): Promise<RawJsonWordData[]> => {
+  // Try fetching the XLSX file first
+  let response = await fetch(path);
+  if (!response.ok) {
+    // If XLSX fails, try the JSON equivalent
+    const jsonPath = path.replace(/\.xlsx$/, '.json');
+    console.warn(`XLSX file not found at ${path}. Falling back to ${jsonPath}.`);
+    response = await fetch(jsonPath);
+
+    if (!response.ok) {
+      throw new Error(`Vocabulary file not found at ${path} or ${jsonPath}`);
+    }
+
+    // It's a JSON file, so parse it as JSON
+    const jsonData: Partial<RawJsonWordData>[] = await response.json();
+    return jsonData.map(rawWord => ({
+      word: rawWord.word || '',
+      pos: rawWord.pos || '',
+      definitions: rawWord.definitions || [],
+      examples: rawWord.examples || [],
+      translation_meaning: rawWord.translation_meaning || '',
+      collision_group_id: rawWord.collision_group_id || '',
+    }));
+  }
+
+  // It's an XLSX file
+  const arrayBuffer = await response.arrayBuffer();
+  const workbook = XLSX.read(arrayBuffer);
+  const sheetName = workbook.SheetNames[0];
+  const worksheet = workbook.Sheets[sheetName];
+  const jsonData = XLSX.utils.sheet_to_json(worksheet) as XlsxRow[];
+
+  // Transform the data to match the app's expected structure
+  return jsonData.map((row: XlsxRow) => {
+    const definitions = typeof row.definitions === 'string'
+      ? row.definitions.split('\n').map((s: string) => s.trim()).filter(Boolean)
+      : (Array.isArray(row.definitions) ? row.definitions : []);
+
+    const examples = typeof row.examples === 'string'
+      ? row.examples.split('\n').map((s: string) => s.trim()).filter(Boolean)
+      : (Array.isArray(row.examples) ? row.examples : []);
+
+    return {
+      word: row.word || '',
+      pos: row.pos || '',
+      definitions,
+      examples,
+      translation_meaning: row.translation_meaning || '',
+      collision_group_id: row.collision_group_id || '',
+    };
+  });
 };
 
 type AppScreen = 'HOME' | 'MODE_SELECTION' | 'GAME';
@@ -82,37 +141,31 @@ const App: React.FC = () => {
         const manifestData: VocabSetInfo[] = await response.json();
         setAvailableSets(manifestData);
         
-        // Fetch a word of the day from the first set for initial display
         if (manifestData.length > 0) {
           const firstSet = manifestData[0];
-          const setResponse = await fetch(firstSet.path);
-          if (!setResponse.ok) throw new Error(`Failed to load word of the day set.`);
-          const data = await setResponse.arrayBuffer();
-          const workbook = XLSX.read(data);
-          const sheetName = workbook.SheetNames[0];
-          const worksheet = workbook.Sheets[sheetName];
-          // FIX: Use the RawWordData interface to type the parsed data.
-          const rawWords: RawWordData[] = XLSX.utils.sheet_to_json(worksheet);
+          const rawWords = await loadAndParseVocabSet(firstSet.path);
           
           if (rawWords.length > 0) {
             const randomWord = rawWords[Math.floor(Math.random() * rawWords.length)];
-            const definitions = [randomWord.definition_1, randomWord.definition_2, randomWord.definition_3, randomWord.definition_4].filter(Boolean) as string[];
-            const examples = [randomWord.example_1, randomWord.example_2].filter(Boolean) as string[];
             
             setWordOfTheDay({
               id: `${firstSet.name.replace(/\s/g, '_')}-${randomWord.word.replace(/\s/g, '_')}-wod`,
               word: randomWord.word,
-              partOfSpeech: randomWord.part_of_speech || 'N/A',
-              definitions,
-              examples,
-              flashcard: { translation: randomWord.translation || '', explanation: '' },
+              partOfSpeech: randomWord.pos || 'N/A',
+              // FIX: Corrected variable from rawWord to randomWord.
+              definitions: randomWord.definitions || [],
+              // FIX: Corrected variable from rawWord to randomWord.
+              examples: randomWord.examples || [],
+              // FIX: Corrected variable from rawWord to randomWord.
+              flashcard: { translation: randomWord.translation_meaning || '', explanation: '' },
               setName: firstSet.name,
+              collision_group_id: randomWord.collision_group_id,
             });
           }
         }
       } catch (err) {
         console.error("Failed to load initial data:", err);
-        setError("Could not load vocabulary sets. Please ensure 'data/manifest.json' and associated files are available.");
+        setError("Could not load vocabulary sets. Please ensure 'data/manifest.json' and associated files (.xlsx or .json) are available.");
       } finally {
         setIsLoading(false);
       }
@@ -142,43 +195,22 @@ const App: React.FC = () => {
 
     try {
       const loadedSetsPromises = setsToLoad.map(async (setInfo): Promise<LoadedVocabSet> => {
-        const response = await fetch(setInfo.path);
-         if (!response.ok) {
-          throw new Error(`Vocabulary file not found at ${setInfo.path}`);
-        }
-        const data = await response.arrayBuffer();
-        const workbook = XLSX.read(data);
-        const sheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[sheetName];
-        // FIX: Use the RawWordData interface to type the parsed data.
-        const rawWords: RawWordData[] = XLSX.utils.sheet_to_json(worksheet);
+        const rawWords = await loadAndParseVocabSet(setInfo.path);
 
         const setName = setInfo.name;
         
         const transformedWords: Word[] = rawWords
-          .filter(rawWord => rawWord.word) // Ensure word column exists
+          .filter(rawWord => rawWord.word && rawWord.definitions && rawWord.definitions.length > 0)
           .map((rawWord, index) => {
-            const definitions = [
-              rawWord.definition_1,
-              rawWord.definition_2,
-              rawWord.definition_3,
-              rawWord.definition_4,
-            ].filter(d => d && typeof d === 'string');
-            
-            const examples = [
-              rawWord.example_1,
-              rawWord.example_2,
-            ].filter(e => e && typeof e === 'string');
-
             return {
               id: `${setName.replace(/\s/g, '_')}-${rawWord.word.replace(/\s/g, '_')}-${index}`,
               word: rawWord.word,
-              partOfSpeech: rawWord.part_of_speech || 'none',
-              definitions,
-              examples,
+              partOfSpeech: rawWord.pos || 'none',
+              definitions: rawWord.definitions,
+              examples: rawWord.examples || [],
               flashcard: {
-                translation: rawWord.translation || '',
-                explanation: '', // This field is not in the xlsx
+                translation: rawWord.translation_meaning || '',
+                explanation: '',
               },
               setName: setName,
               collision_group_id: rawWord.collision_group_id
@@ -198,8 +230,8 @@ const App: React.FC = () => {
       setAppScreen('MODE_SELECTION');
 
     } catch (err) {
-      console.error("Failed to load or parse vocabulary from XLSX file:", err);
-      setError(`Error loading vocabulary. Please make sure the selected files exist in the /data directory and are formatted correctly.`);
+      console.error("Failed to load or parse vocabulary:", err);
+      setError(`Error loading vocabulary. Please make sure the selected files exist in the /data directory as .xlsx or .json and are formatted correctly.`);
       setAppScreen('HOME');
     } finally {
       setIsLoading(false);
