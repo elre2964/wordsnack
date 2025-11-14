@@ -16,13 +16,13 @@ const WordPill: React.FC<WordPillProps> = ({ word, onClick, isSelected, isUsed, 
 
   switch (feedback) {
     case 'correct':
-      stateClasses = "bg-green-500 border-green-300 ring-4 ring-green-500/50 cursor-default scale-105 shadow-green-500/30 shadow-xl";
+      stateClasses = "bg-green-500 border-green-300 ring-4 ring-green-500/50 cursor-default scale-105 shadow-green-500/30 shadow-xl animate-pop";
       break;
     case 'incorrect':
-      stateClasses = "bg-red-500 border-red-300 ring-4 ring-red-500/50 cursor-default scale-95 opacity-70 shadow-red-500/30 shadow-lg";
+      stateClasses = "bg-red-500 border-red-300 ring-4 ring-red-500/50 cursor-default scale-95 opacity-70 shadow-red-500/30 shadow-lg animate-shake";
       break;
     case 'revealed':
-      stateClasses = "bg-teal-500 border-teal-300 ring-4 ring-teal-500/50 cursor-default scale-105 shadow-teal-500/30 shadow-xl";
+      stateClasses = "bg-teal-500 border-teal-300 ring-4 ring-teal-500/50 cursor-default scale-105 shadow-teal-500/30 shadow-xl animate-pop";
       break;
     default: // 'none'
       if (isSelected) {

@@ -14,8 +14,8 @@ const DefinitionBox: React.FC<DefinitionBoxProps> = ({ definition, onClick, feed
   const baseClasses = "w-full py-4 px-4 rounded-xl border-2 transition-all duration-300 shadow-lg flex flex-col justify-between text-center bg-slate-800/50 backdrop-blur-sm min-h-[120px]";
 
   const feedbackClasses = {
-    correct: 'bg-green-500/20 border-green-400 scale-105 shadow-green-500/20 shadow-xl',
-    incorrect: 'bg-red-500/20 border-red-400 scale-95 shadow-red-500/20 shadow-lg',
+    correct: 'bg-green-500/20 border-green-400 scale-105 shadow-green-500/20 shadow-xl animate-pop',
+    incorrect: 'bg-red-500/20 border-red-400 scale-95 shadow-red-500/20 shadow-lg animate-shake',
     none: ''
   };
 
@@ -33,7 +33,7 @@ const DefinitionBox: React.FC<DefinitionBoxProps> = ({ definition, onClick, feed
 
 
   return (
-    <div className={`${baseClasses} ${appliedClasses} animate-fadeIn`} onClick={onClick}>
+    <div className={`${baseClasses} ${appliedClasses}`} onClick={onClick}>
       <div className="min-h-[2.5rem] mb-2 flex items-center justify-center font-lexend">
         {feedback === 'incorrect' ? (
           <div className="text-center">

@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import type { Word, TargetDefinition, GameState, FeedbackType, LoadedVocabSet, VocabSetInfo } from './types';
 import WordPill from './components/WordPill';
@@ -8,6 +9,20 @@ import WordOfTheDay from './components/WordOfTheDay';
 
 // Make SheetJS library available in the component
 declare const XLSX: any;
+
+// FIX: Define an interface for the raw data from XLSX to provide type safety.
+interface RawWordData {
+  word: string;
+  part_of_speech?: string;
+  definition_1?: string;
+  definition_2?: string;
+  definition_3?: string;
+  definition_4?: string;
+  example_1?: string;
+  example_2?: string;
+  translation?: string;
+  collision_group_id?: string;
+}
 
 const shuffleArray = <T,>(array: T[]): T[] => {
   return [...array].sort(() => Math.random() - 0.5);
@@ -76,12 +91,13 @@ const App: React.FC = () => {
           const workbook = XLSX.read(data);
           const sheetName = workbook.SheetNames[0];
           const worksheet = workbook.Sheets[sheetName];
-          const rawWords: any[] = XLSX.utils.sheet_to_json(worksheet);
+          // FIX: Use the RawWordData interface to type the parsed data.
+          const rawWords: RawWordData[] = XLSX.utils.sheet_to_json(worksheet);
           
           if (rawWords.length > 0) {
             const randomWord = rawWords[Math.floor(Math.random() * rawWords.length)];
-            const definitions = [randomWord.definition_1, randomWord.definition_2, randomWord.definition_3, randomWord.definition_4].filter(Boolean);
-            const examples = [randomWord.example_1, randomWord.example_2].filter(Boolean);
+            const definitions = [randomWord.definition_1, randomWord.definition_2, randomWord.definition_3, randomWord.definition_4].filter(Boolean) as string[];
+            const examples = [randomWord.example_1, randomWord.example_2].filter(Boolean) as string[];
             
             setWordOfTheDay({
               id: `${firstSet.name.replace(/\s/g, '_')}-${randomWord.word.replace(/\s/g, '_')}-wod`,
@@ -134,7 +150,8 @@ const App: React.FC = () => {
         const workbook = XLSX.read(data);
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
-        const rawWords: any[] = XLSX.utils.sheet_to_json(worksheet);
+        // FIX: Use the RawWordData interface to type the parsed data.
+        const rawWords: RawWordData[] = XLSX.utils.sheet_to_json(worksheet);
 
         const setName = setInfo.name;
         
@@ -164,6 +181,7 @@ const App: React.FC = () => {
                 explanation: '', // This field is not in the xlsx
               },
               setName: setName,
+              collision_group_id: rawWord.collision_group_id
             };
           });
 
@@ -342,8 +360,8 @@ const App: React.FC = () => {
         <div className="w-full max-w-lg bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 mt-8 animate-scaleUp">
             <h2 className="text-2xl font-bold text-center text-slate-300 mb-6 font-lexend">Available Sets</h2>
             <div className="space-y-3 max-h-60 overflow-y-auto pr-2">
-              {availableSets.map(set => (
-                <label key={set.id} className="flex items-center p-3 bg-slate-900/50 rounded-lg border-2 border-slate-700 hover:bg-slate-700/50 has-[:checked]:border-sky-500 has-[:checked]:bg-sky-900/30 has-[:checked]:ring-2 has-[:checked]:ring-sky-500/50 transition-all cursor-pointer">
+              {availableSets.map((set, index) => (
+                <label key={set.id} style={{ animationDelay: `${index * 50}ms` }} className="flex items-center p-3 bg-slate-900/50 rounded-lg border-2 border-slate-700 hover:bg-slate-700/50 has-[:checked]:border-sky-500 has-[:checked]:bg-sky-900/30 has-[:checked]:ring-2 has-[:checked]:ring-sky-500/50 transition-all cursor-pointer animate-fadeIn opacity-0">
                   <input
                     type="checkbox"
                     checked={selectedSetIds.has(set.id)}
@@ -377,15 +395,15 @@ const App: React.FC = () => {
             <p className="text-slate-400 mt-2 text-lg">How would you like to practice?</p>
         </header>
         <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <button onClick={() => setupNewQuestion('MATCHING')} className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:bg-slate-700/50 hover:border-sky-500 transition-all transform hover:scale-105 animate-scaleUp" style={{animationDelay: '100ms'}}>
+            <button onClick={() => setupNewQuestion('MATCHING')} className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:bg-slate-700/50 hover:border-sky-500 transition-all transform hover:scale-105 animate-scaleUp opacity-0" style={{animationDelay: '100ms'}}>
                 <h2 className="text-2xl font-bold text-sky-400 mb-2 font-lexend">Match Definitions</h2>
                 <p className="text-slate-300">The classic game. Match words from the bank to their correct definitions.</p>
             </button>
-            <button onClick={() => setupNewQuestion('REVERSE_MATCH')} className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:bg-slate-700/50 hover:border-purple-500 transition-all transform hover:scale-105 animate-scaleUp" style={{animationDelay: '200ms'}}>
+            <button onClick={() => setupNewQuestion('REVERSE_MATCH')} className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:bg-slate-700/50 hover:border-purple-500 transition-all transform hover:scale-105 animate-scaleUp opacity-0" style={{animationDelay: '200ms'}}>
                 <h2 className="text-2xl font-bold text-purple-400 mb-2 font-lexend">Reverse Match</h2>
                 <p className="text-slate-300">A new challenge. Read a definition and pick the correct word from four options.</p>
             </button>
-            <button onClick={() => setupNewQuestion('FILL_IN_THE_BLANK')} className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:bg-slate-700/50 hover:border-amber-500 transition-all transform hover:scale-105 animate-scaleUp" style={{animationDelay: '300ms'}}>
+            <button onClick={() => setupNewQuestion('FILL_IN_THE_BLANK')} className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 hover:bg-slate-700/50 hover:border-amber-500 transition-all transform hover:scale-105 animate-scaleUp opacity-0" style={{animationDelay: '300ms'}}>
                 <h2 className="text-2xl font-bold text-amber-400 mb-2 font-lexend">Fill in the Blank</h2>
                 <p className="text-slate-300">Test your context skills. Complete a sentence by choosing the correct missing word.</p>
             </button>
@@ -416,15 +434,26 @@ const App: React.FC = () => {
                 role="toolbar"
                 aria-label="Word bank"
               >
-                {practiceWords.map(word => {
+                {practiceWords.map((word, index) => {
                   const isUsed = Array.from(userMatches.values()).includes(word.id);
+                  let feedback: 'correct' | 'incorrect' | 'none' = 'none';
+                  if(gameState === 'FEEDBACK') {
+                    const correctDef = targetDefinitions.find(td => td.wordId === word.id);
+                    if(correctDef && userMatches.get(correctDef.definition) === word.id) {
+                      feedback = 'correct'
+                    } else if (isUsed) {
+                      feedback = 'incorrect';
+                    }
+                  }
+
                   return (
-                    <div key={word.id}>
+                    <div key={word.id} style={{ animationDelay: `${index * 75}ms` }} className="animate-fadeIn opacity-0">
                       <WordPill 
                         word={word.word}
                         onClick={() => handleWordClick(word.id)}
                         isSelected={selectedWordId === word.id}
                         isUsed={gameState === 'PRACTICING' && isUsed && selectedWordId !== word.id}
+                        feedback={feedback}
                       />
                     </div>
                   );
@@ -433,7 +462,7 @@ const App: React.FC = () => {
             </div>
             <div className="w-full space-y-4">
                <h2 className="text-2xl font-bold text-center text-slate-300 font-lexend">Definitions</h2>
-                {shuffledDefinitions.map(({ definition, wordId: correctDefWordId }) => {
+                {shuffledDefinitions.map(({ definition, wordId: correctDefWordId }, index) => {
                   const userWordId = userMatches.get(definition);
                   const matchedWordObject = userWordId ? practiceWords.find(w => w.id === userWordId) : null;
                   const matchedWord = matchedWordObject ? matchedWordObject.word : null;
@@ -442,7 +471,7 @@ const App: React.FC = () => {
                   const correctWord = correctWordObject ? correctWordObject.word : null;
 
                   return (
-                    <div key={definition}>
+                    <div key={definition} style={{ animationDelay: `${200 + index * 100}ms` }} className="opacity-0 animate-fadeIn">
                         <DefinitionBox 
                           definition={definition}
                           onClick={() => handleDefinitionClick(definition)}
@@ -487,9 +516,8 @@ const App: React.FC = () => {
                     }
                   }
                   return (
-                    <div style={{animationDelay: `${index * 100}ms`}} className="animate-scaleUp">
+                    <div style={{animationDelay: `${index * 100}ms`}} className="animate-scaleUp opacity-0" key={word.id}>
                     <WordPill 
-                      key={word.id}
                       word={word.word}
                       onClick={() => handleOptionSelection(word)}
                       disabled={questionState === 'feedback'}
@@ -552,9 +580,11 @@ const App: React.FC = () => {
         {appScreen === 'GAME' && gameState === 'FEEDBACK' && (
           <div className="w-full max-w-5xl mt-8 animate-fadeIn">
             <h2 className="text-3xl font-bold text-center mb-6 text-amber-400 font-lexend">Flashcards Review</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {targetDefinitions.map(td => practiceWords.find(pw => pw.id === td.wordId)).filter(Boolean).map(word => (
-                 <Flashcard key={word!.id} wordData={word!} />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 perspective-container">
+              {practiceWords.map((word, index) => (
+                 <div key={word.id} style={{ animationDelay: `${index * 100}ms` }} className="opacity-0 animate-fadeIn">
+                    <Flashcard wordData={word} />
+                 </div>
               ))}
             </div>
           </div>
