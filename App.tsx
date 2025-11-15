@@ -1,17 +1,9 @@
-
-
-
-
-
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import type { Word, TargetDefinition, GameState, FeedbackType, LoadedVocabSet, VocabSetInfo } from './types';
 import WordPill from './components/WordPill';
 import DefinitionBox from './components/DefinitionBox';
 import Flashcard from './components/Flashcard';
 import WordOfTheDay from './components/WordOfTheDay';
-
-// Declare XLSX to inform TypeScript that it's a global variable from a script tag
-declare const XLSX: any;
 
 // Target structure for a word after parsing, used throughout the app.
 interface ParsedWordData {
@@ -23,113 +15,73 @@ interface ParsedWordData {
   collision_group_id?: string;
 }
 
-// Add interface for raw data from XLSX to improve type safety.
-interface XlsxRow {
-  word?: string;
-  pos?: string;
-  definitions?: string | string[];
-  examples?: string | string[];
-  translation_meaning?: string;
-  collision_group_id?: string;
-}
-
 const shuffleArray = <T,>(array: T[]): T[] => {
   return [...array].sort(() => Math.random() - 0.5);
 };
 
-// Helper function to load and parse vocab sets. Tries XLSX first, falls back to JSON, and handles multiple JSON formats.
+// Helper function to load and parse vocab sets. Supports multiple JSON formats.
 const loadAndParseVocabSet = async (path: string): Promise<ParsedWordData[]> => {
-  // Try fetching the XLSX file first
-  let response = await fetch(path);
+  // Convert .xlsx/.Json paths from manifest to lowercase .json for consistency
+  const jsonPath = path.replace(/\.(xlsx|Json)$/i, '.json');
+
+  const response = await fetch(jsonPath);
+
   if (!response.ok) {
-    // If XLSX fails, try the JSON equivalent
-    const jsonPath = path.replace(/\.xlsx$/, '.json');
-    console.warn(`XLSX file not found at ${path}. Falling back to ${jsonPath}.`);
-    response = await fetch(jsonPath);
-
-    if (!response.ok) {
-      throw new Error(`Vocabulary file not found at ${path} or ${jsonPath}`);
-    }
-
-    // It's a JSON file, so parse it and determine the format
-    const jsonData: any[] = await response.json();
-
-    if (!jsonData || jsonData.length === 0) {
-      return [];
-    }
-
-    const firstWord = jsonData[0];
-
-    // New format check: has "definition_1" and not "definitions" array
-    if (typeof firstWord.definition_1 === 'string' && !Array.isArray(firstWord.definitions)) {
-      return jsonData.map((rawWord: any): ParsedWordData => {
-        const definitions: string[] = [];
-        const examples: string[] = [];
-
-        Object.keys(rawWord).forEach(key => {
-          if (key.startsWith('definition_')) {
-            const value = rawWord[key];
-            if (typeof value === 'string' && value.trim()) {
-              definitions.push(value.trim());
-            }
-          } else if (key.startsWith('example_')) {
-            const value = rawWord[key];
-            if (typeof value === 'string' && value.trim()) {
-              examples.push(value.trim());
-            }
-          }
-        });
-        
-        return {
-          word: rawWord.word || '',
-          pos: rawWord.part_of_speech || '',
-          definitions,
-          examples,
-          translation_meaning: rawWord.translation || '',
-          collision_group_id: rawWord.collision_group_id || '',
-        };
-      });
-    } 
-    // Old format check: has "definitions" array
-    else {
-      return jsonData.map((rawWord: any): ParsedWordData => ({
-        word: rawWord.word || '',
-        pos: rawWord.pos || '',
-        definitions: rawWord.definitions || [],
-        examples: rawWord.examples || [],
-        translation_meaning: rawWord.translation_meaning || '',
-        collision_group_id: rawWord.collision_group_id || '',
-      }));
-    }
+    throw new Error(`Vocabulary file not found at ${jsonPath}`);
   }
 
-  // It's an XLSX file
-  const arrayBuffer = await response.arrayBuffer();
-  const workbook = XLSX.read(arrayBuffer);
-  const sheetName = workbook.SheetNames[0];
-  const worksheet = workbook.Sheets[sheetName];
-  const xlsxJsonData = XLSX.utils.sheet_to_json(worksheet) as XlsxRow[];
+  // It's a JSON file, so parse it and determine the format
+  const jsonData: any[] = await response.json();
 
-  // Transform the data to match the app's expected structure
-  return xlsxJsonData.map((row: XlsxRow): ParsedWordData => {
-    const definitions = typeof row.definitions === 'string'
-      ? row.definitions.split('\n').map((s: string) => s.trim()).filter(Boolean)
-      : (Array.isArray(row.definitions) ? row.definitions : []);
+  if (!jsonData || jsonData.length === 0) {
+    return [];
+  }
 
-    const examples = typeof row.examples === 'string'
-      ? row.examples.split('\n').map((s: string) => s.trim()).filter(Boolean)
-      : (Array.isArray(row.examples) ? row.examples : []);
+  const firstWord = jsonData[0];
 
-    return {
-      word: row.word || '',
-      pos: row.pos || '',
-      definitions,
-      examples,
-      translation_meaning: row.translation_meaning || '',
-      collision_group_id: row.collision_group_id || '',
-    };
-  });
+  // New format check: has keys like "definition_1"
+  if (firstWord.hasOwnProperty('definition_1')) {
+    return jsonData.map((rawWord: any): ParsedWordData => {
+      const definitions: string[] = [];
+      const examples: string[] = [];
+
+      Object.keys(rawWord).forEach(key => {
+        if (key.startsWith('definition_')) {
+          const value = rawWord[key];
+          if (typeof value === 'string' && value.trim()) {
+            definitions.push(value.trim());
+          }
+        } else if (key.startsWith('example_')) {
+          const value = rawWord[key];
+          if (typeof value === 'string' && value.trim()) {
+            examples.push(value.trim());
+          }
+        }
+      });
+      
+      return {
+        word: rawWord.word || '',
+        pos: rawWord.part_of_speech || '',
+        definitions,
+        examples,
+        translation_meaning: rawWord.translation || '',
+        collision_group_id: rawWord.collision_group_id || '',
+      };
+    });
+  } 
+  // Old format check: has a "definitions" array
+  else {
+    return jsonData.map((rawWord: any): ParsedWordData => ({
+      word: rawWord.word || '',
+      pos: rawWord.pos || '',
+      definitions: rawWord.definitions || [],
+      examples: rawWord.examples || [],
+      translation_meaning: rawWord.translation_meaning || '',
+      collision_group_id: rawWord.collision_group_id || '',
+    }));
+  }
 };
+
 
 type AppScreen = 'HOME' | 'MODE_SELECTION' | 'GAME';
 type GameMode = 'MATCHING' | 'REVERSE_MATCH' | 'FILL_IN_THE_BLANK';
@@ -206,7 +158,7 @@ const App: React.FC = () => {
         }
       } catch (err) {
         console.error("Failed to load initial data:", err);
-        setError("Could not load vocabulary sets. Please ensure 'data/manifest.json' and associated files (.xlsx or .json) are available.");
+        setError("Could not load vocabulary sets. Please ensure 'data/manifest.json' and associated .json files are available.");
       } finally {
         setIsLoading(false);
       }
@@ -272,7 +224,7 @@ const App: React.FC = () => {
 
     } catch (err) {
       console.error("Failed to load or parse vocabulary:", err);
-      setError(`Error loading vocabulary. Please make sure the selected files exist in the /data directory as .xlsx or .json and are formatted correctly.`);
+      setError(`Error loading vocabulary. Please make sure the selected files exist in the /data directory as .json and are formatted correctly.`);
       setAppScreen('HOME');
     } finally {
       setIsLoading(false);
