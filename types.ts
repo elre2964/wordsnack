@@ -1,3 +1,4 @@
+
 // FIX: Import React to resolve 'Cannot find namespace 'React'' error.
 import React from 'react';
 
@@ -41,4 +42,21 @@ export interface VocabSetInfo {
   id: string;
   name: string;
   path: string;
+}
+
+export interface UserStats {
+  wordsLearned: number;
+  currentStreak: number;
+  totalCorrect: number;
+  totalAttempts: number;
+  lastPlayed: string; // ISO Date string
+}
+
+export interface MemoryCardType {
+  id: string;
+  content: string;
+  type: 'word' | 'definition';
+  wordId: string;
+  isFlipped: boolean;
+  isMatched: boolean;
 }
