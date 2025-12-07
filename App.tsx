@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import type { Word, TargetDefinition, GameState, FeedbackType, VocabSetInfo, UserStats } from './types';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import type { Word, TargetDefinition, GameState, FeedbackType, VocabSetInfo } from './types';
 import WordPill from './components/WordPill';
 import DefinitionBox from './components/DefinitionBox';
 import Flashcard from './components/Flashcard';
@@ -32,8 +32,11 @@ const WIN_MESSAGES = [
     "Excellent Work!"
 ];
 
-// Sound Effects Helpers (Simple Web Audio API or HTML5 Audio)
-const playSound = (type: 'correct' | 'incorrect' | 'click' | 'win') => {
+// --- Sound System ---
+const playSound = (type: 'correct' | 'incorrect' | 'click' | 'win' | 'tick') => {
+    // Check if sound is enabled globally (using a simple check here or prop)
+    if (localStorage.getItem('soundEnabled') === 'false') return;
+
     try {
         const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
         if (!AudioContext) return;
@@ -48,28 +51,45 @@ const playSound = (type: 'correct' | 'incorrect' | 'click' | 'win') => {
         const now = ctx.currentTime;
         
         if (type === 'correct') {
+            osc.type = 'sine';
             osc.frequency.setValueAtTime(600, now);
-            osc.frequency.exponentialRampToValueAtTime(1200, now + 0.1);
+            osc.frequency.exponentialRampToValueAtTime(1000, now + 0.1);
             gain.gain.setValueAtTime(0.1, now);
             gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
             osc.start(now);
             osc.stop(now + 0.3);
         } else if (type === 'incorrect') {
-            osc.type = 'sawtooth';
-            osc.frequency.setValueAtTime(200, now);
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(150, now);
             osc.frequency.linearRampToValueAtTime(100, now + 0.2);
             gain.gain.setValueAtTime(0.1, now);
             gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
             osc.start(now);
             osc.stop(now + 0.2);
         } else if (type === 'win') {
+             osc.type = 'triangle';
              osc.frequency.setValueAtTime(400, now);
              osc.frequency.setValueAtTime(600, now + 0.1);
-             osc.frequency.setValueAtTime(1000, now + 0.2);
+             osc.frequency.setValueAtTime(800, now + 0.2);
+             osc.frequency.setValueAtTime(1200, now + 0.3);
              gain.gain.setValueAtTime(0.1, now);
-             gain.gain.linearRampToValueAtTime(0, now + 0.5);
+             gain.gain.linearRampToValueAtTime(0, now + 1);
              osc.start(now);
-             osc.stop(now + 0.5);
+             osc.stop(now + 1);
+        } else if (type === 'click') {
+             osc.type = 'sine';
+             osc.frequency.setValueAtTime(800, now);
+             gain.gain.setValueAtTime(0.05, now);
+             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+             osc.start(now);
+             osc.stop(now + 0.05);
+        } else if (type === 'tick') {
+             osc.type = 'square';
+             osc.frequency.setValueAtTime(1000, now);
+             gain.gain.setValueAtTime(0.03, now);
+             gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+             osc.start(now);
+             osc.stop(now + 0.05);
         }
     } catch (e) {
         // Audio play failed
@@ -126,8 +146,8 @@ const loadAndParseVocabSet = async (path: string): Promise<ParsedWordData[]> => 
   }
 };
 
-type AppScreen = 'HOME' | 'MODE_SELECTION' | 'GAME' | 'FAVORITES';
-type GameMode = 'MATCHING' | 'REVERSE_MATCH' | 'FILL_IN_THE_BLANK' | 'MEMORY';
+type AppScreen = 'HOME' | 'MODE_SELECTION' | 'GAME';
+type GameMode = 'MATCHING' | 'REVERSE_MATCH' | 'FILL_IN_THE_BLANK' | 'MEMORY' | 'TIME_ATTACK' | 'SURVIVAL';
 
 interface Question {
   correctWord: Word;
@@ -142,6 +162,7 @@ const App: React.FC = () => {
   const [appScreen, setAppScreen] = useState<AppScreen>('HOME');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [soundEnabled, setSoundEnabled] = useState(true);
 
   // Data
   const [availableSets, setAvailableSets] = useState<VocabSetInfo[]>([]);
@@ -153,18 +174,12 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Word[]>([]);
 
-  // Persistence & Stats
-  const [userStats, setUserStats] = useState<UserStats>({
-    wordsLearned: 0,
-    currentStreak: 0,
-    totalCorrect: 0,
-    totalAttempts: 0,
-    lastPlayed: new Date().toISOString()
-  });
-  const [favoriteIds, setFavoriteIds] = useState<Set<string>>(new Set());
+  // Session Stats (Ephemeral - resets on reload)
+  const [sessionScore, setSessionScore] = useState(0);
+  const [currentCombo, setCurrentCombo] = useState(0);
 
   // Game State
-  const [gameWords, setGameWords] = useState<Word[]>([]); // Words used in current game session
+  const [gameWords, setGameWords] = useState<Word[]>([]); 
   const [gameMode, setGameMode] = useState<GameMode>('MATCHING');
   
   // Matching Game Specifics
@@ -179,78 +194,30 @@ const App: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
   const [questionState, setQuestionState] = useState<'question' | 'feedback'>('question');
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [winMessage, setWinMessage] = useState(WIN_MESSAGES[0]);
+  
+  // Time Attack & Survival Specifics
+  const [timeLeft, setTimeLeft] = useState(60);
+  const [isTimerRunning, setIsTimerRunning] = useState(false);
+  const timerRef = useRef<number | null>(null);
+
+  // Results Modal
+  const [showRoundSummary, setShowRoundSummary] = useState(false);
+  const [roundPoints, setRoundPoints] = useState(0);
+  const [winMessage, setWinMessage] = useState("");
 
 
-  // --- Persistence Loading ---
-  useEffect(() => {
-    const loadPersistence = () => {
-      const savedStats = localStorage.getItem('vocabAppStats');
-      if (savedStats) {
-        try {
-          setUserStats(JSON.parse(savedStats));
-        } catch (e) { console.error("Failed to load stats"); }
-      }
-
-      const savedFavorites = localStorage.getItem('vocabAppFavorites');
-      if (savedFavorites) {
-        try {
-            const parsed = JSON.parse(savedFavorites);
-            if (Array.isArray(parsed)) {
-                setFavoriteIds(new Set(parsed));
-            }
-        } catch (e) { console.error("Failed to load favorites"); }
-      }
-    };
-    loadPersistence();
-  }, []);
-
-  // Save on change
-  useEffect(() => {
-    localStorage.setItem('vocabAppStats', JSON.stringify(userStats));
-  }, [userStats]);
-
-  useEffect(() => {
-    localStorage.setItem('vocabAppFavorites', JSON.stringify(Array.from(favoriteIds)));
-  }, [favoriteIds]);
-
-  const toggleFavorite = (id: string) => {
-    setFavoriteIds(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) newSet.delete(id);
-      else newSet.add(id);
-      return newSet;
-    });
+  // --- Sound Toggle ---
+  const toggleSound = () => {
+      const newState = !soundEnabled;
+      setSoundEnabled(newState);
+      localStorage.setItem('soundEnabled', String(newState));
   };
-
-  const updateStats = (correct: boolean) => {
-      setUserStats(prev => {
-          const newStats = { ...prev };
-          newStats.totalAttempts += 1;
-          if (correct) {
-              newStats.totalCorrect += 1;
-              newStats.wordsLearned += 1; // Simplistic logic, but works for motivation
-              
-              // Check streak
-              const lastDate = new Date(prev.lastPlayed).toDateString();
-              const today = new Date().toDateString();
-              if (lastDate !== today) {
-                  newStats.currentStreak += 1;
-              }
-              newStats.lastPlayed = new Date().toISOString();
-          }
-          return newStats;
-      });
-  };
-
 
   // --- Initial Data Load ---
   useEffect(() => {
     const fetchAllData = async () => {
       try {
         setIsLoading(true);
-        
         const manifestResponse = await fetch('/data/manifest.json');
         const manifestData: VocabSetInfo[] = await manifestResponse.json();
         setAvailableSets(manifestData);
@@ -287,7 +254,32 @@ const App: React.FC = () => {
       }
     };
     fetchAllData();
+    
+    // Check local storage only for sound preference
+    const savedSound = localStorage.getItem('soundEnabled');
+    if (savedSound === 'false') setSoundEnabled(false);
   }, []);
+
+  // --- Timer ---
+  useEffect(() => {
+      if (isTimerRunning && timeLeft > 0) {
+          timerRef.current = window.setTimeout(() => {
+              setTimeLeft(prev => prev - 1);
+              if (timeLeft <= 5) playSound('tick');
+          }, 1000);
+      } else if (isTimerRunning && timeLeft === 0) {
+          // Time Up!
+          if (gameMode === 'SURVIVAL') {
+             endRound(0, "Game Over!");
+          } else {
+             endRound(0, "Time's Up!");
+          }
+      }
+      return () => {
+          if (timerRef.current) clearTimeout(timerRef.current);
+      };
+  }, [isTimerRunning, timeLeft, gameMode]);
+
 
   // --- Handlers ---
 
@@ -330,22 +322,61 @@ const App: React.FC = () => {
     }
   };
 
-  const triggerWin = () => {
-      setWinMessage(WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]);
-      playSound('win');
-      setShowConfetti(true);
-      updateStats(true);
+  // --- Game Mechanics ---
+
+  const addScore = (basePoints: number) => {
+      // Calculate multiplier based on combo (max 3x)
+      const multiplier = Math.min(3, 1 + (currentCombo * 0.1));
+      const points = Math.round(basePoints * multiplier);
+      
+      setSessionScore(prev => prev + points);
+      setCurrentCombo(prev => prev + 1);
+      return points;
   };
 
-  const startSpecificGame = useCallback((mode: GameMode) => {
-    // Reset Game State
+  const resetCombo = () => {
+      setCurrentCombo(0);
+  };
+
+  const endRound = (pointsEarned: number, customMessage?: string) => {
+      setIsTimerRunning(false);
+      setRoundPoints(pointsEarned);
+      setWinMessage(customMessage || WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]);
+      setShowRoundSummary(true);
+      if (pointsEarned > 0 && customMessage !== "Game Over!") playSound('win');
+      else playSound('incorrect');
+  };
+
+  const startSpecificGame = useCallback((mode: GameMode, isNextQuestion: boolean = false) => {
+    // Reset Round State
     setQuestionState('question');
     setSelectedOptionId(null);
     setSelectedWordId(null);
     setUserMatches(new Map());
     setGameState('PRACTICING');
-    setShowConfetti(false);
+    setShowRoundSummary(false);
     setGameMode(mode);
+    
+    // Timer Logic
+    // If it's a new game (not next question) OR if it's survival (reset timer every Q), set time.
+    // Time Attack (mode='TIME_ATTACK'): 120 seconds global. Don't reset on next question.
+    // Survival (mode='SURVIVAL'): 10 seconds per question. Reset on next question.
+    if (!isNextQuestion) {
+        if (mode === 'TIME_ATTACK') {
+             setTimeLeft(120); 
+             setIsTimerRunning(true);
+        } else if (mode === 'SURVIVAL') {
+             setTimeLeft(10);
+             setIsTimerRunning(true);
+        } else {
+            setIsTimerRunning(false);
+        }
+    } else if (mode === 'SURVIVAL') {
+        // Survival resets timer on every question
+        setTimeLeft(10);
+        setIsTimerRunning(true);
+    } 
+    // For Time Attack next question, we keep the existing timer running.
 
     if (gameWords.length === 0) {
        setError("No words loaded.");
@@ -353,7 +384,7 @@ const App: React.FC = () => {
        return;
     }
 
-    // Setup based on mode
+    // Logic for setting up specific games
     if (mode === 'MATCHING') {
         const shuffledPool = shuffleArray<Word>(gameWords);
         const newPracticeWords: Word[] = [];
@@ -378,26 +409,30 @@ const App: React.FC = () => {
         setTargetDefinitions(newDefs);
         setShuffledDefinitions(shuffleArray(newDefs));
         
-    } else if (mode === 'REVERSE_MATCH') {
+    } else if (mode === 'REVERSE_MATCH' || mode === 'TIME_ATTACK' || mode === 'SURVIVAL') {
         const shuffled = shuffleArray<Word>(gameWords);
         if (shuffled.length < 4) return;
         const correct = shuffled[0];
         const def = correct.definitions[Math.floor(Math.random() * correct.definitions.length)];
         const options = shuffleArray(shuffled.slice(0, 4));
         setCurrentQuestion({ correctWord: correct, options, definition: def });
+        
     } else if (mode === 'FILL_IN_THE_BLANK') {
         const candidates = gameWords.filter((w: Word) => w.examples.length > 0);
-        if (candidates.length < 4) return;
+        if (candidates.length < 4) {
+             // Fallback if not enough examples
+             startSpecificGame('REVERSE_MATCH');
+             return;
+        }
         
         const shuffled = shuffleArray<Word>(candidates);
         const correct = shuffled[0];
         const rawEx = correct.examples[Math.floor(Math.random() * correct.examples.length)];
+        // Replace the word (case insensitive) with blanks
         const blanked = rawEx.replace(new RegExp(`\\b${correct.word}\\b`, 'i'), '_______');
         const options = shuffleArray<Word>(shuffled.slice(0, 4));
         
         setCurrentQuestion({ correctWord: correct, options, sentence: blanked, blankWord: correct.word });
-    } else if (mode === 'MEMORY') {
-       // Just setting the mode is enough, the component handles initialization based on gameWords
     }
 
     setAppScreen('GAME');
@@ -407,13 +442,13 @@ const App: React.FC = () => {
   // --- Interaction Handlers (Matching Game) ---
   const handleWordClick = (wordId: string) => {
     if (gameState !== 'PRACTICING') return;
+    if (soundEnabled) playSound('click');
     setSelectedWordId(prev => (prev === wordId ? null : wordId));
-    playSound('click');
   };
 
   const handleDefinitionClick = (definition: string) => {
     if (gameState !== 'PRACTICING') return;
-    playSound('click');
+    if (soundEnabled) playSound('click');
 
     const newMatches = new Map(userMatches);
     // Remove existing match for this definition if any
@@ -438,87 +473,130 @@ const App: React.FC = () => {
     });
     
     if (allCorrect) {
-        triggerWin();
+        const points = addScore(300); // 300 base points for matching set
+        if (soundEnabled) playSound('correct');
+        endRound(points);
     } else {
-        playSound('incorrect');
-        updateStats(false);
+        resetCombo();
+        if (soundEnabled) playSound('incorrect');
+        setGameState('FEEDBACK'); // Show errors
     }
-    setGameState('FEEDBACK');
   };
 
   // --- Interaction Handlers (Quiz Modes) ---
   const handleOptionSelection = (selected: Word) => {
       if (questionState === 'feedback' || !currentQuestion) return;
+      
+      const isCorrect = selected.id === currentQuestion.correctWord.id;
+      
+      if (gameMode === 'TIME_ATTACK') {
+          // TIME ATTACK: Incorrect doesn't end game, just streak
+          if (isCorrect) {
+              addScore(100);
+              if (soundEnabled) playSound('correct');
+              startSpecificGame('TIME_ATTACK', true); // Next question, maintain timer
+          } else {
+              resetCombo();
+              if (soundEnabled) playSound('incorrect');
+              // Flash red or shake? For now just next question
+               startSpecificGame('TIME_ATTACK', true);
+          }
+          return;
+      }
+
+      if (gameMode === 'SURVIVAL') {
+          // SURVIVAL: Incorrect ends game immediately
+          if (isCorrect) {
+              addScore(150);
+              if (soundEnabled) playSound('correct');
+              startSpecificGame('SURVIVAL', true); // Next question, resets timer
+          } else {
+              resetCombo();
+              if (soundEnabled) playSound('incorrect');
+              endRound(0, "Game Over!");
+          }
+          return;
+      }
+
+      // Normal Modes (Reverse Match, Fill Blank)
       setSelectedOptionId(selected.id);
       setQuestionState('feedback');
       
-      const isCorrect = selected.id === currentQuestion.correctWord.id;
       if (isCorrect) {
-          triggerWin();
+          const points = addScore(100);
+          if (soundEnabled) playSound('correct');
+          endRound(points);
       } else {
-          playSound('incorrect');
-          updateStats(false);
+          resetCombo();
+          if (soundEnabled) playSound('incorrect');
       }
   };
 
   // --- Navigation ---
   const goHome = () => {
       setAppScreen('HOME');
-      setShowConfetti(false);
+      setShowRoundSummary(false);
       setSearchQuery('');
+      // Reset session score on home? Maybe keep it for "Session" feel.
+      // setSessionScore(0); 
   };
 
   // --- Renderers ---
 
   if (isLoading && allVocabWords.length === 0) {
       return (
-          <div className="flex items-center justify-center min-h-screen bg-gray-950">
-              <div className="text-center">
-                  <div className="spinner mb-4 mx-auto"></div>
-                  <p className="text-slate-300 font-lexend">Loading Vocabulary...</p>
+          <div className="flex items-center justify-center min-h-screen bg-gray-950 text-slate-200 font-lexend">
+              <div className="flex flex-col items-center gap-4">
+                  <div className="spinner"></div>
+                  <p>Loading Dictionary...</p>
               </div>
           </div>
       );
   }
 
-  // HOME SCREEN (Dashboard)
+  // --- HOME SCREEN ---
   if (appScreen === 'HOME') {
       return (
           <div className="container mx-auto p-4 min-h-screen flex flex-col items-center animate-fadeIn relative">
+              {/* Top Bar */}
+              <div className="w-full flex justify-between items-center p-4">
+                  <div className="flex items-center gap-2">
+                     <span className="text-3xl">🎮</span>
+                     <span className="text-sky-400 font-bold font-mono text-xl">{sessionScore} pts</span>
+                  </div>
+                  <button onClick={toggleSound} className="p-2 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors">
+                      {soundEnabled ? '🔊' : '🔇'}
+                  </button>
+              </div>
+
               {/* Header */}
-              <header className="text-center mb-8 mt-8 w-full">
-                  <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-purple-500 font-lexend tracking-tight mb-2">
-                      Vocabulary Master
+              <header className="text-center mb-10 mt-4 w-full">
+                  <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 font-lexend tracking-tight mb-2 drop-shadow-lg">
+                      VOCAB ARCADE
                   </h1>
-                  <p className="text-slate-400 text-lg">Level up your English skills.</p>
+                  <p className="text-slate-400 text-lg">Master English. Beat the High Score.</p>
               </header>
 
               {/* Search */}
-              <div className="w-full max-w-2xl mb-10 relative z-20">
+              <div className="w-full max-w-2xl mb-12 relative z-20 group">
                 <div className="relative">
                     <input
                         type="text"
-                        placeholder="Search for a word..."
+                        placeholder="Search any word..."
                         value={searchQuery}
                         onChange={handleSearchChange}
-                        className="w-full px-6 py-4 bg-slate-800/80 backdrop-blur-md border-2 border-slate-700 rounded-full text-lg text-white placeholder-slate-500 focus:ring-4 focus:ring-sky-500/30 focus:border-sky-500 outline-none transition-all shadow-2xl"
+                        className="w-full px-6 py-4 bg-slate-900/80 border-2 border-slate-700 rounded-full text-lg text-white placeholder-slate-500 focus:ring-4 focus:ring-cyan-500/30 focus:border-cyan-500 outline-none transition-all shadow-2xl group-hover:border-slate-500"
                     />
-                    <svg className="absolute right-5 top-1/2 transform -translate-y-1/2 text-slate-500 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <span className="absolute right-6 top-1/2 transform -translate-y-1/2 text-2xl">🔍</span>
                 </div>
               </div>
 
               {searchQuery ? (
                   // Search Results
                   <div className="w-full max-w-6xl animate-fadeIn pb-20">
-                      <h2 className="text-2xl font-bold text-sky-400 mb-6 px-4">Search Results</h2>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
                           {searchResults.length > 0 ? searchResults.map(word => (
-                              <Flashcard 
-                                key={word.id} 
-                                wordData={word} 
-                                isFavorite={favoriteIds.has(word.id)}
-                                onToggleFavorite={toggleFavorite}
-                              />
+                              <Flashcard key={word.id} wordData={word} />
                           )) : (
                               <p className="text-slate-500 text-center col-span-3 py-10">No words found.</p>
                           )}
@@ -526,60 +604,31 @@ const App: React.FC = () => {
                   </div>
               ) : (
                   // Dashboard Content
-                  <div className="w-full max-w-5xl flex flex-col gap-8 pb-20">
+                  <div className="w-full max-w-5xl flex flex-col gap-8 pb-20 px-4">
                       
-                      {/* Stats Row */}
-                      <div className="grid grid-cols-3 gap-4 px-2">
-                          <div className="bg-slate-800/50 border border-slate-700 p-4 rounded-xl text-center transform hover:scale-105 transition-all">
-                              <p className="text-slate-400 text-sm uppercase tracking-wider font-bold">Words Learned</p>
-                              <p className="text-3xl font-bold text-sky-400">{userStats.wordsLearned}</p>
-                          </div>
-                          <div className="bg-slate-800/50 border border-slate-700 p-4 rounded-xl text-center transform hover:scale-105 transition-all">
-                              <p className="text-slate-400 text-sm uppercase tracking-wider font-bold">Streak</p>
-                              <p className="text-3xl font-bold text-amber-400">{userStats.currentStreak} <span className="text-base">days</span></p>
-                          </div>
-                          <div className="bg-slate-800/50 border border-slate-700 p-4 rounded-xl text-center transform hover:scale-105 transition-all">
-                              <p className="text-slate-400 text-sm uppercase tracking-wider font-bold">Accuracy</p>
-                              <p className="text-3xl font-bold text-green-400">
-                                {userStats.totalAttempts > 0 ? Math.round((userStats.totalCorrect / userStats.totalAttempts) * 100) : 0}%
-                              </p>
-                          </div>
-                      </div>
-
-                      {/* Main Actions */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                          {/* Left: Word of Day & Favorites */}
-                          <div className="space-y-6">
+                          {/* Word of Day */}
+                          <div className="flex flex-col">
                               {wordOfTheDay && <WordOfTheDay wordData={wordOfTheDay} />}
-                              
-                              <button 
-                                onClick={() => setAppScreen('FAVORITES')}
-                                className="w-full bg-gradient-to-r from-pink-900/40 to-rose-900/40 border border-pink-700/50 p-6 rounded-2xl flex items-center justify-between group hover:border-pink-500 transition-all"
-                              >
-                                  <div className="text-left">
-                                      <h3 className="text-2xl font-bold text-pink-300 mb-1">My List</h3>
-                                      <p className="text-pink-200/60">Review your {favoriteIds.size} saved words</p>
-                                  </div>
-                                  <div className="bg-pink-500/20 p-3 rounded-full group-hover:bg-pink-500 group-hover:text-white transition-colors text-pink-400">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                  </div>
-                              </button>
                           </div>
 
-                          {/* Right: Play Config */}
-                          <div className="bg-slate-800/60 backdrop-blur-sm p-6 rounded-2xl border border-slate-700 flex flex-col">
-                              <h3 className="text-xl font-bold text-slate-200 mb-4 font-lexend">Start Practice Session</h3>
+                          {/* Play Config */}
+                          <div className="bg-slate-900/60 backdrop-blur-md p-8 rounded-3xl border border-slate-700/50 flex flex-col shadow-xl">
+                              <h3 className="text-2xl font-bold text-white mb-6 font-lexend border-b border-slate-700 pb-2">Select Your Pack</h3>
                               
-                              <div className="flex-grow overflow-y-auto max-h-64 mb-6 space-y-2 pr-2 custom-scrollbar">
+                              <div className="flex-grow overflow-y-auto max-h-60 mb-6 space-y-3 pr-2 custom-scrollbar">
                                   {availableSets.map(set => (
-                                      <label key={set.id} className="flex items-center p-3 rounded-lg bg-slate-900/50 border border-slate-700 hover:bg-slate-700/50 cursor-pointer transition-all has-[:checked]:border-sky-500 has-[:checked]:bg-sky-900/20">
-                                          <input 
-                                            type="checkbox" 
-                                            checked={selectedSetIds.has(set.id)}
-                                            onChange={() => handleSetSelectionChange(set.id)}
-                                            className="w-5 h-5 rounded border-gray-500 text-sky-500 focus:ring-sky-500 bg-slate-800"
-                                          />
-                                          <span className="ml-3 text-slate-300 font-medium">{set.name}</span>
+                                      <label key={set.id} className="flex items-center p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-700/50 cursor-pointer transition-all has-[:checked]:border-cyan-500 has-[:checked]:bg-cyan-900/20 group">
+                                          <div className="relative flex items-center">
+                                            <input 
+                                                type="checkbox" 
+                                                checked={selectedSetIds.has(set.id)}
+                                                onChange={() => handleSetSelectionChange(set.id)}
+                                                className="peer appearance-none w-6 h-6 border-2 border-slate-500 rounded bg-slate-900 checked:bg-cyan-500 checked:border-cyan-500 transition-colors"
+                                            />
+                                            <svg className="absolute w-4 h-4 text-white pointer-events-none hidden peer-checked:block left-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                          </div>
+                                          <span className="ml-4 text-slate-300 font-medium text-lg group-hover:text-white transition-colors">{set.name}</span>
                                       </label>
                                   ))}
                               </div>
@@ -587,9 +636,9 @@ const App: React.FC = () => {
                               <button
                                 onClick={prepareForGame}
                                 disabled={selectedSetIds.size === 0}
-                                className="w-full py-4 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-bold text-xl rounded-xl shadow-lg shadow-sky-900/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95"
+                                className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xl rounded-xl shadow-lg shadow-cyan-900/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95"
                               >
-                                  Play Now
+                                  START GAME 🚀
                               </button>
                           </div>
                       </div>
@@ -599,211 +648,156 @@ const App: React.FC = () => {
       );
   }
 
-  // FAVORITES SCREEN
-  if (appScreen === 'FAVORITES') {
-      const favoriteWords = allVocabWords.filter(w => favoriteIds.has(w.id));
-      return (
-        <div className="container mx-auto p-4 min-h-screen pt-20">
-            <button onClick={goHome} className="fixed top-6 left-6 z-50 bg-slate-800/80 backdrop-blur px-4 py-2 rounded-full border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-all">
-                &larr; Back
-            </button>
-            
-            <h2 className="text-4xl font-bold text-center text-pink-400 mb-8 font-lexend">My Saved Words</h2>
-            
-            {favoriteWords.length === 0 ? (
-                <div className="text-center text-slate-500 mt-20">
-                    <p className="text-2xl mb-4">Your list is empty.</p>
-                    <p>Star words during search or games to add them here.</p>
-                </div>
-            ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    {favoriteWords.map(word => (
-                        <Flashcard 
-                            key={word.id} 
-                            wordData={word} 
-                            isFavorite={true}
-                            onToggleFavorite={toggleFavorite}
-                        />
-                    ))}
-                </div>
-            )}
-        </div>
-      );
-  }
-
-  // MODE SELECTION SCREEN
+  // --- MODE SELECTION SCREEN ---
   if (appScreen === 'MODE_SELECTION') {
       return (
         <div className="container mx-auto p-4 min-h-screen flex flex-col items-center justify-center animate-fadeIn">
-             <button onClick={goHome} className="absolute top-6 left-6 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-600 text-slate-400 hover:text-white transition-colors">&larr; Home</button>
+             <button onClick={goHome} className="absolute top-6 left-6 bg-slate-800/50 px-6 py-3 rounded-full border border-slate-600 text-slate-300 hover:text-white hover:bg-slate-700 transition-all font-bold z-50">
+                 &larr; EXIT
+             </button>
              
-             <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 font-lexend">Choose Activity</h1>
-             <p className="text-slate-400 mb-12 text-lg">Select a game mode to practice your words.</p>
+             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 font-lexend text-center mt-20 md:mt-0">SELECT MODE</h1>
+             <p className="text-slate-400 mb-12 text-xl">How do you want to play?</p>
 
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl w-full px-4">
-                <button onClick={() => startSpecificGame('MATCHING')} className="group relative p-8 bg-slate-800/40 border border-slate-700 rounded-2xl hover:bg-sky-900/20 hover:border-sky-500 transition-all text-left overflow-hidden">
-                    <div className="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-30 transition-opacity">
-                        <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
-                    </div>
-                    <h3 className="text-2xl font-bold text-sky-400 mb-2">Classic Matching</h3>
-                    <p className="text-slate-400">Match words to their definitions. The classic way to learn.</p>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full px-4 pb-10">
+                {/* Mode Cards */}
+                <button onClick={() => startSpecificGame('MATCHING')} className="group relative p-8 bg-slate-900/60 border-2 border-slate-700 rounded-3xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-cyan-500 rotate-12">🧩</div>
+                    <h3 className="text-2xl font-bold text-cyan-400 mb-2 relative z-10">Classic Matching</h3>
+                    <p className="text-slate-400 relative z-10">Connect words to their definitions. Relaxed pace.</p>
                 </button>
 
-                <button onClick={() => startSpecificGame('REVERSE_MATCH')} className="group relative p-8 bg-slate-800/40 border border-slate-700 rounded-2xl hover:bg-purple-900/20 hover:border-purple-500 transition-all text-left overflow-hidden">
-                    <div className="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-30 transition-opacity">
-                        <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
-                    </div>
-                    <h3 className="text-2xl font-bold text-purple-400 mb-2">Reverse Match</h3>
-                    <p className="text-slate-400">See the definition and pick the correct word from options.</p>
+                <button onClick={() => startSpecificGame('TIME_ATTACK')} className="group relative p-8 bg-slate-900/60 border-2 border-amber-600/50 rounded-3xl hover:border-amber-500 hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-amber-500 rotate-12">⚡</div>
+                    <h3 className="text-2xl font-bold text-amber-400 mb-2 relative z-10">2 Minute Blitz</h3>
+                    <p className="text-slate-400 relative z-10">120 seconds. How many words can you get right?</p>
                 </button>
 
-                <button onClick={() => startSpecificGame('MEMORY')} className="group relative p-8 bg-slate-800/40 border border-slate-700 rounded-2xl hover:bg-pink-900/20 hover:border-pink-500 transition-all text-left overflow-hidden">
-                    <div className="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-30 transition-opacity">
-                        <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 0h6v6h-6z"/></svg>
-                    </div>
-                    <h3 className="text-2xl font-bold text-pink-400 mb-2">Memory Game</h3>
-                    <p className="text-slate-400">Flip cards to find matching pairs. Test your memory and vocab.</p>
+                <button onClick={() => startSpecificGame('SURVIVAL')} className="group relative p-8 bg-slate-900/60 border-2 border-red-900/50 rounded-3xl hover:border-red-500 hover:shadow-[0_0_30px_rgba(239,68,68,0.3)] transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-red-500 rotate-12">💀</div>
+                    <h3 className="text-2xl font-bold text-red-400 mb-2 relative z-10">Survival</h3>
+                    <p className="text-slate-400 relative z-10">10 seconds per word. One wrong move and it's over.</p>
                 </button>
 
-                <button onClick={() => startSpecificGame('FILL_IN_THE_BLANK')} className="group relative p-8 bg-slate-800/40 border border-slate-700 rounded-2xl hover:bg-amber-900/20 hover:border-amber-500 transition-all text-left overflow-hidden">
-                    <div className="absolute right-0 top-0 p-3 opacity-10 group-hover:opacity-30 transition-opacity">
-                        <svg width="100" height="100" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                    </div>
-                    <h3 className="text-2xl font-bold text-amber-400 mb-2">Fill in the Blank</h3>
-                    <p className="text-slate-400">Complete sentences using the correct vocabulary word.</p>
+                <button onClick={() => startSpecificGame('REVERSE_MATCH')} className="group relative p-8 bg-slate-900/60 border-2 border-slate-700 rounded-3xl hover:border-purple-500 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)] transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-purple-500 rotate-12">🎯</div>
+                    <h3 className="text-2xl font-bold text-purple-400 mb-2 relative z-10">Reverse Match</h3>
+                    <p className="text-slate-400 relative z-10">See the definition, pick the word. Multiple choice.</p>
+                </button>
+
+                <button onClick={() => startSpecificGame('MEMORY')} className="group relative p-8 bg-slate-900/60 border-2 border-slate-700 rounded-3xl hover:border-pink-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-pink-500 rotate-12">🧠</div>
+                    <h3 className="text-2xl font-bold text-pink-400 mb-2 relative z-10">Memory</h3>
+                    <p className="text-slate-400 relative z-10">Flip cards to find pairs. Test your memory.</p>
+                </button>
+
+                <button onClick={() => startSpecificGame('FILL_IN_THE_BLANK')} className="group relative p-8 bg-slate-900/60 border-2 border-slate-700 rounded-3xl hover:border-blue-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-blue-500 rotate-12">📝</div>
+                    <h3 className="text-2xl font-bold text-blue-400 mb-2 relative z-10">Fill in the Blank</h3>
+                    <p className="text-slate-400 relative z-10">Complete the sentence with the right word.</p>
                 </button>
              </div>
         </div>
       );
   }
 
-  // GAME SCREEN
+  // --- GAME SCREEN ---
   return (
       <div className="container mx-auto p-4 min-h-screen flex flex-col relative">
-          {/* Confetti & Win Overlay */}
-          {showConfetti && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-black/60 backdrop-blur-sm animate-fadeIn">
-                  {[...Array(50)].map((_, i) => (
-                      <div 
-                        key={i}
-                        className="absolute w-2 h-2 bg-yellow-400 rounded-full animate-confetti"
-                        style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `-10px`,
-                            backgroundColor: ['#FFD700', '#FF69B4', '#00BFFF', '#00FF7F'][Math.floor(Math.random() * 4)],
-                            animationDuration: `${Math.random() * 3 + 2}s`,
-                            animationDelay: `${Math.random() * 2}s`
-                        }}
-                      />
-                  ))}
-                  <div className="bg-slate-900/90 p-8 rounded-3xl border border-yellow-500/50 shadow-2xl text-center transform animate-pop relative max-w-md w-full mx-4">
-                      <div className="text-6xl mb-4">🎉</div>
-                      <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-orange-500 mb-2 font-lexend">
-                        {winMessage}
+          
+          {/* Round Summary Modal */}
+          {showRoundSummary && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fadeIn">
+                  <div className="bg-slate-900 border-2 border-slate-700 p-8 rounded-3xl shadow-2xl text-center max-w-md w-full mx-4 transform animate-pop relative overflow-hidden">
+                      {/* Decorative background glow */}
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-500/10 to-transparent pointer-events-none"></div>
+
+                      <h2 className="text-4xl font-bold text-white mb-2 font-lexend relative z-10">
+                         {roundPoints > 0 ? winMessage : "Game Over"}
                       </h2>
-                      <p className="text-slate-300 mb-8 text-lg">You're mastering these words!</p>
                       
-                      <div className="flex justify-center gap-4">
-                        {gameMode !== 'MEMORY' && (
-                             <button
-                                onClick={() => {
-                                    setShowConfetti(false);
-                                    startSpecificGame(gameMode);
-                                }}
-                                className="px-6 py-3 bg-green-600 hover:bg-green-500 text-white rounded-xl font-bold text-lg shadow-lg transition-all hover:scale-105 active:scale-95"
-                             >
-                                Next Round &rarr;
-                             </button>
-                        )}
-                        {gameMode === 'MEMORY' && (
-                             <button
-                                onClick={() => {
-                                    setShowConfetti(false);
-                                    startSpecificGame(gameMode);
-                                }}
-                                className="px-6 py-3 bg-green-600 hover:bg-green-500 text-white rounded-xl font-bold text-lg shadow-lg transition-all hover:scale-105 active:scale-95"
-                             >
-                                Play Again ↺
-                             </button>
-                        )}
+                      <div className="py-6 relative z-10">
+                          <p className="text-slate-400 uppercase tracking-widest text-xs font-bold mb-1">
+                              {gameMode === 'SURVIVAL' || gameMode === 'TIME_ATTACK' ? "Session Score" : "Round Score"}
+                          </p>
+                          <p className="text-6xl font-mono font-bold text-cyan-400 drop-shadow-lg">
+                              {gameMode === 'SURVIVAL' || gameMode === 'TIME_ATTACK' ? sessionScore : `+${roundPoints}`}
+                          </p>
+                      </div>
+
+                      <div className="flex flex-col gap-3 relative z-10">
+                         <button
+                            onClick={() => {
+                                setShowRoundSummary(false);
+                                startSpecificGame(gameMode);
+                            }}
+                            className="w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl font-bold text-lg shadow-lg transition-all active:scale-95"
+                         >
+                            {gameMode === 'SURVIVAL' ? "Try Again ➔" : "Next Round ➔"}
+                         </button>
                          <button
                             onClick={goHome}
-                            className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-xl font-bold text-lg shadow-lg transition-all hover:scale-105 active:scale-95"
+                            className="w-full py-4 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-bold text-lg transition-all active:scale-95"
                          >
-                            Quit
+                            Exit to Menu
                          </button>
                       </div>
                   </div>
               </div>
           )}
 
-          <button onClick={goHome} className="absolute top-4 left-4 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-600 text-slate-400 hover:text-white transition-colors z-40">
-            &larr; Quit
-          </button>
+          {/* Top Game Bar */}
+          <div className="flex justify-between items-center mb-8 relative z-10">
+             <button onClick={() => setAppScreen('MODE_SELECTION')} className="bg-slate-800/80 px-4 py-2 rounded-full border border-slate-600 text-slate-400 hover:text-white transition-colors font-bold text-sm">
+                ✕ QUIT
+             </button>
 
-          <header className="text-center mt-16 mb-8">
-              <h2 className="text-3xl font-bold text-sky-400 font-lexend">
-                  {gameMode === 'MATCHING' && "Match Definitions"}
-                  {gameMode === 'REVERSE_MATCH' && "Reverse Match"}
-                  {gameMode === 'FILL_IN_THE_BLANK' && "Complete the Sentence"}
-                  {gameMode === 'MEMORY' && "Memory Match"}
-              </h2>
-          </header>
+             {(gameMode === 'TIME_ATTACK' || gameMode === 'SURVIVAL') && (
+                 <div className={`text-4xl font-mono font-bold ${timeLeft <= 10 ? 'text-red-500 animate-pulse scale-110' : 'text-white'}`}>
+                     {gameMode === 'SURVIVAL' ? `${timeLeft}s` : `${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')}`}
+                 </div>
+             )}
 
-          <main className="flex-grow w-full max-w-4xl mx-auto">
+             <div className="flex flex-col items-end">
+                <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Session Score</span>
+                <span className="text-2xl font-mono font-bold text-cyan-400">{sessionScore}</span>
+             </div>
+          </div>
+          
+          {/* Combo Indicator */}
+          {currentCombo > 1 && (
+              <div className="absolute top-20 right-4 animate-pop rotate-12 z-0 opacity-50 pointer-events-none">
+                  <p className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-orange-500 drop-shadow-sm">
+                      {currentCombo}x COMBO!
+                  </p>
+              </div>
+          )}
+
+          <main className="flex-grow w-full max-w-4xl mx-auto relative z-10 flex flex-col justify-center">
               
               {/* MEMORY GAME RENDERER */}
               {gameMode === 'MEMORY' && (
                   <MemoryGame 
                     words={gameWords} 
-                    onComplete={() => {
-                        triggerWin();
-                    }}
-                    onMatch={() => playSound('correct')}
-                    onMismatch={() => playSound('incorrect')}
+                    onComplete={(score) => endRound(score)}
+                    onMatch={() => { if(soundEnabled) playSound('correct'); }}
+                    onMismatch={() => { if(soundEnabled) playSound('incorrect'); }}
                   />
               )}
 
               {/* OTHER GAMES RENDERER */}
               {gameMode !== 'MEMORY' && (
                 <>
-                  {/* Game Content Logic Same as before but with Sound */}
                   {gameMode === 'MATCHING' && (
                      <>
-                        <div className="w-full bg-slate-900/30 border-2 border-slate-700 rounded-xl p-4 mb-8 backdrop-blur-sm">
-                          <h2 className="text-lg font-bold text-center text-slate-400 mb-4 font-lexend">Word Bank</h2>
-                          <div className="flex flex-wrap justify-center items-center gap-4">
-                            {practiceWords.map(word => {
-                              const isUsed = Array.from(userMatches.values()).includes(word.id);
-                              let feedback: 'correct' | 'incorrect' | 'none' = 'none';
-                              if(gameState === 'FEEDBACK') {
-                                const correctDef = targetDefinitions.find(td => td.wordId === word.id);
-                                if(correctDef && userMatches.get(correctDef.definition) === word.id) {
-                                  feedback = 'correct';
-                                } else if (isUsed) {
-                                  feedback = 'incorrect';
-                                }
-                              }
-                              return (
-                                <WordPill 
-                                    key={word.id}
-                                    word={word.word}
-                                    onClick={() => handleWordClick(word.id)}
-                                    isSelected={selectedWordId === word.id}
-                                    isUsed={gameState === 'PRACTICING' && isUsed && selectedWordId !== word.id}
-                                    feedback={feedback}
-                                />
-                              );
-                            })}
-                          </div>
-                        </div>
-                        <div className="space-y-4">
+                        <h2 className="text-center text-xl text-slate-400 mb-6 font-lexend">Match the definitions</h2>
+                        {/* Reduced spacing from space-y-4 to space-y-2 */}
+                        <div className="space-y-2 mb-20 pb-32 md:pb-0"> 
                             {shuffledDefinitions.map(({ definition, wordId: correctWordId }) => {
                                 const userWordId = userMatches.get(definition);
                                 const matchedWordObj = userWordId ? practiceWords.find(w => w.id === userWordId) : null;
                                 const correctWordObj = (gameState === 'FEEDBACK' && userWordId !== correctWordId) ? practiceWords.find(w => w.id === correctWordId) : null;
                                 
-                                // Feedback Logic
                                 let feedback: FeedbackType = 'none';
                                 if (gameState === 'FEEDBACK') {
                                     if (userWordId === correctWordId) feedback = 'correct';
@@ -823,26 +817,100 @@ const App: React.FC = () => {
                                 )
                             })}
                         </div>
+                        
+                        {/* Word Bank at Bottom for Matching */}
+                         <div className="w-full bg-slate-950 border-t-2 border-slate-700 p-4 fixed bottom-0 left-0 z-40 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] md:static md:bg-transparent md:border-none md:p-0 md:shadow-none">
+                          <div className="max-w-4xl mx-auto">
+                             <div className="flex flex-wrap justify-center items-center gap-3">
+                                {practiceWords.map(word => {
+                                  const isUsed = Array.from(userMatches.values()).includes(word.id);
+                                  let feedback: 'correct' | 'incorrect' | 'none' = 'none';
+                                  if(gameState === 'FEEDBACK') {
+                                    const correctDef = targetDefinitions.find(td => td.wordId === word.id);
+                                    if(correctDef && userMatches.get(correctDef.definition) === word.id) {
+                                      feedback = 'correct';
+                                    } else if (isUsed) {
+                                      feedback = 'incorrect';
+                                    }
+                                  }
+                                  return (
+                                    <WordPill 
+                                        key={word.id}
+                                        word={word.word}
+                                        onClick={() => handleWordClick(word.id)}
+                                        isSelected={selectedWordId === word.id}
+                                        isUsed={gameState === 'PRACTICING' && isUsed && selectedWordId !== word.id}
+                                        feedback={feedback}
+                                    />
+                                  );
+                                })}
+                              </div>
+                              
+                              {/* Game Controls inside sticky area for mobile access */}
+                              <div className="mt-4 flex justify-center md:hidden">
+                                   {gameState === 'PRACTICING' ? (
+                                       <button 
+                                        onClick={handleCheckAnswers}
+                                        disabled={userMatches.size !== 3}
+                                        className="w-full py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-bold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95"
+                                       >
+                                           CHECK ANSWERS
+                                       </button>
+                                   ) : (
+                                        <button 
+                                        onClick={() => startSpecificGame(gameMode)}
+                                        className="w-full py-3 bg-cyan-600 text-white rounded-xl font-bold text-lg shadow-lg transition-all active:scale-95"
+                                       >
+                                           NEXT ROUND ➔
+                                       </button>
+                                   )}
+                              </div>
+                          </div>
+                        </div>
+                        
+                        {/* Desktop Controls */}
+                        <div className="hidden md:flex justify-center mt-8 h-20">
+                           {gameState === 'PRACTICING' ? (
+                               <button 
+                                onClick={handleCheckAnswers}
+                                disabled={userMatches.size !== 3}
+                                className="px-10 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white rounded-full font-bold text-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 active:scale-95"
+                               >
+                                   CHECK ANSWERS
+                               </button>
+                           ) : (
+                                <button 
+                                onClick={() => startSpecificGame(gameMode)}
+                                className="px-10 py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg transition-all transform hover:scale-105 active:scale-95"
+                               >
+                                   NEXT ROUND ➔
+                               </button>
+                           )}
+                        </div>
                      </>
                   )}
 
-                  {(gameMode === 'REVERSE_MATCH' || gameMode === 'FILL_IN_THE_BLANK') && currentQuestion && (
-                      <>
-                        <div className="w-full bg-slate-800/50 border-2 border-slate-700 rounded-xl p-8 mb-8 backdrop-blur-sm text-center min-h-[200px] flex flex-col justify-center items-center">
-                            {gameMode === 'REVERSE_MATCH' && (
+                  {(gameMode === 'REVERSE_MATCH' || gameMode === 'TIME_ATTACK' || gameMode === 'SURVIVAL' || gameMode === 'FILL_IN_THE_BLANK') && currentQuestion && (
+                      <div className="max-w-2xl mx-auto w-full">
+                        <div className="bg-slate-800/50 border border-slate-700 rounded-3xl p-8 mb-8 backdrop-blur-sm text-center min-h-[220px] flex flex-col justify-center items-center shadow-2xl relative overflow-hidden">
+                            {/* Decorative element */}
+                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-500 to-purple-500"></div>
+                            
+                            {(gameMode === 'REVERSE_MATCH' || gameMode === 'TIME_ATTACK' || gameMode === 'SURVIVAL') && (
                                 <>
-                                    <h2 className="text-xl font-semibold text-slate-400 mb-4 font-lexend">Which word means:</h2>
-                                    <p className="text-2xl text-purple-300 leading-relaxed">"{currentQuestion.definition}"</p>
+                                    <h2 className="text-sm font-bold text-slate-400 mb-6 uppercase tracking-widest">Select the word for</h2>
+                                    <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed">"{currentQuestion.definition}"</p>
                                 </>
                             )}
                             {gameMode === 'FILL_IN_THE_BLANK' && (
                                 <>
-                                     <h2 className="text-xl font-semibold text-slate-400 mb-4 font-lexend">Complete the sentence:</h2>
-                                     <p className="text-2xl text-amber-300 leading-relaxed">"{currentQuestion.sentence}"</p>
+                                     <h2 className="text-sm font-bold text-slate-400 mb-6 uppercase tracking-widest">Complete the Sentence</h2>
+                                     <p className="text-2xl md:text-3xl text-amber-200 font-medium leading-relaxed">"{currentQuestion.sentence}"</p>
                                 </>
                             )}
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-20">
                             {currentQuestion.options.map(word => {
                                 let feedback: 'none' | 'correct' | 'incorrect' | 'revealed' = 'none';
                                 if (questionState === 'feedback') {
@@ -856,11 +924,11 @@ const App: React.FC = () => {
                                         onClick={() => handleOptionSelection(word)}
                                         disabled={questionState === 'feedback'}
                                         className={`
-                                            p-6 rounded-xl border-2 transition-all duration-300 text-lg font-bold font-lexend
-                                            ${feedback === 'none' ? 'bg-slate-800 border-slate-600 hover:border-sky-500 hover:bg-slate-700 text-white' : ''}
-                                            ${feedback === 'correct' ? 'bg-green-500/20 border-green-500 text-green-400 scale-105 shadow-green-500/20 shadow-lg' : ''}
-                                            ${feedback === 'incorrect' ? 'bg-red-500/20 border-red-500 text-red-400 opacity-50' : ''}
-                                            ${feedback === 'revealed' ? 'bg-sky-500/20 border-sky-500 text-sky-400' : ''}
+                                            p-6 rounded-2xl border-2 transition-all duration-200 text-xl font-bold font-lexend
+                                            ${feedback === 'none' ? 'bg-slate-900 border-slate-700 text-slate-300 hover:border-cyan-500 hover:bg-slate-800 hover:text-white hover:scale-[1.02] active:scale-[0.98]' : ''}
+                                            ${feedback === 'correct' ? 'bg-green-600 border-green-500 text-white scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)]' : ''}
+                                            ${feedback === 'incorrect' ? 'bg-red-900/50 border-red-500 text-red-200 opacity-50' : ''}
+                                            ${feedback === 'revealed' ? 'bg-green-900/30 border-green-500/50 text-green-200' : ''}
                                         `}
                                     >
                                         {word.word}
@@ -868,33 +936,18 @@ const App: React.FC = () => {
                                 )
                             })}
                         </div>
-                      </>
-                  )}
-
-                  {/* Game Controls */}
-                  <div className="mt-8 flex justify-center h-20">
-                       {gameMode === 'MATCHING' && gameState === 'PRACTICING' && (
-                           <button 
-                            onClick={handleCheckAnswers}
-                            disabled={userMatches.size !== 3}
-                            className="px-8 py-3 bg-green-600 hover:bg-green-500 text-white rounded-lg font-bold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                           >
-                               Check Answers
-                           </button>
-                       )}
-                  </div>
-
-                  {/* Flashcard Review (Shown after round) */}
-                  {((gameState === 'FEEDBACK') || (questionState === 'feedback')) && (
-                      <div className="mt-12 w-full">
-                           <h3 className="text-2xl font-bold text-center text-slate-300 mb-6">Review Words</h3>
-                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {gameMode === 'MATCHING' ? 
-                                    practiceWords.map(w => <Flashcard key={w.id} wordData={w} isFavorite={favoriteIds.has(w.id)} onToggleFavorite={toggleFavorite} />) 
-                                    : 
-                                    (currentQuestion && <Flashcard wordData={currentQuestion.correctWord} isFavorite={favoriteIds.has(currentQuestion.correctWord.id)} onToggleFavorite={toggleFavorite} />)
-                                }
-                           </div>
+                        
+                        {/* Next Question Button (for non-timed modes) */}
+                        {questionState === 'feedback' && gameMode !== 'TIME_ATTACK' && gameMode !== 'SURVIVAL' && (
+                            <div className="flex justify-center">
+                                <button 
+                                    onClick={() => startSpecificGame(gameMode)}
+                                    className="px-10 py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg transition-all transform hover:scale-105 active:scale-95 animate-pop"
+                                >
+                                    Next Question ➔
+                                </button>
+                            </div>
+                        )}
                       </div>
                   )}
                 </>

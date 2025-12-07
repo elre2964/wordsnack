@@ -1,3 +1,4 @@
+
 import React from 'react';
 import type { FeedbackType } from '../types';
 
@@ -11,7 +12,8 @@ interface DefinitionBoxProps {
 }
 
 const DefinitionBox: React.FC<DefinitionBoxProps> = ({ definition, onClick, feedback, matchedWord, correctWord, isTargetedForSelection }) => {
-  const baseClasses = "w-full py-4 px-4 rounded-xl border-2 transition-all duration-300 shadow-lg flex flex-col justify-between text-center bg-slate-800/50 backdrop-blur-sm min-h-[120px]";
+  // Reduced vertical padding (py-2) and min-height (min-h-[85px]) for a more compact look
+  const baseClasses = "w-full py-2 px-3 rounded-xl border-2 transition-all duration-300 shadow-lg flex flex-col justify-between text-center bg-slate-800/50 backdrop-blur-sm min-h-[85px]";
 
   const feedbackClasses = {
     correct: 'bg-green-500/20 border-green-400 scale-105 shadow-green-500/20 shadow-xl animate-pop',
@@ -34,21 +36,22 @@ const DefinitionBox: React.FC<DefinitionBoxProps> = ({ definition, onClick, feed
 
   return (
     <div className={`${baseClasses} ${appliedClasses}`} onClick={onClick}>
-      <div className="min-h-[2.5rem] mb-2 flex items-center justify-center font-lexend">
+      {/* Reduced bottom margin for the word slot */}
+      <div className="min-h-[1.5rem] mb-1 flex items-center justify-center font-lexend">
         {feedback === 'incorrect' ? (
-          <div className="text-center">
-            {matchedWord && <p className="font-bold text-red-400 text-lg line-through decoration-2">{matchedWord}</p>}
-            <p className="font-bold text-green-400 text-lg">{correctWord}</p>
+          <div className="text-center leading-tight">
+            {matchedWord && <p className="font-bold text-red-400 text-sm line-through decoration-2">{matchedWord}</p>}
+            <p className="font-bold text-green-400 text-base">{correctWord}</p>
           </div>
         ) : feedback === 'correct' ? (
-           <p className="font-bold text-green-300 text-lg">{matchedWord}</p>
+           <p className="font-bold text-green-300 text-base">{matchedWord}</p>
         ) : matchedWord ? (
-           <p className="font-bold text-sky-400 text-lg">{matchedWord}</p>
+           <p className="font-bold text-sky-400 text-base">{matchedWord}</p>
         ) : (
-          isTargetedForSelection && <span className="text-slate-400 italic">Place word here...</span>
+          isTargetedForSelection && <span className="text-slate-500 text-xs italic">Place word here...</span>
         )}
       </div>
-      <p className="text-slate-300 text-sm md:text-base">{definition}</p>
+      <p className="text-slate-300 text-sm leading-snug">{definition}</p>
     </div>
   );
 };

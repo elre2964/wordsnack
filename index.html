@@ -68,21 +68,35 @@
   .background-pan {
       background: linear-gradient(270deg, #020617, #082f49, #0c4a6e, #020617);
       background-size: 800% 800%;
-      animation: background-pan 30s ease infinite;
+      animation: background-pan 60s ease infinite;
   }
   .perspective-container {
     perspective: 1000px;
   }
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0f172a; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #334155; 
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569; 
+  }
 </style>
 </head>
-  <body class="bg-gray-950 text-slate-100 font-['Inter',_sans-serif] antialiased background-pan">
+  <body class="bg-gray-950 text-slate-100 font-['Inter',_sans-serif] antialiased background-pan overflow-y-auto">
      <div 
         aria-hidden="true" 
-        class="fixed -z-10 left-1/3 top-0 h-[300px] w-[300px] bg-sky-500/20 blur-[120px] rounded-full"
+        class="fixed -z-10 left-1/3 top-0 h-[300px] w-[300px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none"
     ></div>
     <div 
         aria-hidden="true" 
-        class="fixed -z-10 right-1/3 bottom-0 h-[300px] w-[300px] bg-indigo-500/20 blur-[120px] rounded-full"
+        class="fixed -z-10 right-1/3 bottom-0 h-[300px] w-[300px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none"
     ></div>
 
     <div id="root"></div>
