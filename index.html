@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend+Deca:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend+Deca:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
   <script type="importmap">
 {
@@ -20,86 +20,64 @@
 </script>
 <style>
   .font-lexend { font-family: 'Lexend Deca', sans-serif; }
-  .spinner {
-    border: 4px solid rgba(255, 255, 255, 0.2);
-    border-left-color: #38bdf8; /* sky-400 */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
+  
+  /* Animations */
+  @keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
   }
-  @keyframes spin {
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes scaleUp {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+  @keyframes pop {
+    0% { transform: scale(0.95); opacity: 0; }
+    40% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
   }
-   @keyframes pop {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
+
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-fadeIn { animation: fadeIn 0.4s ease-out forwards; }
+  .animate-pop { animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+  /* Dynamic Background */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.4;
+    animation: float 10s infinite ease-in-out alternate;
   }
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-  }
-   @keyframes background-pan {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  .animate-fadeIn {
-    animation: fadeIn 0.5s ease-out forwards;
-  }
-  .animate-scaleUp {
-    animation: scaleUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  .animate-pop {
-      animation: pop 0.3s ease-in-out;
-  }
-  .animate-shake {
-      animation: shake 0.3s ease-in-out;
-  }
-  .background-pan {
-      background: linear-gradient(270deg, #020617, #082f49, #0c4a6e, #020617);
-      background-size: 800% 800%;
-      animation: background-pan 60s ease infinite;
-  }
-  .perspective-container {
-    perspective: 1000px;
-  }
+  .orb-1 { width: 400px; height: 400px; top: -100px; left: -100px; background: #4f46e5; animation-duration: 20s; }
+  .orb-2 { width: 300px; height: 300px; bottom: -50px; right: -50px; background: #06b6d4; animation-duration: 15s; animation-delay: -5s; }
+  .orb-3 { width: 200px; height: 200px; top: 40%; left: 60%; background: #ec4899; animation-duration: 25s; animation-delay: -10s; opacity: 0.2; }
+
   /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0f172a; 
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #334155; 
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #475569; 
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
+  
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 </style>
 </head>
-  <body class="bg-gray-950 text-slate-100 font-['Inter',_sans-serif] antialiased background-pan overflow-y-auto">
-     <div 
-        aria-hidden="true" 
-        class="fixed -z-10 left-1/3 top-0 h-[300px] w-[300px] bg-sky-500/10 blur-[120px] rounded-full pointer-events-none"
-    ></div>
-    <div 
-        aria-hidden="true" 
-        class="fixed -z-10 right-1/3 bottom-0 h-[300px] w-[300px] bg-indigo-500/10 blur-[120px] rounded-full pointer-events-none"
-    ></div>
+  <body class="bg-slate-950 text-slate-100 font-['Inter',_sans-serif] antialiased overflow-x-hidden min-h-screen">
+    <!-- Animated Background Elements -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-    <div id="root"></div>
+    <div id="root" class="min-h-screen flex flex-col"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

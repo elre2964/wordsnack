@@ -34,7 +34,6 @@ const WIN_MESSAGES = [
 
 // --- Sound System ---
 const playSound = (type: 'correct' | 'incorrect' | 'click' | 'win' | 'tick') => {
-    // Check if sound is enabled globally (using a simple check here or prop)
     if (localStorage.getItem('soundEnabled') === 'false') return;
 
     try {
@@ -147,7 +146,7 @@ const loadAndParseVocabSet = async (path: string): Promise<ParsedWordData[]> => 
 };
 
 type AppScreen = 'HOME' | 'MODE_SELECTION' | 'GAME';
-type GameMode = 'MATCHING' | 'REVERSE_MATCH' | 'FILL_IN_THE_BLANK' | 'MEMORY' | 'TIME_ATTACK' | 'SURVIVAL';
+type GameMode = 'MATCHING' | 'REVERSE_MATCH' | 'FILL_IN_THE_BLANK' | 'TIME_ATTACK' | 'SURVIVAL' | 'MEMORY';
 
 interface Question {
   correctWord: Word;
@@ -174,11 +173,17 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<Word[]>([]);
 
-  // Session Stats (Ephemeral - resets on reload)
-  const [sessionScore, setSessionScore] = useState(0);
+  // Scoring State
+  // Global score (optional to show on home)
+  const [totalSessionScore, setTotalSessionScore] = useState(0);
+  
+  // Current Game State
+  const [currentGameScore, setCurrentGameScore] = useState(0);
   const [currentCombo, setCurrentCombo] = useState(0);
+  const [gameStats, setGameStats] = useState({ correct: 0, total: 0 });
+  const [moves, setMoves] = useState(0); // For Memory Game
 
-  // Game State
+  // Game Configuration
   const [gameWords, setGameWords] = useState<Word[]>([]); 
   const [gameMode, setGameMode] = useState<GameMode>('MATCHING');
   
@@ -202,7 +207,6 @@ const App: React.FC = () => {
 
   // Results Modal
   const [showRoundSummary, setShowRoundSummary] = useState(false);
-  const [roundPoints, setRoundPoints] = useState(0);
   const [winMessage, setWinMessage] = useState("");
 
 
@@ -270,9 +274,9 @@ const App: React.FC = () => {
       } else if (isTimerRunning && timeLeft === 0) {
           // Time Up!
           if (gameMode === 'SURVIVAL') {
-             endRound(0, "Game Over!");
+             endRound("Game Over!");
           } else {
-             endRound(0, "Time's Up!");
+             endRound("Time's Up!");
           }
       }
       return () => {
@@ -329,7 +333,8 @@ const App: React.FC = () => {
       const multiplier = Math.min(3, 1 + (currentCombo * 0.1));
       const points = Math.round(basePoints * multiplier);
       
-      setSessionScore(prev => prev + points);
+      setCurrentGameScore(prev => prev + points);
+      setTotalSessionScore(prev => prev + points); // Keep track globally too, invisibly if needed
       setCurrentCombo(prev => prev + 1);
       return points;
   };
@@ -338,12 +343,26 @@ const App: React.FC = () => {
       setCurrentCombo(0);
   };
 
-  const endRound = (pointsEarned: number, customMessage?: string) => {
+  const updateStats = (isCorrect: boolean) => {
+      setGameStats(prev => ({
+          total: prev.total + 1,
+          correct: isCorrect ? prev.correct + 1 : prev.correct
+      }));
+  };
+
+  const endRound = (customMessage?: string) => {
       setIsTimerRunning(false);
-      setRoundPoints(pointsEarned);
-      setWinMessage(customMessage || WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]);
+      
+      let msg = customMessage;
+      if (!msg) {
+          if (currentGameScore > 500) msg = WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)];
+          else if (currentGameScore > 0) msg = "Good Job!";
+          else msg = "Better Luck Next Time!";
+      }
+      setWinMessage(msg);
+      
       setShowRoundSummary(true);
-      if (pointsEarned > 0 && customMessage !== "Game Over!") playSound('win');
+      if (currentGameScore > 0 && customMessage !== "Game Over!") playSound('win');
       else playSound('incorrect');
   };
 
@@ -356,12 +375,14 @@ const App: React.FC = () => {
     setGameState('PRACTICING');
     setShowRoundSummary(false);
     setGameMode(mode);
+    setMoves(0);
     
-    // Timer Logic
-    // If it's a new game (not next question) OR if it's survival (reset timer every Q), set time.
-    // Time Attack (mode='TIME_ATTACK'): 120 seconds global. Don't reset on next question.
-    // Survival (mode='SURVIVAL'): 10 seconds per question. Reset on next question.
     if (!isNextQuestion) {
+        // Completely New Game - Reset stats & score for this specific run
+        setCurrentGameScore(0);
+        setCurrentCombo(0);
+        setGameStats({ correct: 0, total: 0 });
+
         if (mode === 'TIME_ATTACK') {
              setTimeLeft(120); 
              setIsTimerRunning(true);
@@ -376,7 +397,7 @@ const App: React.FC = () => {
         setTimeLeft(10);
         setIsTimerRunning(true);
     } 
-    // For Time Attack next question, we keep the existing timer running.
+    // Time Attack preserves existing timer on next question
 
     if (gameWords.length === 0) {
        setError("No words loaded.");
@@ -433,6 +454,8 @@ const App: React.FC = () => {
         const options = shuffleArray<Word>(shuffled.slice(0, 4));
         
         setCurrentQuestion({ correctWord: correct, options, sentence: blanked, blankWord: correct.word });
+    } else if (mode === 'MEMORY') {
+        // Memory game handled by sub-component, mostly just need to ensure words are ready
     }
 
     setAppScreen('GAME');
@@ -467,19 +490,27 @@ const App: React.FC = () => {
   };
 
   const handleCheckAnswers = () => {
-    let allCorrect = true;
+    let correctCount = 0;
     targetDefinitions.forEach(td => {
-        if (userMatches.get(td.definition) !== td.wordId) allCorrect = false;
+        if (userMatches.get(td.definition) === td.wordId) {
+            correctCount++;
+        }
     });
+
+    const allCorrect = correctCount === 3;
+    
+    // Stats for Matching: 1 attempt per check
+    // We treat "Total" as 1 round. Correct if 100% right.
+    updateStats(allCorrect);
     
     if (allCorrect) {
-        const points = addScore(300); // 300 base points for matching set
+        addScore(300); // 300 base points for matching set
         if (soundEnabled) playSound('correct');
-        endRound(points);
+        endRound();
     } else {
         resetCombo();
         if (soundEnabled) playSound('incorrect');
-        setGameState('FEEDBACK'); // Show errors
+        setGameState('FEEDBACK'); // Show errors and correct answers
     }
   };
 
@@ -488,6 +519,9 @@ const App: React.FC = () => {
       if (questionState === 'feedback' || !currentQuestion) return;
       
       const isCorrect = selected.id === currentQuestion.correctWord.id;
+      
+      // Update stats
+      updateStats(isCorrect);
       
       if (gameMode === 'TIME_ATTACK') {
           // TIME ATTACK: Incorrect doesn't end game, just streak
@@ -498,7 +532,6 @@ const App: React.FC = () => {
           } else {
               resetCombo();
               if (soundEnabled) playSound('incorrect');
-              // Flash red or shake? For now just next question
                startSpecificGame('TIME_ATTACK', true);
           }
           return;
@@ -513,7 +546,7 @@ const App: React.FC = () => {
           } else {
               resetCombo();
               if (soundEnabled) playSound('incorrect');
-              endRound(0, "Game Over!");
+              endRound("Game Over!");
           }
           return;
       }
@@ -523,13 +556,20 @@ const App: React.FC = () => {
       setQuestionState('feedback');
       
       if (isCorrect) {
-          const points = addScore(100);
+          addScore(100);
           if (soundEnabled) playSound('correct');
-          endRound(points);
+          endRound();
       } else {
           resetCombo();
           if (soundEnabled) playSound('incorrect');
       }
+  };
+
+  const handleMemoryGameComplete = (score: number) => {
+      setCurrentGameScore(score);
+      // For stats, we can count it as 1 game played, 1 "correct" if finished
+      updateStats(true); 
+      endRound(); // Use standard end round
   };
 
   // --- Navigation ---
@@ -537,18 +577,16 @@ const App: React.FC = () => {
       setAppScreen('HOME');
       setShowRoundSummary(false);
       setSearchQuery('');
-      // Reset session score on home? Maybe keep it for "Session" feel.
-      // setSessionScore(0); 
   };
 
   // --- Renderers ---
 
   if (isLoading && allVocabWords.length === 0) {
       return (
-          <div className="flex items-center justify-center min-h-screen bg-gray-950 text-slate-200 font-lexend">
+          <div className="flex items-center justify-center min-h-screen">
               <div className="flex flex-col items-center gap-4">
                   <div className="spinner"></div>
-                  <p>Loading Dictionary...</p>
+                  <p className="text-slate-300 font-lexend">Loading Dictionary...</p>
               </div>
           </div>
       );
@@ -557,24 +595,20 @@ const App: React.FC = () => {
   // --- HOME SCREEN ---
   if (appScreen === 'HOME') {
       return (
-          <div className="container mx-auto p-4 min-h-screen flex flex-col items-center animate-fadeIn relative">
+          <div className="container mx-auto p-4 min-h-screen flex flex-col items-center animate-fadeIn relative z-10">
               {/* Top Bar */}
-              <div className="w-full flex justify-between items-center p-4">
-                  <div className="flex items-center gap-2">
-                     <span className="text-3xl">🎮</span>
-                     <span className="text-sky-400 font-bold font-mono text-xl">{sessionScore} pts</span>
-                  </div>
-                  <button onClick={toggleSound} className="p-2 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors">
+              <div className="w-full flex justify-end items-center p-4">
+                  <button onClick={toggleSound} className="p-3 rounded-full glass-panel text-slate-300 hover:text-white transition-colors">
                       {soundEnabled ? '🔊' : '🔇'}
                   </button>
               </div>
 
               {/* Header */}
               <header className="text-center mb-10 mt-4 w-full">
-                  <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 font-lexend tracking-tight mb-2 drop-shadow-lg">
+                  <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 font-lexend tracking-tight mb-2 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]">
                       VOCAB ARCADE
                   </h1>
-                  <p className="text-slate-400 text-lg">Master English. Beat the High Score.</p>
+                  <p className="text-slate-400 text-lg font-light tracking-wide">Level Up Your English Skills</p>
               </header>
 
               {/* Search */}
@@ -585,9 +619,9 @@ const App: React.FC = () => {
                         placeholder="Search any word..."
                         value={searchQuery}
                         onChange={handleSearchChange}
-                        className="w-full px-6 py-4 bg-slate-900/80 border-2 border-slate-700 rounded-full text-lg text-white placeholder-slate-500 focus:ring-4 focus:ring-cyan-500/30 focus:border-cyan-500 outline-none transition-all shadow-2xl group-hover:border-slate-500"
+                        className="w-full px-6 py-4 bg-slate-900/60 backdrop-blur-md border-2 border-slate-700/50 rounded-full text-lg text-white placeholder-slate-500 focus:ring-4 focus:ring-cyan-500/20 focus:border-cyan-500 outline-none transition-all shadow-2xl group-hover:border-slate-600"
                     />
-                    <span className="absolute right-6 top-1/2 transform -translate-y-1/2 text-2xl">🔍</span>
+                    <span className="absolute right-6 top-1/2 transform -translate-y-1/2 text-2xl opacity-70">🔍</span>
                 </div>
               </div>
 
@@ -598,7 +632,7 @@ const App: React.FC = () => {
                           {searchResults.length > 0 ? searchResults.map(word => (
                               <Flashcard key={word.id} wordData={word} />
                           )) : (
-                              <p className="text-slate-500 text-center col-span-3 py-10">No words found.</p>
+                              <p className="text-slate-500 text-center col-span-3 py-10 text-xl">No words found matching "{searchQuery}"</p>
                           )}
                       </div>
                   </div>
@@ -613,18 +647,19 @@ const App: React.FC = () => {
                           </div>
 
                           {/* Play Config */}
-                          <div className="bg-slate-900/60 backdrop-blur-md p-8 rounded-3xl border border-slate-700/50 flex flex-col shadow-xl">
-                              <h3 className="text-2xl font-bold text-white mb-6 font-lexend border-b border-slate-700 pb-2">Select Your Pack</h3>
+                          <div className="glass-panel p-8 rounded-3xl border border-slate-700/30 flex flex-col shadow-2xl relative overflow-hidden">
+                              <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                              <h3 className="text-2xl font-bold text-white mb-6 font-lexend border-b border-slate-800 pb-4">Select Word Packs</h3>
                               
                               <div className="flex-grow overflow-y-auto max-h-60 mb-6 space-y-3 pr-2 custom-scrollbar">
                                   {availableSets.map(set => (
-                                      <label key={set.id} className="flex items-center p-4 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-700/50 cursor-pointer transition-all has-[:checked]:border-cyan-500 has-[:checked]:bg-cyan-900/20 group">
+                                      <label key={set.id} className="flex items-center p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:bg-slate-700/40 cursor-pointer transition-all has-[:checked]:border-cyan-500/70 has-[:checked]:bg-cyan-900/10 group">
                                           <div className="relative flex items-center">
                                             <input 
                                                 type="checkbox" 
                                                 checked={selectedSetIds.has(set.id)}
                                                 onChange={() => handleSetSelectionChange(set.id)}
-                                                className="peer appearance-none w-6 h-6 border-2 border-slate-500 rounded bg-slate-900 checked:bg-cyan-500 checked:border-cyan-500 transition-colors"
+                                                className="peer appearance-none w-6 h-6 border-2 border-slate-500 rounded bg-slate-900/50 checked:bg-cyan-500 checked:border-cyan-500 transition-colors"
                                             />
                                             <svg className="absolute w-4 h-4 text-white pointer-events-none hidden peer-checked:block left-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                                           </div>
@@ -636,7 +671,7 @@ const App: React.FC = () => {
                               <button
                                 onClick={prepareForGame}
                                 disabled={selectedSetIds.size === 0}
-                                className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xl rounded-xl shadow-lg shadow-cyan-900/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95"
+                                className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-bold text-xl rounded-xl shadow-lg shadow-cyan-900/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] active:scale-[0.98]"
                               >
                                   START GAME 🚀
                               </button>
@@ -651,50 +686,68 @@ const App: React.FC = () => {
   // --- MODE SELECTION SCREEN ---
   if (appScreen === 'MODE_SELECTION') {
       return (
-        <div className="container mx-auto p-4 min-h-screen flex flex-col items-center justify-center animate-fadeIn">
-             <button onClick={goHome} className="absolute top-6 left-6 bg-slate-800/50 px-6 py-3 rounded-full border border-slate-600 text-slate-300 hover:text-white hover:bg-slate-700 transition-all font-bold z-50">
-                 &larr; EXIT
+        <div className="container mx-auto p-4 min-h-screen flex flex-col items-center justify-center animate-fadeIn relative z-10">
+             <button onClick={goHome} className="absolute top-6 left-6 glass-panel px-6 py-3 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-all font-bold z-50 flex items-center gap-2">
+                 <span>←</span> Back
              </button>
              
-             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 font-lexend text-center mt-20 md:mt-0">SELECT MODE</h1>
-             <p className="text-slate-400 mb-12 text-xl">How do you want to play?</p>
+             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 font-lexend text-center mt-20 md:mt-0 tracking-tight">CHOOSE YOUR CHALLENGE</h1>
+             <p className="text-slate-400 mb-12 text-xl font-light">Select a game mode to begin training</p>
 
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl w-full px-4 pb-10">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl w-full px-4 pb-10">
                 {/* Mode Cards */}
-                <button onClick={() => startSpecificGame('MATCHING')} className="group relative p-8 bg-slate-900/60 border-2 border-slate-700 rounded-3xl hover:border-cyan-500 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all text-left overflow-hidden">
-                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-cyan-500 rotate-12">🧩</div>
-                    <h3 className="text-2xl font-bold text-cyan-400 mb-2 relative z-10">Classic Matching</h3>
-                    <p className="text-slate-400 relative z-10">Connect words to their definitions. Relaxed pace.</p>
+                <button onClick={() => startSpecificGame('MATCHING')} className="group relative p-8 glass-panel rounded-3xl border border-slate-700/50 hover:border-cyan-500 hover:bg-slate-800/60 transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-cyan-500 rotate-12 select-none">🧩</div>
+                    <div className="relative z-10">
+                        <div className="bg-cyan-500/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-2xl">🧩</div>
+                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Classic Matching</h3>
+                        <p className="text-slate-400 text-sm">Connect 3 words to their definitions. A relaxed way to learn.</p>
+                    </div>
                 </button>
 
-                <button onClick={() => startSpecificGame('TIME_ATTACK')} className="group relative p-8 bg-slate-900/60 border-2 border-amber-600/50 rounded-3xl hover:border-amber-500 hover:shadow-[0_0_30px_rgba(245,158,11,0.3)] transition-all text-left overflow-hidden">
-                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-amber-500 rotate-12">⚡</div>
-                    <h3 className="text-2xl font-bold text-amber-400 mb-2 relative z-10">2 Minute Blitz</h3>
-                    <p className="text-slate-400 relative z-10">120 seconds. How many words can you get right?</p>
+                <button onClick={() => startSpecificGame('MEMORY')} className="group relative p-8 glass-panel rounded-3xl border border-indigo-600/30 hover:border-indigo-500 hover:bg-slate-800/60 transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-indigo-500 rotate-12 select-none">🧠</div>
+                     <div className="relative z-10">
+                        <div className="bg-indigo-500/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-2xl">🧠</div>
+                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">Memory Match</h3>
+                        <p className="text-slate-400 text-sm">Flip cards to match words with their meanings. Test your memory!</p>
+                     </div>
                 </button>
 
-                <button onClick={() => startSpecificGame('SURVIVAL')} className="group relative p-8 bg-slate-900/60 border-2 border-red-900/50 rounded-3xl hover:border-red-500 hover:shadow-[0_0_30px_rgba(239,68,68,0.3)] transition-all text-left overflow-hidden">
-                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-red-500 rotate-12">💀</div>
-                    <h3 className="text-2xl font-bold text-red-400 mb-2 relative z-10">Survival</h3>
-                    <p className="text-slate-400 relative z-10">10 seconds per word. One wrong move and it's over.</p>
+                <button onClick={() => startSpecificGame('TIME_ATTACK')} className="group relative p-8 glass-panel rounded-3xl border border-amber-600/30 hover:border-amber-500 hover:bg-slate-800/60 transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-amber-500 rotate-12 select-none">⚡</div>
+                     <div className="relative z-10">
+                        <div className="bg-amber-500/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-2xl">⚡</div>
+                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">2 Minute Blitz</h3>
+                        <p className="text-slate-400 text-sm">Race against the clock! 120 seconds to get as many right as possible.</p>
+                     </div>
                 </button>
 
-                <button onClick={() => startSpecificGame('REVERSE_MATCH')} className="group relative p-8 bg-slate-900/60 border-2 border-slate-700 rounded-3xl hover:border-purple-500 hover:shadow-[0_0_30px_rgba(168,85,247,0.3)] transition-all text-left overflow-hidden">
-                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-purple-500 rotate-12">🎯</div>
-                    <h3 className="text-2xl font-bold text-purple-400 mb-2 relative z-10">Reverse Match</h3>
-                    <p className="text-slate-400 relative z-10">See the definition, pick the word. Multiple choice.</p>
+                <button onClick={() => startSpecificGame('SURVIVAL')} className="group relative p-8 glass-panel rounded-3xl border border-red-900/30 hover:border-red-500 hover:bg-slate-800/60 transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-red-500 rotate-12 select-none">💀</div>
+                    <div className="relative z-10">
+                        <div className="bg-red-500/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-2xl">💀</div>
+                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-red-400 transition-colors">Survival Mode</h3>
+                        <p className="text-slate-400 text-sm">High stakes! 10 seconds per word. One mistake and it's game over.</p>
+                    </div>
                 </button>
 
-                <button onClick={() => startSpecificGame('MEMORY')} className="group relative p-8 bg-slate-900/60 border-2 border-slate-700 rounded-3xl hover:border-pink-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.3)] transition-all text-left overflow-hidden">
-                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-pink-500 rotate-12">🧠</div>
-                    <h3 className="text-2xl font-bold text-pink-400 mb-2 relative z-10">Memory</h3>
-                    <p className="text-slate-400 relative z-10">Flip cards to find pairs. Test your memory.</p>
+                <button onClick={() => startSpecificGame('REVERSE_MATCH')} className="group relative p-8 glass-panel rounded-3xl border border-purple-700/30 hover:border-purple-500 hover:bg-slate-800/60 transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-purple-500 rotate-12 select-none">🎯</div>
+                    <div className="relative z-10">
+                        <div className="bg-purple-500/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-2xl">🎯</div>
+                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Reverse Quiz</h3>
+                        <p className="text-slate-400 text-sm">See the definition first, then pick the correct word from the options.</p>
+                    </div>
                 </button>
 
-                <button onClick={() => startSpecificGame('FILL_IN_THE_BLANK')} className="group relative p-8 bg-slate-900/60 border-2 border-slate-700 rounded-3xl hover:border-blue-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all text-left overflow-hidden">
-                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-blue-500 rotate-12">📝</div>
-                    <h3 className="text-2xl font-bold text-blue-400 mb-2 relative z-10">Fill in the Blank</h3>
-                    <p className="text-slate-400 relative z-10">Complete the sentence with the right word.</p>
+                <button onClick={() => startSpecificGame('FILL_IN_THE_BLANK')} className="group relative p-8 glass-panel rounded-3xl border border-blue-700/30 hover:border-blue-500 hover:bg-slate-800/60 transition-all text-left overflow-hidden">
+                    <div className="absolute right-[-20px] top-[-20px] p-0 opacity-10 group-hover:opacity-20 transition-opacity text-9xl text-blue-500 rotate-12 select-none">📝</div>
+                    <div className="relative z-10">
+                        <div className="bg-blue-500/20 w-12 h-12 rounded-xl flex items-center justify-center mb-4 text-2xl">📝</div>
+                        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Fill in the Blank</h3>
+                        <p className="text-slate-400 text-sm">Complete the sentence with the missing vocabulary word. Context is key!</p>
+                    </div>
                 </button>
              </div>
         </div>
@@ -703,185 +756,185 @@ const App: React.FC = () => {
 
   // --- GAME SCREEN ---
   return (
-      <div className="container mx-auto p-4 min-h-screen flex flex-col relative">
+      <div className="container mx-auto p-4 min-h-screen flex flex-col relative z-10">
           
           {/* Round Summary Modal */}
           {showRoundSummary && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fadeIn">
-                  <div className="bg-slate-900 border-2 border-slate-700 p-8 rounded-3xl shadow-2xl text-center max-w-md w-full mx-4 transform animate-pop relative overflow-hidden">
-                      {/* Decorative background glow */}
-                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-500/10 to-transparent pointer-events-none"></div>
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn">
+                  <div className="glass-panel p-1 rounded-3xl shadow-2xl max-w-sm w-full mx-4 transform animate-pop relative overflow-hidden">
+                      <div className="bg-slate-900/90 rounded-[22px] p-8 text-center">
+                        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyan-500/20 to-transparent pointer-events-none"></div>
 
-                      <h2 className="text-4xl font-bold text-white mb-2 font-lexend relative z-10">
-                         {roundPoints > 0 ? winMessage : "Game Over"}
-                      </h2>
-                      
-                      <div className="py-6 relative z-10">
-                          <p className="text-slate-400 uppercase tracking-widest text-xs font-bold mb-1">
-                              {gameMode === 'SURVIVAL' || gameMode === 'TIME_ATTACK' ? "Session Score" : "Round Score"}
-                          </p>
-                          <p className="text-6xl font-mono font-bold text-cyan-400 drop-shadow-lg">
-                              {gameMode === 'SURVIVAL' || gameMode === 'TIME_ATTACK' ? sessionScore : `+${roundPoints}`}
-                          </p>
-                      </div>
+                        <h2 className="text-3xl font-black text-white mb-2 font-lexend relative z-10 tracking-tight">
+                           {winMessage}
+                        </h2>
+                        
+                        {/* SCORE DISPLAY */}
+                        <div className="py-6 relative z-10">
+                           <div className="flex justify-center items-center gap-2 mb-2">
+                                <span className="text-5xl">💎</span>
+                           </div>
+                            <p className="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 drop-shadow-2xl mb-2">
+                                {currentGameScore}
+                            </p>
+                            <p className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-6">Score</p>
+                            
+                            {gameMode === 'MATCHING' && (
+                                <div className="bg-slate-800/50 rounded-xl p-4 mx-2 border border-slate-700/50 flex justify-between items-center">
+                                    <div className="text-center">
+                                    <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Accuracy</p>
+                                    <p className="text-xl font-mono font-bold text-white">
+                                        {gameStats.total > 0 ? Math.round((gameStats.correct / gameStats.total) * 100) : 0}%
+                                    </p>
+                                    </div>
+                                    <div className="h-8 w-px bg-slate-700"></div>
+                                    <div className="text-center">
+                                    <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Correct</p>
+                                    <p className="text-xl font-mono font-bold text-green-400">{gameStats.correct}/{gameStats.total}</p>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
 
-                      <div className="flex flex-col gap-3 relative z-10">
-                         <button
-                            onClick={() => {
-                                setShowRoundSummary(false);
-                                startSpecificGame(gameMode);
-                            }}
-                            className="w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl font-bold text-lg shadow-lg transition-all active:scale-95"
-                         >
-                            {gameMode === 'SURVIVAL' ? "Try Again ➔" : "Next Round ➔"}
-                         </button>
-                         <button
-                            onClick={goHome}
-                            className="w-full py-4 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-bold text-lg transition-all active:scale-95"
-                         >
-                            Exit to Menu
-                         </button>
+                        <div className="flex flex-col gap-3 relative z-10">
+                           <button
+                              onClick={() => {
+                                  setShowRoundSummary(false);
+                                  startSpecificGame(gameMode);
+                              }}
+                              className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-bold text-lg shadow-lg shadow-cyan-900/20 transition-all transform active:scale-95"
+                           >
+                              {gameMode === 'SURVIVAL' ? "Try Again ➔" : "Next Round ➔"}
+                           </button>
+                           <button
+                              onClick={goHome}
+                              className="w-full py-4 bg-slate-800/80 hover:bg-slate-700 text-slate-300 rounded-xl font-bold text-lg transition-all active:scale-95"
+                           >
+                              Exit to Menu
+                           </button>
+                        </div>
                       </div>
                   </div>
               </div>
           )}
 
           {/* Top Game Bar */}
-          <div className="flex justify-between items-center mb-8 relative z-10">
-             <button onClick={() => setAppScreen('MODE_SELECTION')} className="bg-slate-800/80 px-4 py-2 rounded-full border border-slate-600 text-slate-400 hover:text-white transition-colors font-bold text-sm">
-                ✕ QUIT
+          <div className="flex justify-between items-center mb-4 md:mb-8 relative z-10">
+             <button onClick={() => setAppScreen('MODE_SELECTION')} className="bg-slate-800/40 backdrop-blur-md px-4 py-2 rounded-full border border-slate-600/50 text-slate-400 hover:text-white hover:bg-slate-700/50 transition-all font-bold text-sm flex items-center gap-1">
+                <span>✕</span> <span className="hidden md:inline">QUIT</span>
              </button>
 
              {(gameMode === 'TIME_ATTACK' || gameMode === 'SURVIVAL') && (
-                 <div className={`text-4xl font-mono font-bold ${timeLeft <= 10 ? 'text-red-500 animate-pulse scale-110' : 'text-white'}`}>
+                 <div className={`text-4xl font-mono font-bold ${timeLeft <= 10 ? 'text-red-500 animate-pulse scale-110' : 'text-white'} drop-shadow-lg`}>
                      {gameMode === 'SURVIVAL' ? `${timeLeft}s` : `${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')}`}
                  </div>
              )}
 
-             <div className="flex flex-col items-end">
-                <span className="text-xs text-slate-400 font-bold uppercase tracking-wider">Session Score</span>
-                <span className="text-2xl font-mono font-bold text-cyan-400">{sessionScore}</span>
+             <div className="glass-panel px-5 py-2 rounded-2xl flex flex-col items-end min-w-[100px] border border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+                <span className="text-[10px] text-cyan-200 font-bold uppercase tracking-wider">Score</span>
+                <span className="text-2xl font-mono font-black text-white drop-shadow-md">{currentGameScore}</span>
              </div>
           </div>
           
           {/* Combo Indicator */}
           {currentCombo > 1 && (
-              <div className="absolute top-20 right-4 animate-pop rotate-12 z-0 opacity-50 pointer-events-none">
-                  <p className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-orange-500 drop-shadow-sm">
-                      {currentCombo}x COMBO!
+              <div className="absolute top-24 right-4 animate-pop rotate-12 z-0 opacity-80 pointer-events-none">
+                  <p className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-orange-500 drop-shadow-[0_2px_10px_rgba(234,179,8,0.5)]">
+                      {currentCombo}x
                   </p>
               </div>
           )}
 
-          <main className="flex-grow w-full max-w-4xl mx-auto relative z-10 flex flex-col justify-center">
+          <main className="flex-grow w-full max-w-4xl mx-auto relative z-10 flex flex-col justify-start pt-4">
               
-              {/* MEMORY GAME RENDERER */}
-              {gameMode === 'MEMORY' && (
-                  <MemoryGame 
-                    words={gameWords} 
-                    onComplete={(score) => endRound(score)}
-                    onMatch={() => { if(soundEnabled) playSound('correct'); }}
-                    onMismatch={() => { if(soundEnabled) playSound('incorrect'); }}
-                  />
-              )}
-
-              {/* OTHER GAMES RENDERER */}
-              {gameMode !== 'MEMORY' && (
-                <>
                   {gameMode === 'MATCHING' && (
                      <>
-                        <h2 className="text-center text-xl text-slate-400 mb-6 font-lexend">Match the definitions</h2>
-                        {/* Reduced spacing from space-y-4 to space-y-2 */}
-                        <div className="space-y-2 mb-20 pb-32 md:pb-0"> 
-                            {shuffledDefinitions.map(({ definition, wordId: correctWordId }) => {
-                                const userWordId = userMatches.get(definition);
-                                const matchedWordObj = userWordId ? practiceWords.find(w => w.id === userWordId) : null;
-                                const correctWordObj = (gameState === 'FEEDBACK' && userWordId !== correctWordId) ? practiceWords.find(w => w.id === correctWordId) : null;
-                                
-                                let feedback: FeedbackType = 'none';
-                                if (gameState === 'FEEDBACK') {
-                                    if (userWordId === correctWordId) feedback = 'correct';
-                                    else if (userWordId) feedback = 'incorrect';
-                                }
-
-                                return (
-                                    <DefinitionBox
-                                        key={definition}
-                                        definition={definition}
-                                        onClick={() => handleDefinitionClick(definition)}
-                                        feedback={feedback}
-                                        matchedWord={matchedWordObj?.word || null}
-                                        correctWord={correctWordObj?.word || null}
-                                        isTargetedForSelection={!!selectedWordId && userMatches.get(definition) !== selectedWordId}
-                                    />
-                                )
-                            })}
-                        </div>
-                        
-                        {/* Word Bank at Bottom for Matching */}
-                         <div className="w-full bg-slate-950 border-t-2 border-slate-700 p-4 fixed bottom-0 left-0 z-40 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] md:static md:bg-transparent md:border-none md:p-0 md:shadow-none">
-                          <div className="max-w-4xl mx-auto">
-                             <div className="flex flex-wrap justify-center items-center gap-3">
-                                {practiceWords.map(word => {
-                                  const isUsed = Array.from(userMatches.values()).includes(word.id);
-                                  let feedback: 'correct' | 'incorrect' | 'none' = 'none';
-                                  if(gameState === 'FEEDBACK') {
-                                    const correctDef = targetDefinitions.find(td => td.wordId === word.id);
-                                    if(correctDef && userMatches.get(correctDef.definition) === word.id) {
-                                      feedback = 'correct';
-                                    } else if (isUsed) {
-                                      feedback = 'incorrect';
+                        {/* Top Area: Definition Boxes */}
+                        <div className="mb-auto">
+                            <h2 className="text-center text-sm md:text-xl text-slate-400 mb-4 font-lexend font-light">Match words to their definitions</h2>
+                            <div className="space-y-3 mb-8"> 
+                                {shuffledDefinitions.map(({ definition, wordId: correctWordId }) => {
+                                    const userWordId = userMatches.get(definition);
+                                    const matchedWordObj = userWordId ? practiceWords.find(w => w.id === userWordId) : null;
+                                    const correctWordObj = (gameState === 'FEEDBACK' && userWordId !== correctWordId) ? practiceWords.find(w => w.id === correctWordId) : null;
+                                    
+                                    let feedback: FeedbackType = 'none';
+                                    if (gameState === 'FEEDBACK') {
+                                        if (userWordId === correctWordId) feedback = 'correct';
+                                        else if (userWordId) feedback = 'incorrect';
                                     }
-                                  }
-                                  return (
-                                    <WordPill 
-                                        key={word.id}
-                                        word={word.word}
-                                        onClick={() => handleWordClick(word.id)}
-                                        isSelected={selectedWordId === word.id}
-                                        isUsed={gameState === 'PRACTICING' && isUsed && selectedWordId !== word.id}
-                                        feedback={feedback}
-                                    />
-                                  );
+
+                                    return (
+                                        <DefinitionBox
+                                            key={definition}
+                                            definition={definition}
+                                            onClick={() => handleDefinitionClick(definition)}
+                                            feedback={feedback}
+                                            matchedWord={matchedWordObj?.word || null}
+                                            correctWord={correctWordObj?.word || null}
+                                            isTargetedForSelection={!!selectedWordId && userMatches.get(definition) !== selectedWordId}
+                                        />
+                                    )
                                 })}
-                              </div>
-                              
-                              {/* Game Controls inside sticky area for mobile access */}
-                              <div className="mt-4 flex justify-center md:hidden">
-                                   {gameState === 'PRACTICING' ? (
-                                       <button 
-                                        onClick={handleCheckAnswers}
-                                        disabled={userMatches.size !== 3}
-                                        className="w-full py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-bold text-lg shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95"
-                                       >
-                                           CHECK ANSWERS
-                                       </button>
-                                   ) : (
-                                        <button 
-                                        onClick={() => startSpecificGame(gameMode)}
-                                        className="w-full py-3 bg-cyan-600 text-white rounded-xl font-bold text-lg shadow-lg transition-all active:scale-95"
-                                       >
-                                           NEXT ROUND ➔
-                                       </button>
-                                   )}
-                              </div>
-                          </div>
+                            </div>
                         </div>
                         
-                        {/* Desktop Controls */}
-                        <div className="hidden md:flex justify-center mt-8 h-20">
+                        {/* Word Bank at Bottom - Only visible when PRACTICING */}
+                        {gameState === 'PRACTICING' && (
+                            <div className="w-full p-4 mb-4">
+                              <div className="max-w-4xl mx-auto">
+                                 <div className="flex flex-wrap justify-center items-center gap-2 md:gap-3">
+                                    {practiceWords.map(word => {
+                                      const isUsed = Array.from(userMatches.values()).includes(word.id);
+                                      return (
+                                        <WordPill 
+                                            key={word.id}
+                                            word={word.word}
+                                            onClick={() => handleWordClick(word.id)}
+                                            isSelected={selectedWordId === word.id}
+                                            isUsed={isUsed && selectedWordId !== word.id}
+                                            feedback={'none'}
+                                        />
+                                      );
+                                    })}
+                                  </div>
+                              </div>
+                            </div>
+                        )}
+                        
+                         {/* Review Grid - Only visible in FEEDBACK */}
+                        {gameState === 'FEEDBACK' && (
+                             <div className="w-full mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                                <h3 className="text-center text-slate-400 mb-3 font-lexend text-sm uppercase tracking-widest">Review Words</h3>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                    {practiceWords.map(word => (
+                                        <div key={word.id} className="bg-slate-800/60 border border-slate-700/50 p-3 rounded-xl backdrop-blur-sm">
+                                            <p className="text-white font-bold text-sm md:text-base font-lexend">{word.word}</p>
+                                            <p className="text-xs text-slate-400 italic mb-1">{word.partOfSpeech}</p>
+                                            {word.flashcard.translation && <p className="text-xs text-amber-200/80 mb-1">{word.flashcard.translation}</p>}
+                                            <p className="text-[10px] md:text-xs text-slate-300 line-clamp-2">{word.definitions[0]}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                             </div>
+                        )}
+
+                        {/* Game Controls - Fixed or Inline based on state */}
+                        <div className={`w-full flex justify-center pb-8 ${gameState === 'PRACTICING' ? 'mt-auto' : 'mt-4'}`}>
                            {gameState === 'PRACTICING' ? (
-                               <button 
-                                onClick={handleCheckAnswers}
-                                disabled={userMatches.size !== 3}
-                                className="px-10 py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white rounded-full font-bold text-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 active:scale-95"
-                               >
-                                   CHECK ANSWERS
-                               </button>
+                               <div className="w-full max-w-4xl px-4 md:px-0">
+                                   <button 
+                                    onClick={handleCheckAnswers}
+                                    disabled={userMatches.size !== 3}
+                                    className="w-full md:w-auto md:px-12 py-3 md:py-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white rounded-xl md:rounded-full font-bold text-lg md:text-xl shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-105 active:scale-95"
+                                   >
+                                       CHECK ANSWERS
+                                   </button>
+                               </div>
                            ) : (
                                 <button 
                                 onClick={() => startSpecificGame(gameMode)}
-                                className="px-10 py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg transition-all transform hover:scale-105 active:scale-95"
+                                className="px-12 py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg transition-all transform hover:scale-105 active:scale-95 animate-pop"
                                >
                                    NEXT ROUND ➔
                                </button>
@@ -889,28 +942,39 @@ const App: React.FC = () => {
                         </div>
                      </>
                   )}
+                  
+                  {/* ... (Rest of game modes) ... */}
+                  {gameMode === 'MEMORY' && (
+                     <MemoryGame 
+                        words={gameWords} 
+                        onComplete={handleMemoryGameComplete}
+                        onMatch={() => { if(soundEnabled) playSound('correct'); addScore(100); }}
+                        onMismatch={() => { if(soundEnabled) playSound('incorrect'); }}
+                     />
+                  )}
 
                   {(gameMode === 'REVERSE_MATCH' || gameMode === 'TIME_ATTACK' || gameMode === 'SURVIVAL' || gameMode === 'FILL_IN_THE_BLANK') && currentQuestion && (
-                      <div className="max-w-2xl mx-auto w-full">
-                        <div className="bg-slate-800/50 border border-slate-700 rounded-3xl p-8 mb-8 backdrop-blur-sm text-center min-h-[220px] flex flex-col justify-center items-center shadow-2xl relative overflow-hidden">
+                      <div className="max-w-2xl mx-auto w-full mt-10">
+                        <div className="glass-panel rounded-3xl p-6 md:p-8 mb-6 md:mb-8 text-center min-h-[200px] md:min-h-[240px] flex flex-col justify-center items-center shadow-2xl relative overflow-hidden">
                             {/* Decorative element */}
-                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-cyan-500 to-purple-500"></div>
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+                            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50"></div>
                             
                             {(gameMode === 'REVERSE_MATCH' || gameMode === 'TIME_ATTACK' || gameMode === 'SURVIVAL') && (
                                 <>
-                                    <h2 className="text-sm font-bold text-slate-400 mb-6 uppercase tracking-widest">Select the word for</h2>
-                                    <p className="text-2xl md:text-3xl text-white font-medium leading-relaxed">"{currentQuestion.definition}"</p>
+                                    <h2 className="text-xs md:text-sm font-bold text-slate-400 mb-4 md:mb-6 uppercase tracking-[0.2em]">Select the word for</h2>
+                                    <p className="text-xl md:text-3xl text-white font-medium leading-relaxed drop-shadow-md">"{currentQuestion.definition}"</p>
                                 </>
                             )}
                             {gameMode === 'FILL_IN_THE_BLANK' && (
                                 <>
-                                     <h2 className="text-sm font-bold text-slate-400 mb-6 uppercase tracking-widest">Complete the Sentence</h2>
-                                     <p className="text-2xl md:text-3xl text-amber-200 font-medium leading-relaxed">"{currentQuestion.sentence}"</p>
+                                     <h2 className="text-xs md:text-sm font-bold text-slate-400 mb-4 md:mb-6 uppercase tracking-[0.2em]">Complete the Sentence</h2>
+                                     <p className="text-xl md:text-3xl text-amber-100 font-medium leading-relaxed drop-shadow-md">"{currentQuestion.sentence}"</p>
                                 </>
                             )}
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-20">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-20">
                             {currentQuestion.options.map(word => {
                                 let feedback: 'none' | 'correct' | 'incorrect' | 'revealed' = 'none';
                                 if (questionState === 'feedback') {
@@ -924,14 +988,15 @@ const App: React.FC = () => {
                                         onClick={() => handleOptionSelection(word)}
                                         disabled={questionState === 'feedback'}
                                         className={`
-                                            p-6 rounded-2xl border-2 transition-all duration-200 text-xl font-bold font-lexend
-                                            ${feedback === 'none' ? 'bg-slate-900 border-slate-700 text-slate-300 hover:border-cyan-500 hover:bg-slate-800 hover:text-white hover:scale-[1.02] active:scale-[0.98]' : ''}
-                                            ${feedback === 'correct' ? 'bg-green-600 border-green-500 text-white scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)]' : ''}
+                                            p-4 md:p-6 rounded-2xl border-2 transition-all duration-200 text-lg md:text-xl font-bold font-lexend relative overflow-hidden group
+                                            ${feedback === 'none' ? 'bg-slate-900/60 border-slate-700/50 text-slate-300 hover:border-cyan-500 hover:bg-slate-800/80 hover:text-white hover:scale-[1.02] active:scale-[0.98]' : ''}
+                                            ${feedback === 'correct' ? 'bg-green-600/90 border-green-400 text-white scale-105 shadow-[0_0_20px_rgba(34,197,94,0.4)]' : ''}
                                             ${feedback === 'incorrect' ? 'bg-red-900/50 border-red-500 text-red-200 opacity-50' : ''}
                                             ${feedback === 'revealed' ? 'bg-green-900/30 border-green-500/50 text-green-200' : ''}
                                         `}
                                     >
-                                        {word.word}
+                                        <span className="relative z-10">{word.word}</span>
+                                        {feedback === 'none' && <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>}
                                     </button>
                                 )
                             })}
@@ -942,7 +1007,7 @@ const App: React.FC = () => {
                             <div className="flex justify-center">
                                 <button 
                                     onClick={() => startSpecificGame(gameMode)}
-                                    className="px-10 py-4 bg-cyan-600 hover:bg-cyan-500 text-white rounded-full font-bold text-xl shadow-lg transition-all transform hover:scale-105 active:scale-95 animate-pop"
+                                    className="px-12 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-full font-bold text-xl shadow-lg shadow-cyan-900/40 transition-all transform hover:scale-105 active:scale-95 animate-pop"
                                 >
                                     Next Question ➔
                                 </button>
@@ -950,8 +1015,6 @@ const App: React.FC = () => {
                         )}
                       </div>
                   )}
-                </>
-              )}
           </main>
       </div>
   );
